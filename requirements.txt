@@ -1,0 +1,8 @@
+accelerate>=0.34.0
+huggingface_hub>=0.24.0
+jsonschema>=4.22.0
+pyyaml>=6.0.1
+safetensors>=0.4.4
+sentencepiece>=0.2.0
+tqdm>=4.66.0
+transformers>=4.44.0

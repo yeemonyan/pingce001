@@ -1,0 +1,24 @@
+model:
+  repo_id: Qwen/Qwen2.5-7B-Instruct
+  local_dir: models/Qwen2.5-7B-Instruct
+  dense_parameter_limit: 8B
+
+inference:
+  dtype: bfloat16
+  device_map: auto
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+
+score2026:
+  required_fields:
+    - text
+    - question
+    - options
+  optional_fields:
+    - answer
+  option_labels:
+    - A
+    - B
+    - C
+    - D
