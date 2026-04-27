@@ -1,4 +1,4 @@
-# SCoRE2026 Day 1 Baseline
+# SCoRE2026 Baseline
 
 本仓库用于第一届基于情景的常识推理评测任务（SCoRE2026）的 12 天落地计划。
 
@@ -54,6 +54,23 @@ scripts/                 环境、下载、数据处理脚本
 tests/                   最小单元测试
 ```
 
+### 4. 运行 Day 2 推理烟测
+
+```bash
+python scripts/parse_score_json.py \
+  --input data/day2_smoke.json \
+  --output outputs/day2_smoke_prompts.jsonl
+
+python scripts/infer_score.py \
+  --backend mock \
+  --input outputs/day2_smoke_prompts.jsonl \
+  --output outputs/day2_smoke_predictions.jsonl
+```
+
+云服务器下载模型后，将 `--backend mock` 改为 `--backend transformers`，并传入 `--model-path models/Qwen2.5-7B-Instruct` 即可运行真实模型推理。
+
 ## 当前进度
 
-详见 [docs/DAY1_PROGRESS.md](docs/DAY1_PROGRESS.md)。
+Day 1 详见 [docs/DAY1_PROGRESS.md](docs/DAY1_PROGRESS.md)。
+
+Day 2 详见 [docs/DAY2_PROGRESS.md](docs/DAY2_PROGRESS.md)。
