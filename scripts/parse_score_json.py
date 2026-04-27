@@ -104,7 +104,7 @@ def normalize_record(record: dict[str, Any], index: int) -> dict[str, Any]:
     answer = normalize_answer(raw_answer)
     record_id = record.get("id", index)
 
-    return {
+    normalized = {
         "id": record_id,
         "text": record["text"].strip(),
         "question": record["question"].strip(),
@@ -113,6 +113,10 @@ def normalize_record(record: dict[str, Any], index: int) -> dict[str, Any]:
         "has_answer": answer is not None,
         "prompt": build_prompt(record, options),
     }
+    for metadata_field in ("domain", "category", "type", "task_type"):
+        if metadata_field in record:
+            normalized[metadata_field] = record[metadata_field]
+    return normalized
 
 
 def dump_jsonl(records: Iterable[dict[str, Any]], path: Path) -> None:
