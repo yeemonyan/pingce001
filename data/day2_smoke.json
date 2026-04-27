@@ -1,0 +1,67 @@
+[
+  {
+    "id": "spatial-smoke",
+    "domain": "spatial",
+    "text": "Alice, Bob, and Carol sit in a row. Alice is to the left of Bob. Carol is to the right of Bob.",
+    "question": "Who is in the middle?",
+    "options": {
+      "A": "Alice",
+      "B": "Bob",
+      "C": "Carol",
+      "D": "None of the above"
+    },
+    "answer": ["B"]
+  },
+  {
+    "id": "temporal-smoke",
+    "domain": "temporal",
+    "text": "Jack started school in 2010. He graduated 6 years after he started school.",
+    "question": "Jack graduated in ___.",
+    "options": {
+      "A": "2014",
+      "B": "2016",
+      "C": "2018",
+      "D": "None of the above"
+    },
+    "answer": ["B"]
+  },
+  {
+    "id": "social-smoke",
+    "domain": "social",
+    "text": "Given: Tom is Mary's teacher. Mary is John's friend.",
+    "question": "Which option is correct?",
+    "options": {
+      "A": "Tom is Mary's teacher",
+      "B": "John is Mary's teacher",
+      "C": "Mary is Tom's teacher",
+      "D": "None of the above"
+    },
+    "answer": ["A"]
+  },
+  {
+    "id": "natural-smoke",
+    "domain": "natural",
+    "text": "There are apple, hammer, and milk. The drink is not a tool.",
+    "question": "Which item is a drink?",
+    "options": {
+      "A": "apple",
+      "B": "hammer",
+      "C": "milk",
+      "D": "None of the above"
+    },
+    "answer": ["C"]
+  },
+  {
+    "id": "hybrid-smoke",
+    "domain": "hybrid",
+    "text": "The animal is on the left shelf. The cup is one day after the animal in the schedule.",
+    "question": "Which domain mix is required?",
+    "options": {
+      "A": "Only social",
+      "B": "Spatial and temporal",
+      "C": "Only natural",
+      "D": "None of the above"
+    },
+    "answer": ["B"]
+  }
+]
