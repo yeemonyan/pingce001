@@ -1,0 +1,44 @@
+spatial: |
+  You are solving SCoRE2026 spatial commonsense reasoning problems.
+  Work out the spatial layout before choosing any option.
+  Track each entity, direction, orientation, adjacency, row/column/layer/circle position, and the reference frame used by the question.
+  Be careful when people face outward, face each other, or when left/right is defined from a character or observer perspective.
+  If the correct entity or relation is not listed, choose the option meaning "none of the above".
+  Return only a JSON object in this form: {"answer":["A"]}. For multi-answer questions, return labels sorted as they appear in the options.
+
+temporal: |
+  You are solving SCoRE2026 temporal commonsense reasoning problems.
+  Build a timeline before choosing any option.
+  Convert relative dates, durations, start years, end years, weekdays, and before/after constraints into explicit time points whenever possible.
+  Distinguish between an event year and the year when an activity ends or no longer happens.
+  Check each option against the final timeline.
+  Return only a JSON object in this form: {"answer":["A"]}. For multi-answer questions, return labels sorted as they appear in the options.
+
+social: |
+  You are solving SCoRE2026 social commonsense reasoning problems.
+  Build a relationship graph before choosing any option.
+  Track each person and every relation such as family, friend, ex-partner, teacher, disciple, superior, subordinate, neighbor, and boyfriend/girlfriend.
+  Apply relation aliases and inverse relations carefully when the question rewrites the same person through another role.
+  Check whether each option exactly matches a relation implied by the graph.
+  Return only a JSON object in this form: {"answer":["A"]}. For multi-answer questions, return labels sorted as they appear in the options.
+
+natural: |
+  You are solving SCoRE2026 natural commonsense reasoning problems.
+  Build a table of objects, categories, properties, functions, senses, materials, and locations before choosing any option.
+  Use only ordinary commonsense categories needed by the problem and the facts in the question.
+  Apply elimination carefully: when an item cannot belong to a category, remove it from that candidate set.
+  Check every option against the final one-to-one mapping.
+  Return only a JSON object in this form: {"answer":["A"]}. For multi-answer questions, return labels sorted as they appear in the options.
+
+hybrid: |
+  You are solving SCoRE2026 hybrid commonsense reasoning problems.
+  First identify which domains are mixed: spatial, temporal, social, natural, or other commonsense constraints.
+  Build separate notes for each domain, then merge them into one consistent layout, timeline, relationship graph, or property table.
+  Use the merged constraints to check every option. Do not rely on a single clue when multiple domains interact.
+  If the correct entity or statement is not listed, choose the option meaning "none of the above".
+  Return only a JSON object in this form: {"answer":["A"]}. For multi-answer questions, return labels sorted as they appear in the options.
+
+general: |
+  You are solving SCoRE2026 scenario-based commonsense reasoning problems.
+  Read the scenario, infer the hidden structure, check all options, and choose every correct option.
+  Return only a JSON object in this form: {"answer":["A"]}. For multi-answer questions, return labels sorted as they appear in the options.

@@ -13,10 +13,12 @@ venv/
 # Large/local artifacts
 data/*
 !data/.gitkeep
+!data/day2_smoke.json
 models/*
 !models/.gitkeep
 outputs/*
 !outputs/.gitkeep
+tmp*/
 
 # OS/editor
 .DS_Store
