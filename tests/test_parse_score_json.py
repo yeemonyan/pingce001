@@ -22,6 +22,7 @@ class ParseScoreJsonTest(unittest.TestCase):
     def test_answer_is_optional_for_test_data(self):
         record = {
             "id": "test-1",
+            "domain": "temporal",
             "text": "A person has one father.",
             "question": "The statement is ___.",
             "options": {"A": "true", "B": "false"},
@@ -30,6 +31,7 @@ class ParseScoreJsonTest(unittest.TestCase):
         result = normalize_record(record, 3)
 
         self.assertEqual(result["id"], "test-1")
+        self.assertEqual(result["domain"], "temporal")
         self.assertIsNone(result["answer"])
         self.assertFalse(result["has_answer"])
 
