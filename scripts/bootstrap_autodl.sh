@@ -12,15 +12,29 @@ if [ ! -x "$PYTHON_BIN" ]; then
 fi
 
 mkdir -p "$PROJECT_ROOT"
-"$PYTHON_BIN" -m venv "$VENV_DIR"
+"$PYTHON_BIN" -m venv --system-site-packages "$VENV_DIR"
 source "$VENV_DIR/bin/activate"
 
 python -m pip install --upgrade pip
 
-# CUDA 12.1 wheels cover common AutoDL RTX 4090 images.
-python -m pip install \
-  torch torchvision torchaudio \
-  --index-url "$TORCH_INDEX_URL"
+if "$PYTHON_BIN" - <<'PY'
+import sys
+
+try:
+    import torch
+except Exception:
+    sys.exit(1)
+
+sys.exit(0 if torch.cuda.is_available() else 1)
+PY
+then
+  echo "Reusing base PyTorch from $PYTHON_BIN"
+else
+  # CUDA 12.1 wheels cover common AutoDL RTX 4090 images when PyTorch is absent.
+  python -m pip install \
+    torch torchvision torchaudio \
+    --index-url "$TORCH_INDEX_URL"
+fi
 
 python -m pip install -r "$PROJECT_ROOT/requirements.txt"
 

@@ -73,3 +73,9 @@ python scripts/parse_score_json.py \
 - 官方训练集解析成功
 - 模型权重开始正常下载或已成功下载
 - 代码和文档已经 push 到 GitHub 分支，服务器随时可恢复
+
+## AutoDL 备注
+
+如果当前镜像的 `/root/miniconda3/bin/python` 已自带可用的 CUDA 版 PyTorch，
+`scripts/bootstrap_autodl.sh` 会优先复用它，而不会重复下载整套 torch 轮子。
+这样能明显减少启动时间和计费时长。
