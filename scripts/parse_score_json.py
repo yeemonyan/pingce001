@@ -4,7 +4,10 @@ Expected input fields:
 - text: scenario text
 - question: question sentence with blank
 - options: dict mapping A/B/C/D to option text
-- answer: optional list of labels, absent in test data
+- answers: optional official list of labels, absent in test data
+
+For backward compatibility, the legacy singular ``answer`` field is also
+accepted and normalized to the output ``answer`` field.
 """
 
 from __future__ import annotations
@@ -97,7 +100,8 @@ def normalize_record(record: dict[str, Any], index: int) -> dict[str, Any]:
         raise ScoreFormatError(f"record {index} question must be a non-empty string")
 
     options = normalize_options(record["options"])
-    answer = normalize_answer(record.get("answer"))
+    raw_answer = record.get("answers", record.get("answer"))
+    answer = normalize_answer(raw_answer)
     record_id = record.get("id", index)
 
     normalized = {

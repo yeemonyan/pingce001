@@ -3,6 +3,7 @@
 本仓库用于第一届基于情景的常识推理评测任务（SCoRE2026）的 12 天落地计划。当前已经完成 Day 1 到 Day 3：环境与模型入口、五类任务提示词与推理脚本、官方提交格式与本地评测链路。
 
 ## 任务约束
+Day 1 的目标是完成基础环境、合规模型选型/下载入口，以及官方 JSON 数据解析脚本。评测约束来自任务说明：Dense 模型总参数量不超过 8B；训练/微调阶段只能使用 SCoRE2026 官方数据；测试集不得用于提示示例、伪标签或人工作答。
 
 - Dense 模型总参数量不得超过 8B。
 - 训练和微调阶段只使用 SCoRE2026 官方训练集与验证集。
@@ -85,6 +86,19 @@ python scripts/parse_score_json.py \
 ```
 
 输出为 JSONL，每行包含 `id`、`text`、`question`、`options`、`answer`、`has_answer`、`prompt` 等字段。
+脚本兼容官方训练集里的 `answers` 字段，并统一输出为 JSONL。每行包含 `id`、`prompt`、`answer`、`has_answer` 等字段，可直接作为 Day 2 零样本推理脚本的输入。
+
+## 项目结构
+
+```text
+configs/                 模型与推理默认配置
+data/                    本地数据目录，不提交官方数据
+docs/                    任务大纲与进度记录
+models/                  本地模型权重目录，不提交 Git
+outputs/                 解析/推理输出目录，不提交 Git
+scripts/                 环境、下载、数据处理脚本
+tests/                   最小单元测试
+```
 
 ### 4. 本地烟测完整链路
 
