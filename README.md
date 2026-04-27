@@ -57,3 +57,7 @@ tests/                   最小单元测试
 ## 当前进度
 
 详见 [docs/DAY1_PROGRESS.md](docs/DAY1_PROGRESS.md)。
+
+## Phase A0 服务器启动
+
+AutoDL/云服务器落地步骤见 [docs/PHASE_A0_SERVER_BOOTSTRAP.md](docs/PHASE_A0_SERVER_BOOTSTRAP.md)。
