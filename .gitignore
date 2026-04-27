@@ -18,6 +18,7 @@ models/*
 !models/.gitkeep
 outputs/*
 !outputs/.gitkeep
+tmp*/
 
 # OS/editor
 .DS_Store
