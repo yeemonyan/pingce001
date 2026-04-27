@@ -1,14 +1,9 @@
-"""Convert inference predictions into the SCoRE2026 submission JSON format.
+"""Convert inference predictions into SCoRE2026 submission files.
 
-Default output is a JSON array of objects:
-[
-  {"answer": ["A"]},
-  {"answer": ["A", "B"]}
-]
-
-Use --include-id when you want an audit-friendly file that keeps record ids.
-Use the default no-id format for official submission unless the platform asks
-for ids explicitly.
+The safer default is ``jsonl_with_id`` because the official repository notes
+that result files can be JSONL with one object per line containing ``id`` and
+``answer``. ``system_json`` is kept for compatibility with systems that accept
+a plain JSON array.
 """
 
 from __future__ import annotations
@@ -17,10 +12,12 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 
 VALID_LABELS = ("A", "B", "C", "D")
+OFFICIAL_FORMATS = ("jsonl_with_id", "system_json")
+OfficialFormat = Literal["jsonl_with_id", "system_json"]
 
 
 def load_predictions(path: Path) -> list[dict[str, Any]]:
@@ -64,27 +61,43 @@ def normalize_answer(value: Any, fallback: str) -> list[str]:
 
 def convert_records(
     predictions: list[dict[str, Any]],
-    include_id: bool,
+    official_format: OfficialFormat,
     fallback: str,
 ) -> list[dict[str, Any]]:
     submission = []
     for index, prediction in enumerate(predictions):
         answer = normalize_answer(prediction.get("answer"), fallback)
-        item: dict[str, Any] = {"answer": answer}
-        if include_id:
-            item["id"] = prediction.get("id", index)
+        if official_format == "jsonl_with_id":
+            item: dict[str, Any] = {"id": prediction.get("id", index), "answer": answer}
+        else:
+            item = {"answer": answer}
         submission.append(item)
     return submission
 
 
+def write_submission(records: list[dict[str, Any]], path: Path, official_format: OfficialFormat) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if official_format == "jsonl_with_id":
+        with path.open("w", encoding="utf-8", newline="\n") as file:
+            for record in records:
+                file.write(json.dumps(record, ensure_ascii=False) + "\n")
+        return
+
+    path.write_text(
+        json.dumps(records, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build SCoRE2026 submission JSON.")
+    parser = argparse.ArgumentParser(description="Build SCoRE2026 submission files.")
     parser.add_argument("--input", required=True, help="Prediction JSONL/JSON from infer_score.py.")
-    parser.add_argument("--output", required=True, help="Submission .json path.")
+    parser.add_argument("--output", required=True, help="Submission output path.")
     parser.add_argument(
-        "--include-id",
-        action="store_true",
-        help="Keep ids in the submission objects for audit/debug files.",
+        "--official-format",
+        default="jsonl_with_id",
+        choices=OFFICIAL_FORMATS,
+        help="Output format. Default keeps id and writes JSONL, matching the stricter official note.",
     )
     parser.add_argument(
         "--fallback",
@@ -98,14 +111,10 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     predictions = load_predictions(Path(args.input))
-    submission = convert_records(predictions, args.include_id, args.fallback)
+    submission = convert_records(predictions, args.official_format, args.fallback)
     output_path = Path(args.output)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        json.dumps(submission, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    print(f"wrote={len(submission)} output={output_path}")
+    write_submission(submission, output_path, args.official_format)
+    print(f"wrote={len(submission)} format={args.official_format} output={output_path}")
 
 
 if __name__ == "__main__":

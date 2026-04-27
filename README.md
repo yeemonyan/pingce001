@@ -6,7 +6,7 @@
 Day 1 的目标是完成基础环境、合规模型选型/下载入口，以及官方 JSON 数据解析脚本。评测约束来自任务说明：Dense 模型总参数量不超过 8B；训练/微调阶段只能使用 SCoRE2026 官方数据；测试集不得用于提示示例、伪标签或人工作答。
 
 - Dense 模型总参数量不得超过 8B。
-- 训练和微调阶段只使用 SCoRE2026 官方训练集与验证集。
+- 训练和微调阶段只使用 SCoRE2026 官方公开数据；当前按公开仓库的 `train/test` 文件组织，若后续官方提供验证集再单独接入。
 - 测试集不得用于提示词示例、伪标签生成或人工作答。
 - 最终结果需要可复现：模型、脚本、随机种子、推理参数和提交文件都要保留。
 
@@ -34,17 +34,17 @@ Day 2 目标是构建 CoT Zero-shot baseline：针对空间、时间、社会、
 - 新增推理脚本：`scripts/infer_score.py`
 - 支持 `mock` 后端，用于本地无模型烟测
 - 支持 `transformers` 后端，用于云服务器加载本地 7B 模型推理
-- 支持答案抽取、非法输出清洗、验证集 ACC 计算
+- 支持答案抽取、非法输出清洗、带答案数据的 ACC 计算
 - 新增五类 smoke 样例：`data/day2_smoke.json`
 - 添加 Day 2 测试与进度文档：`tests/test_infer_score.py`、`docs/DAY2_PROGRESS.md`
 
 ## Day 3 完成内容
 
-Day 3 目标是完成格式对齐与首次测评链路：把模型输出转为官方提交 JSON，并编写本地验证集评测脚本。
+Day 3 目标是完成格式对齐与首次测评链路：把模型输出转为官方提交文件，并编写本地评测脚本。
 
 已完成：
 
-- 新增官方提交格式脚本：`scripts/format_submission.py`
+- 新增官方提交格式脚本：`scripts/format_submission.py`，默认生成更保守的 `jsonl_with_id` 格式
 - 新增本地评测脚本：`scripts/evaluate_score.py`
 - 支持按 `id` 或顺序对齐 gold/prediction
 - 输出整体 ACC、分领域 ACC、缺失预测数和错题样例
@@ -119,7 +119,7 @@ python scripts/evaluate_score.py \
 
 python scripts/format_submission.py \
   --input outputs/day2_smoke_predictions.jsonl \
-  --output outputs/day2_smoke_submission.json
+  --output outputs/day2_smoke_submission.jsonl
 ```
 
 当前 smoke 链路预期结果：
@@ -140,21 +140,28 @@ python scripts/infer_score.py \
   --output outputs/test_predictions.jsonl
 ```
 
-生成官方提交文件：
+生成官方提交文件。默认输出 `jsonl_with_id`，每行一个对象，包含 `id` 和 `answer`：
 
 ```bash
 python scripts/format_submission.py \
   --input outputs/test_predictions.jsonl \
-  --output outputs/submission_day3.json
+  --output outputs/submission_day3.jsonl
 ```
 
-官方提交默认格式为无 `id` 的 JSON 数组：
+默认提交格式：
 
-```json
-[
-  {"answer": ["A"]},
-  {"answer": ["A", "B"]}
-]
+```jsonl
+{"id":"example-1","answer":["A"]}
+{"id":"example-2","answer":["A","B"]}
+```
+
+如果线上系统要求 JSON 数组格式，可显式切换：
+
+```bash
+python scripts/format_submission.py \
+  --official-format system_json \
+  --input outputs/test_predictions.jsonl \
+  --output outputs/submission_day3.json
 ```
 
 ## 项目结构
@@ -180,7 +187,7 @@ python -m unittest discover -s tests -v
 ## 后续计划
 
 - 在服务器上下载并加载 `Qwen2.5-7B-Instruct`。
-- 用官方验证集跑真实模型推理并记录 ACC。
-- 用官方测试集生成 `outputs/submission_day3.json`。
+- 用官方带答案数据跑真实模型推理并记录 ACC。
+- 用官方测试集生成 `outputs/submission_day3.jsonl`。
 - 上传官方评测系统，完成第一次提交。
 - Day 4 开始构造 SFT 数据，准备监督微调。
