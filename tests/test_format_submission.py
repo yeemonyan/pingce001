@@ -13,6 +13,20 @@ class FormatSubmissionTest(unittest.TestCase):
     def test_convert_records_default_shape(self):
         records = [{"id": "x", "answer": ["B"]}]
         self.assertEqual(
+            convert_records(records, official_format="official_json", fallback="D"),
+            [{"id": "x", "answers": ["B"]}],
+        )
+
+    def test_convert_records_accepts_answers_field(self):
+        records = [{"id": "x", "answers": ["A", "C"]}]
+        self.assertEqual(
+            convert_records(records, official_format="official_json", fallback="D"),
+            [{"id": "x", "answers": ["A", "C"]}],
+        )
+
+    def test_convert_records_can_write_jsonl_with_id_shape(self):
+        records = [{"id": "x", "answer": ["B"]}]
+        self.assertEqual(
             convert_records(records, official_format="jsonl_with_id", fallback="D"),
             [{"id": "x", "answer": ["B"]}],
         )
