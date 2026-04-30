@@ -18,6 +18,8 @@ models/*
 !models/.gitkeep
 outputs/*
 !outputs/.gitkeep
+tmp*/
+.codex_tmp_python_deps/
 
 # OS/editor
 .DS_Store

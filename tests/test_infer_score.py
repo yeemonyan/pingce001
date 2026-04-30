@@ -21,6 +21,10 @@ class InferScoreTest(unittest.TestCase):
         record = {"domain": "时间", "text": "", "question": ""}
         self.assertEqual(infer_domain(record), "temporal")
 
+    def test_infer_domain_from_official_space_nature_field(self):
+        record = {"domain": "space+nature", "text": "", "question": ""}
+        self.assertEqual(infer_domain(record), "hybrid")
+
     def test_infer_hybrid_from_mixed_clues(self):
         record = {
             "text": "The animal is on the left shelf and watches TV 3 days after Monday.",

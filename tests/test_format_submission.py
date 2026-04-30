@@ -12,13 +12,30 @@ class FormatSubmissionTest(unittest.TestCase):
 
     def test_convert_records_default_shape(self):
         records = [{"id": "x", "answer": ["B"]}]
-        self.assertEqual(convert_records(records, include_id=False, fallback="D"), [{"answer": ["B"]}])
+        self.assertEqual(
+            convert_records(records, official_format="official_json", fallback="D"),
+            [{"id": "x", "answers": ["B"]}],
+        )
 
-    def test_convert_records_can_keep_id(self):
+    def test_convert_records_accepts_answers_field(self):
+        records = [{"id": "x", "answers": ["A", "C"]}]
+        self.assertEqual(
+            convert_records(records, official_format="official_json", fallback="D"),
+            [{"id": "x", "answers": ["A", "C"]}],
+        )
+
+    def test_convert_records_can_write_jsonl_with_id_shape(self):
         records = [{"id": "x", "answer": ["B"]}]
         self.assertEqual(
-            convert_records(records, include_id=True, fallback="D"),
-            [{"answer": ["B"], "id": "x"}],
+            convert_records(records, official_format="jsonl_with_id", fallback="D"),
+            [{"id": "x", "answer": ["B"]}],
+        )
+
+    def test_convert_records_can_write_system_json_shape(self):
+        records = [{"id": "x", "answer": ["B"]}]
+        self.assertEqual(
+            convert_records(records, official_format="system_json", fallback="D"),
+            [{"answer": ["B"]}],
         )
 
 

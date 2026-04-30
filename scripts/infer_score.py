@@ -43,6 +43,18 @@ DOMAIN_ALIASES = {
     "hybrid": "hybrid",
     "fusion": "hybrid",
     "mixed": "hybrid",
+    "space+nature": "hybrid",
+    "space_nature": "hybrid",
+    "space-nature": "hybrid",
+    "spatial+natural": "hybrid",
+    "spatial_natural": "hybrid",
+    "spatial-natural": "hybrid",
+    "space+social": "hybrid",
+    "spatial+social": "hybrid",
+    "time+nature": "hybrid",
+    "temporal+natural": "hybrid",
+    "time+social": "hybrid",
+    "temporal+social": "hybrid",
     "融合": "hybrid",
 }
 
