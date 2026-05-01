@@ -1,0 +1,75 @@
+{
+  "seed": 2026,
+  "dev_ratio": 0.2,
+  "total_count": 3600,
+  "train_count": 2880,
+  "dev_count": 720,
+  "train": {
+    "domain": {
+      "hybrid": 80,
+      "natural": 800,
+      "social": 400,
+      "spatial": 800,
+      "temporal": 800
+    },
+    "language": {
+      "en": 1200,
+      "zh": 1680
+    },
+    "answer_kind": {
+      "multi": 677,
+      "single": 2203
+    }
+  },
+  "dev": {
+    "domain": {
+      "hybrid": 20,
+      "natural": 200,
+      "social": 100,
+      "spatial": 200,
+      "temporal": 200
+    },
+    "language": {
+      "en": 300,
+      "zh": 420
+    },
+    "answer_kind": {
+      "multi": 171,
+      "single": 549
+    }
+  },
+  "all": {
+    "domain": {
+      "hybrid": 100,
+      "natural": 1000,
+      "social": 500,
+      "spatial": 1000,
+      "temporal": 1000
+    },
+    "language": {
+      "en": 1500,
+      "zh": 2100
+    },
+    "answer_kind": {
+      "multi": 848,
+      "single": 2752
+    },
+    "strata": {
+      "hybrid|zh|multi": 6,
+      "hybrid|zh|single": 94,
+      "natural|en|multi": 19,
+      "natural|en|single": 481,
+      "natural|zh|multi": 19,
+      "natural|zh|single": 481,
+      "social|zh|single": 500,
+      "spatial|en|multi": 114,
+      "spatial|en|single": 386,
+      "spatial|zh|multi": 114,
+      "spatial|zh|single": 386,
+      "temporal|en|multi": 288,
+      "temporal|en|single": 212,
+      "temporal|zh|multi": 288,
+      "temporal|zh|single": 212
+    }
+  }
+}
