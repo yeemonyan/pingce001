@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import inspect
 import json
 import random
 from pathlib import Path
@@ -64,6 +65,46 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", default="configs/train_lora.yaml", help="Training YAML config.")
     parser.add_argument("--dry-run", action="store_true", help="Validate config and data without training.")
     return parser.parse_args()
+
+
+def build_training_arguments_kwargs(training_cfg: dict[str, Any], training_arguments_cls: Any) -> dict[str, Any]:
+    signature = inspect.signature(training_arguments_cls.__init__)
+    params = signature.parameters
+    kwargs: dict[str, Any] = {
+        "output_dir": str(training_cfg["output_dir"]),
+        "seed": int(training_cfg["seed"]),
+        "num_train_epochs": float(training_cfg["num_train_epochs"]),
+        "learning_rate": float(training_cfg["learning_rate"]),
+        "weight_decay": float(training_cfg["weight_decay"]),
+        "warmup_ratio": float(training_cfg["warmup_ratio"]),
+        "lr_scheduler_type": str(training_cfg["lr_scheduler_type"]),
+        "per_device_train_batch_size": int(training_cfg["per_device_train_batch_size"]),
+        "per_device_eval_batch_size": int(training_cfg["per_device_eval_batch_size"]),
+        "gradient_accumulation_steps": int(training_cfg["gradient_accumulation_steps"]),
+        "logging_steps": int(training_cfg["logging_steps"]),
+        "save_strategy": str(training_cfg["save_strategy"]),
+        "save_total_limit": int(training_cfg["save_total_limit"]),
+        "bf16": bool(training_cfg["bf16"]),
+        "fp16": bool(training_cfg["fp16"]),
+        "report_to": [],
+        "remove_unused_columns": False,
+    }
+    eval_value = str(training_cfg["eval_strategy"])
+    if "eval_strategy" in params:
+        kwargs["eval_strategy"] = eval_value
+    elif "evaluation_strategy" in params:
+        kwargs["evaluation_strategy"] = eval_value
+    return kwargs
+
+
+def attach_trainer_processing_kwargs(trainer_kwargs: dict[str, Any], tokenizer: Any, trainer_cls: Any) -> dict[str, Any]:
+    signature = inspect.signature(trainer_cls.__init__)
+    params = signature.parameters
+    if "tokenizer" in params:
+        trainer_kwargs["tokenizer"] = tokenizer
+    elif "processing_class" in params:
+        trainer_kwargs["processing_class"] = tokenizer
+    return trainer_kwargs
 
 
 def main() -> None:
@@ -141,35 +182,21 @@ def main() -> None:
     output_dir = Path(training_cfg["output_dir"])
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    training_args = TrainingArguments(
-        output_dir=str(output_dir),
-        seed=int(training_cfg["seed"]),
-        num_train_epochs=float(training_cfg["num_train_epochs"]),
-        learning_rate=float(training_cfg["learning_rate"]),
-        weight_decay=float(training_cfg["weight_decay"]),
-        warmup_ratio=float(training_cfg["warmup_ratio"]),
-        lr_scheduler_type=str(training_cfg["lr_scheduler_type"]),
-        per_device_train_batch_size=int(training_cfg["per_device_train_batch_size"]),
-        per_device_eval_batch_size=int(training_cfg["per_device_eval_batch_size"]),
-        gradient_accumulation_steps=int(training_cfg["gradient_accumulation_steps"]),
-        logging_steps=int(training_cfg["logging_steps"]),
-        save_strategy=str(training_cfg["save_strategy"]),
-        eval_strategy=str(training_cfg["eval_strategy"]),
-        save_total_limit=int(training_cfg["save_total_limit"]),
-        bf16=bool(training_cfg["bf16"]),
-        fp16=bool(training_cfg["fp16"]),
-        report_to=[],
-        remove_unused_columns=False,
+    training_args = TrainingArguments(**build_training_arguments_kwargs(training_cfg, TrainingArguments))
+
+    trainer_kwargs = attach_trainer_processing_kwargs(
+        {
+            "model": model,
+            "args": training_args,
+            "train_dataset": train_dataset,
+            "eval_dataset": valid_dataset,
+            "data_collator": DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False),
+        },
+        tokenizer,
+        Trainer,
     )
 
-    trainer = Trainer(
-        model=model,
-        args=training_args,
-        train_dataset=train_dataset,
-        eval_dataset=valid_dataset,
-        tokenizer=tokenizer,
-        data_collator=DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False),
-    )
+    trainer = Trainer(**trainer_kwargs)
 
     trainer.train()
     trainer.save_model()

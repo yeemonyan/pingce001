@@ -46,7 +46,8 @@ def main() -> None:
     records = load_jsonl(Path(eval_cfg["dev_prompts"]))
 
     backend = TransformersBackend(
-        model_path=adapter_path,
+        model_path=str(Path(model_cfg["local_model_path"]) if Path(model_cfg["local_model_path"]).exists() else model_cfg["base_model"]),
+        adapter_path=adapter_path,
         max_new_tokens=128,
         temperature=0.0,
         top_p=1.0,
