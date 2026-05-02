@@ -1,0 +1,1215 @@
+{
+  "total": 720,
+  "correct": 131,
+  "accuracy": 0.18194444444444444,
+  "missing_predictions": 0,
+  "invalid_gold_records": 0,
+  "per_domain": {
+    "natural": {
+      "total": 200,
+      "correct": 50,
+      "accuracy": 0.25
+    },
+    "spatial": {
+      "total": 200,
+      "correct": 36,
+      "accuracy": 0.18
+    },
+    "temporal": {
+      "total": 200,
+      "correct": 21,
+      "accuracy": 0.105
+    },
+    "social": {
+      "total": 100,
+      "correct": 19,
+      "accuracy": 0.19
+    },
+    "hybrid": {
+      "total": 20,
+      "correct": 5,
+      "accuracy": 0.25
+    }
+  },
+  "mistake_count": 589,
+  "mistakes": [
+    {
+      "index": 0,
+      "id": "SCoRE2026-train-1002",
+      "domain": "natural",
+      "gold": [
+        "A",
+        "C"
+      ],
+      "prediction": []
+    },
+    {
+      "index": 2,
+      "id": "SCoRE2026-train-101",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "index": 3,
+      "id": "SCoRE2026-train-1010",
+      "domain": "social",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "index": 4,
+      "id": "SCoRE2026-train-1012",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "index": 5,
+      "id": "SCoRE2026-train-1013",
+      "domain": "spatial",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 6,
+      "id": "SCoRE2026-train-1014",
+      "domain": "temporal",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 7,
+      "id": "SCoRE2026-train-1015",
+      "domain": "natural",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 8,
+      "id": "SCoRE2026-train-1016",
+      "domain": "natural",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 9,
+      "id": "SCoRE2026-train-1017",
+      "domain": "natural",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 10,
+      "id": "SCoRE2026-train-102",
+      "domain": "natural",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 12,
+      "id": "SCoRE2026-train-1022",
+      "domain": "hybrid",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "A"
+      ]
+    },
+    {
+      "index": 13,
+      "id": "SCoRE2026-train-1024",
+      "domain": "natural",
+      "gold": [
+        "D"
+      ],
+      "prediction": []
+    },
+    {
+      "index": 14,
+      "id": "SCoRE2026-train-1027",
+      "domain": "spatial",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 15,
+      "id": "SCoRE2026-train-1028",
+      "domain": "spatial",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 17,
+      "id": "SCoRE2026-train-1033",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 18,
+      "id": "SCoRE2026-train-1034",
+      "domain": "temporal",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 19,
+      "id": "SCoRE2026-train-1038",
+      "domain": "spatial",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 20,
+      "id": "SCoRE2026-train-1040",
+      "domain": "social",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 23,
+      "id": "SCoRE2026-train-1056",
+      "domain": "temporal",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 24,
+      "id": "SCoRE2026-train-1057",
+      "domain": "temporal",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 25,
+      "id": "SCoRE2026-train-1061",
+      "domain": "natural",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 26,
+      "id": "SCoRE2026-train-1062",
+      "domain": "temporal",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "index": 28,
+      "id": "SCoRE2026-train-1071",
+      "domain": "social",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "index": 29,
+      "id": "SCoRE2026-train-1073",
+      "domain": "spatial",
+      "gold": [
+        "A",
+        "C"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 30,
+      "id": "SCoRE2026-train-1081",
+      "domain": "social",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 31,
+      "id": "SCoRE2026-train-1083",
+      "domain": "natural",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 33,
+      "id": "SCoRE2026-train-1089",
+      "domain": "temporal",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 34,
+      "id": "SCoRE2026-train-109",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 36,
+      "id": "SCoRE2026-train-1104",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "D"
+      ],
+      "prediction": [
+        "A"
+      ]
+    },
+    {
+      "index": 37,
+      "id": "SCoRE2026-train-1105",
+      "domain": "temporal",
+      "gold": [
+        "B",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 38,
+      "id": "SCoRE2026-train-1107",
+      "domain": "temporal",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 39,
+      "id": "SCoRE2026-train-1109",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "A"
+      ]
+    },
+    {
+      "index": 40,
+      "id": "SCoRE2026-train-1117",
+      "domain": "natural",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 41,
+      "id": "SCoRE2026-train-1122",
+      "domain": "social",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 43,
+      "id": "SCoRE2026-train-1133",
+      "domain": "spatial",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 44,
+      "id": "SCoRE2026-train-115",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "index": 45,
+      "id": "SCoRE2026-train-1153",
+      "domain": "temporal",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 46,
+      "id": "SCoRE2026-train-1160",
+      "domain": "spatial",
+      "gold": [
+        "A",
+        "B",
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 48,
+      "id": "SCoRE2026-train-1164",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 49,
+      "id": "SCoRE2026-train-1173",
+      "domain": "natural",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "index": 50,
+      "id": "SCoRE2026-train-118",
+      "domain": "temporal",
+      "gold": [
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 51,
+      "id": "SCoRE2026-train-1180",
+      "domain": "natural",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 52,
+      "id": "SCoRE2026-train-1183",
+      "domain": "natural",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 53,
+      "id": "SCoRE2026-train-1187",
+      "domain": "spatial",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 54,
+      "id": "SCoRE2026-train-1191",
+      "domain": "spatial",
+      "gold": [
+        "A",
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 55,
+      "id": "SCoRE2026-train-1193",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B",
+        "C"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 56,
+      "id": "SCoRE2026-train-1194",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 57,
+      "id": "SCoRE2026-train-1199",
+      "domain": "natural",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 58,
+      "id": "SCoRE2026-train-120",
+      "domain": "temporal",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 59,
+      "id": "SCoRE2026-train-1205",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 60,
+      "id": "SCoRE2026-train-1208",
+      "domain": "natural",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 61,
+      "id": "SCoRE2026-train-1209",
+      "domain": "hybrid",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "A"
+      ]
+    },
+    {
+      "index": 62,
+      "id": "SCoRE2026-train-1211",
+      "domain": "spatial",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 63,
+      "id": "SCoRE2026-train-1214",
+      "domain": "temporal",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 64,
+      "id": "SCoRE2026-train-1215",
+      "domain": "social",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 65,
+      "id": "SCoRE2026-train-1226",
+      "domain": "natural",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 66,
+      "id": "SCoRE2026-train-1246",
+      "domain": "natural",
+      "gold": [
+        "C"
+      ],
+      "prediction": []
+    },
+    {
+      "index": 67,
+      "id": "SCoRE2026-train-1249",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "C"
+      ],
+      "prediction": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "index": 69,
+      "id": "SCoRE2026-train-1265",
+      "domain": "temporal",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 70,
+      "id": "SCoRE2026-train-128",
+      "domain": "natural",
+      "gold": [
+        "D"
+      ],
+      "prediction": []
+    },
+    {
+      "index": 72,
+      "id": "SCoRE2026-train-1292",
+      "domain": "social",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 73,
+      "id": "SCoRE2026-train-1298",
+      "domain": "social",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "A"
+      ]
+    },
+    {
+      "index": 76,
+      "id": "SCoRE2026-train-1305",
+      "domain": "natural",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 77,
+      "id": "SCoRE2026-train-1318",
+      "domain": "natural",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 78,
+      "id": "SCoRE2026-train-1339",
+      "domain": "natural",
+      "gold": [
+        "A"
+      ],
+      "prediction": []
+    },
+    {
+      "index": 79,
+      "id": "SCoRE2026-train-134",
+      "domain": "hybrid",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 81,
+      "id": "SCoRE2026-train-1344",
+      "domain": "temporal",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 82,
+      "id": "SCoRE2026-train-1349",
+      "domain": "spatial",
+      "gold": [
+        "B",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 83,
+      "id": "SCoRE2026-train-1365",
+      "domain": "temporal",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 85,
+      "id": "SCoRE2026-train-1368",
+      "domain": "temporal",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "index": 86,
+      "id": "SCoRE2026-train-1375",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 88,
+      "id": "SCoRE2026-train-1389",
+      "domain": "temporal",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 89,
+      "id": "SCoRE2026-train-1390",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 90,
+      "id": "SCoRE2026-train-1396",
+      "domain": "spatial",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 91,
+      "id": "SCoRE2026-train-1398",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": []
+    },
+    {
+      "index": 92,
+      "id": "SCoRE2026-train-1399",
+      "domain": "social",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 93,
+      "id": "SCoRE2026-train-1403",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "index": 94,
+      "id": "SCoRE2026-train-1406",
+      "domain": "natural",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 95,
+      "id": "SCoRE2026-train-1416",
+      "domain": "natural",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "index": 96,
+      "id": "SCoRE2026-train-142",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 97,
+      "id": "SCoRE2026-train-143",
+      "domain": "spatial",
+      "gold": [
+        "A",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "index": 99,
+      "id": "SCoRE2026-train-1442",
+      "domain": "social",
+      "gold": [
+        "A"
+      ],
+      "prediction": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 100,
+      "id": "SCoRE2026-train-1444",
+      "domain": "natural",
+      "gold": [
+        "C"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 101,
+      "id": "SCoRE2026-train-1446",
+      "domain": "social",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "index": 102,
+      "id": "SCoRE2026-train-1452",
+      "domain": "temporal",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "index": 104,
+      "id": "SCoRE2026-train-1472",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B"
+      ],
+      "prediction": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "index": 105,
+      "id": "SCoRE2026-train-1474",
+      "domain": "natural",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "A"
+      ]
+    },
+    {
+      "index": 106,
+      "id": "SCoRE2026-train-1483",
+      "domain": "social",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "index": 107,
+      "id": "SCoRE2026-train-1484",
+      "domain": "spatial",
+      "gold": [
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 108,
+      "id": "SCoRE2026-train-1487",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 109,
+      "id": "SCoRE2026-train-1493",
+      "domain": "spatial",
+      "gold": [
+        "B",
+        "C"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 110,
+      "id": "SCoRE2026-train-1496",
+      "domain": "spatial",
+      "gold": [
+        "B",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "index": 111,
+      "id": "SCoRE2026-train-1497",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "index": 112,
+      "id": "SCoRE2026-train-1504",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "index": 113,
+      "id": "SCoRE2026-train-1506",
+      "domain": "social",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 114,
+      "id": "SCoRE2026-train-1519",
+      "domain": "temporal",
+      "gold": [
+        "A",
+        "D"
+      ],
+      "prediction": [
+        "C"
+      ]
+    },
+    {
+      "index": 115,
+      "id": "SCoRE2026-train-1522",
+      "domain": "spatial",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "D"
+      ]
+    },
+    {
+      "index": 116,
+      "id": "SCoRE2026-train-1526",
+      "domain": "temporal",
+      "gold": [
+        "B",
+        "C",
+        "D"
+      ],
+      "prediction": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "index": 117,
+      "id": "SCoRE2026-train-1528",
+      "domain": "spatial",
+      "gold": [
+        "D"
+      ],
+      "prediction": [
+        "B"
+      ]
+    },
+    {
+      "index": 118,
+      "id": "SCoRE2026-train-1531",
+      "domain": "spatial",
+      "gold": [
+        "B"
+      ],
+      "prediction": [
+        "D"
+      ]
+    }
+  ]
+}
