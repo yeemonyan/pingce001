@@ -1,6 +1,6 @@
 # Next Phase Plan
 
-第一次线上提交已经完成，Qwen2.5-7B-Instruct zero-shot baseline 的线上 ACC 为 7.9%。接下来目标是从“流程跑通”转入“系统提分”。
+第一次线上提交已经完成，Qwen2.5-7B-Instruct zero-shot baseline 的线上 ACC 为 7.8%。接下来目标是从“流程跑通”转入“系统提分”。
 
 ## Phase B: SFT 数据构造
 
@@ -14,8 +14,10 @@
   - assistant：推理过程 + 最终答案 JSON。
 - 不使用测试集内容作为训练样本、提示示例或伪标签。
 - 输出：
-  - `outputs/sft_train.jsonl`
-  - `outputs/sft_valid.jsonl`
+  - `outputs/sft_train_answer_only.jsonl`
+  - `outputs/sft_valid_answer_only.jsonl`
+  - `outputs/sft_train_rationale_json.jsonl`
+  - `outputs/sft_valid_rationale_json.jsonl`
   - `outputs/sft_data_report.json`
 
 ## Phase C: LoRA 微调

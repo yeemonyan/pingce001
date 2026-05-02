@@ -12,6 +12,30 @@ class AnalyzeErrorsTest(unittest.TestCase):
         gold = {"domain": "natural", "text": "", "question": "", "options": {}}
         self.assertEqual(classify_failure(gold, {"answer": ["A"]}, ["A", "C"], ["A"]), "multi_missing")
 
+    def test_domain_priority_beats_keyword_overlap(self):
+        gold = {
+            "domain": "temporal",
+            "text": "A happens before B and C is left of D.",
+            "question": "Which option is correct?",
+            "options": {},
+        }
+        self.assertEqual(
+            classify_failure(gold, {"answer": ["B"]}, ["A"], ["B"]),
+            "temporal_calculation_error",
+        )
+
+    def test_hybrid_domain_maps_to_multi_constraint_failure(self):
+        gold = {
+            "domain": "space+nature",
+            "text": "The red fruit is left of the blue tool.",
+            "question": "Which option is correct?",
+            "options": {},
+        }
+        self.assertEqual(
+            classify_failure(gold, {"answer": ["B"]}, ["A"], ["B"]),
+            "multi_constraint_failure",
+        )
+
     def test_analyze_counts_domain_and_failures(self):
         gold = [
             {"id": "1", "domain": "temporal", "answer": ["A"], "text": "A before B", "question": "q", "options": {"A": "x", "B": "y"}},

@@ -35,6 +35,11 @@ FAILURE_TYPES = (
     "wrong_single_choice",
 )
 
+SPATIAL_CUES = ("left", "right", "above", "below", "clockwise", "adjacent", "左", "右", "上", "下", "顺时针")
+TEMPORAL_CUES = ("year", "day", "before", "after", "weekday", "week", "month", "年", "天", "之前", "之后", "周", "星期")
+SOCIAL_CUES = ("friend", "teacher", "subordinate", "neighbor", "father", "mother", "buddy", "disciple", "朋友", "师傅", "下属", "邻居", "父", "母", "弟子")
+NATURAL_CUES = ("food", "drink", "tool", "animal", "color", "plant", "flower", "fruit", "食品", "饮品", "工具", "动物", "颜色", "植物", "花", "水果")
+
 
 def text_blob(record: dict[str, Any]) -> str:
     options = record.get("options") or {}
@@ -52,16 +57,27 @@ def classify_failure(gold: dict[str, Any], pred: dict[str, Any] | None, gold_ans
 
     domain = infer_domain(gold)
     blob = text_blob(gold).lower()
-    if domain == "spatial" or any(word in blob for word in ("left", "right", "above", "below", "clockwise", "adjacent", "左", "右", "上", "下")):
-        return "spatial_reference_error"
-    if domain == "temporal" or any(word in blob for word in ("year", "day", "before", "after", "weekday", "年", "天", "之前", "之后", "周")):
-        return "temporal_calculation_error"
-    if domain == "social" or any(word in blob for word in ("friend", "teacher", "subordinate", "neighbor", "father", "朋友", "师傅", "下属", "邻居")):
-        return "social_relation_error"
-    if domain == "natural" or any(word in blob for word in ("food", "drink", "tool", "animal", "color", "食品", "饮品", "工具", "动物", "颜色")):
-        return "natural_property_error"
+
+    # Prefer the declared/inferred domain first. Cue words are only a fallback
+    # for records that land in "general" after routing.
     if domain == "hybrid":
         return "multi_constraint_failure"
+    if domain == "temporal":
+        return "temporal_calculation_error"
+    if domain == "social":
+        return "social_relation_error"
+    if domain == "natural":
+        return "natural_property_error"
+    if domain == "spatial":
+        return "spatial_reference_error"
+    if any(word in blob for word in TEMPORAL_CUES):
+        return "temporal_calculation_error"
+    if any(word in blob for word in SOCIAL_CUES):
+        return "social_relation_error"
+    if any(word in blob for word in NATURAL_CUES):
+        return "natural_property_error"
+    if any(word in blob for word in SPATIAL_CUES):
+        return "spatial_reference_error"
     return "wrong_single_choice"
 
 

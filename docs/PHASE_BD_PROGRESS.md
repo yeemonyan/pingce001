@@ -67,7 +67,10 @@
 
 - Temporal 最弱，优先优化时间线、日期/星期换算和 before/after 约束。
 - `single_to_multi` 和 `multi_missing` 都很突出，后续训练需要加强多选边界。
-- Spatial reference 错误最多，需要显式记录左右、上下、朝向和观察者参考系。
+- Spatial 仍有大量参考系错误，但修正后的归因显示：
+  - `temporal_calculation_error` 也很突出；
+  - `social_relation_error` 和 `multi_constraint_failure` 已能从空间类误判中分离出来。
+  因此后续优化应按领域分别推进，而不是把大量错误都归到 spatial。
 
 ## Prompt 版本规则
 
