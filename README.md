@@ -89,6 +89,12 @@ export HF_ENDPOINT=https://hf-mirror.com
 python scripts/parse_score_json.py \
   --input data/raw/train.json \
   --output outputs/train_prompts.jsonl
+```
+
+输出为 JSONL，每行包含 `id`、`text`、`question`、`options`、`answer`、`has_answer`、`prompt` 等字段。
+脚本兼容官方训练集里的 `answers` 字段，并统一输出为 JSONL。每行包含 `id`、`prompt`、`answer`、`has_answer` 等字段，可直接作为 Day 2 零样本推理脚本的输入。
+
+### 4. 本地烟测完整链路
 
 python scripts/parse_score_json.py \
   --input data/raw/test.json \

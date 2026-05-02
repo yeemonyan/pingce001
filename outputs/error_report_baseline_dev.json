@@ -1,0 +1,83 @@
+{
+  "total": 720,
+  "correct": 131,
+  "accuracy": 0.181944,
+  "missing_predictions": 0,
+  "invalid_gold_records": 0,
+  "per_domain": {
+    "hybrid": {
+      "total": 20,
+      "correct": 5,
+      "accuracy": 0.25,
+      "errors": 15,
+      "failure_types": {
+        "multi_missing": 1,
+        "spatial_reference_error": 14
+      }
+    },
+    "natural": {
+      "total": 200,
+      "correct": 50,
+      "accuracy": 0.25,
+      "errors": 150,
+      "failure_types": {
+        "multi_missing": 4,
+        "natural_property_error": 63,
+        "output_format_error": 33,
+        "single_to_multi": 35,
+        "spatial_reference_error": 15
+      }
+    },
+    "social": {
+      "total": 100,
+      "correct": 19,
+      "accuracy": 0.19,
+      "errors": 81,
+      "failure_types": {
+        "single_to_multi": 58,
+        "spatial_reference_error": 23
+      }
+    },
+    "spatial": {
+      "total": 200,
+      "correct": 36,
+      "accuracy": 0.18,
+      "errors": 164,
+      "failure_types": {
+        "multi_missing": 14,
+        "output_format_error": 15,
+        "single_to_multi": 7,
+        "spatial_reference_error": 128
+      }
+    },
+    "temporal": {
+      "total": 200,
+      "correct": 21,
+      "accuracy": 0.105,
+      "errors": 179,
+      "failure_types": {
+        "multi_missing": 57,
+        "output_format_error": 1,
+        "single_to_multi": 32,
+        "spatial_reference_error": 51,
+        "temporal_calculation_error": 38
+      }
+    }
+  },
+  "failure_counts": {
+    "multi_missing": 76,
+    "natural_property_error": 63,
+    "output_format_error": 49,
+    "single_to_multi": 132,
+    "spatial_reference_error": 231,
+    "temporal_calculation_error": 38
+  },
+  "case_count": 48,
+  "recommendations": [
+    "Prioritize temporal because it has the lowest dev accuracy (0.105).",
+    "Strengthen multi-answer training and decoding; many errors miss one or more gold labels.",
+    "Add constraints that discourage over-selecting labels on single-answer questions.",
+    "Improve temporal prompts with explicit timeline tables and weekday/year arithmetic.",
+    "Improve spatial prompts with explicit reference-frame tracking for left/right/up/down."
+  ]
+}

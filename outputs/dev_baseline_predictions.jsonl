@@ -1,0 +1,720 @@
+{"id": "SCoRE2026-train-1002", "domain": "natural", "answer": [], "raw_output": "```json\n{\"answer\":[\"3\"]}\n```", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-1003", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-101", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1010", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1012", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-1013", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1014", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1015", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1016", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1017", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-102", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1021", "domain": "spatial", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "C"], "correct": true}
+{"id": "SCoRE2026-train-1022", "domain": "hybrid", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1024", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\",\"4\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1027", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1028", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1030", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-1033", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1034", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1038", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1040", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1047", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-1050", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1056", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1057", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1061", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1062", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1064", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1071", "domain": "social", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1073", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-1081", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1083", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1086", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-1089", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-109", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1103", "domain": "natural", "answer": ["A"], "raw_output": "```json\n{\"answer\":[\"A\"]}\n```", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-1104", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-1105", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1107", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1109", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1117", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1122", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-113", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-1133", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-115", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1153", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1160", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-1162", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-1164", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-1173", "domain": "natural", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-118", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1180", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1183", "domain": "natural", "answer": ["D"], "raw_output": "```json\n{\"answer\":[\"D\"]}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1187", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1191", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-1193", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-1194", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1199", "domain": "natural", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-120", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1205", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1208", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1209", "domain": "hybrid", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1211", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1214", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\": [\"B\", \"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1215", "domain": "social", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1226", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1246", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1249", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-126", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1265", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-128", "domain": "natural", "answer": [], "raw_output": "```json\n{\"answer\":[\"3\",\"4\"]}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1283", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1292", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1298", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-130", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1300", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1305", "domain": "natural", "answer": ["B", "D"], "raw_output": "```json\n{\"answer\":[\"B\",\"D\"]}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1318", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1339", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"4\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-134", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1342", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1344", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1349", "domain": "spatial", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-1365", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1367", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1368", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1375", "domain": "temporal", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-1388", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1389", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1390", "domain": "spatial", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1396", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1398", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"Lily\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1399", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1403", "domain": "temporal", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1406", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\"answer\":[\"B\",\"C\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1416", "domain": "natural", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-142", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-143", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-1431", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1442", "domain": "social", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1444", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1446", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1452", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1456", "domain": "social", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1472", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\": [\"C\", \"D\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-1474", "domain": "natural", "answer": ["A"], "raw_output": "```json\n{\"answer\":[\"A\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1483", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1484", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1487", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1493", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-1496", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-1497", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1504", "domain": "temporal", "answer": ["B", "C", "D"], "raw_output": "{\"answer\":[\"B\",\"C\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1506", "domain": "social", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1519", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-1522", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1526", "domain": "temporal", "answer": ["A", "B", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"D\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1528", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1531", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1534", "domain": "social", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1543", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "B"], "correct": true}
+{"id": "SCoRE2026-train-1544", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\n  \"answer\": [\"B\", \"C\"]\n}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1547", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1549", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\": [\"C\", \"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-155", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1551", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1561", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1566", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\"answer\":[\"B\",\"C\"]}\n```", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1569", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-157", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-1572", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1575", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-158", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\n  \"answer\": [\"B\", \"C\"]\n}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1580", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1581", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1587", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-1593", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1599", "domain": "hybrid", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-16", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1604", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1611", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\n  \"answer\": [\"B\", \"C\"]\n}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1617", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1623", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1630", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1633", "domain": "temporal", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-1635", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1641", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-1651", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\": [\"A\", \"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1654", "domain": "spatial", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-1657", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-1667", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1668", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1670", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"Patricia\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-168", "domain": "temporal", "answer": ["A", "B", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"D\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1680", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-1685", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1688", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-169", "domain": "natural", "answer": ["C"], "raw_output": "```json\n{\"answer\":[\"C\"]}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1693", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1698", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1701", "domain": "natural", "answer": ["A", "C"], "raw_output": "```json\n{\"answer\":[\"A\",\"C\"]}\n```", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1703", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1706", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1707", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1710", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-1711", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-1714", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-1719", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-173", "domain": "social", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1730", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1743", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1753", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1755", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1765", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1766", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1770", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1772", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1775", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1778", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1783", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B", "D"], "correct": true}
+{"id": "SCoRE2026-train-1786", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-1788", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-1789", "domain": "natural", "answer": ["C", "D"], "raw_output": "```json\n{\"answer\":[\"C\",\"D\"]}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-179", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"1\",\"4\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1797", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-180", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1802", "domain": "hybrid", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1811", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1820", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1821", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\": [\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1824", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-183", "domain": "natural", "answer": ["C"], "raw_output": "```json\n{\"answer\":[\"C\"]}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-184", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1858", "domain": "natural", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B", "D"], "correct": true}
+{"id": "SCoRE2026-train-1865", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1872", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1874", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1875", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1885", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1887", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1893", "domain": "natural", "answer": ["B"], "raw_output": "```json\n{\"answer\":[\"B\"]}\n```", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-1895", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-190", "domain": "spatial", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "C"], "correct": true}
+{"id": "SCoRE2026-train-1915", "domain": "social", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1916", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-1926", "domain": "temporal", "answer": ["A", "B", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1929", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\": [\"C\", \"D\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1933", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-1935", "domain": "social", "answer": ["A", "B", "D"], "raw_output": "{\"answer\": [\"A\", \"B\", \"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1936", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1937", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1938", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-194", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-1949", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1950", "domain": "hybrid", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1962", "domain": "temporal", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-1963", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1968", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-1975", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1976", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-1977", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1988", "domain": "natural", "answer": ["D"], "raw_output": "```json\n{\"answer\":[\"D\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-1989", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-1990", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-1998", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2", "domain": "natural", "answer": ["B", "D"], "raw_output": "```json\n{\"answer\":[\"B\",\"D\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2004", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2011", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2017", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2022", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2023", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2028", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2030", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"4\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2031", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2060", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2063", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2066", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2069", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2074", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2078", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2079", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"4\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2080", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2081", "domain": "temporal", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2086", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"None of the above\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2089", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2095", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2102", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2106", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2107", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2116", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\": [\"C\", \"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2121", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2131", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2136", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2141", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"1\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-215", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2151", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"4\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2157", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2167", "domain": "spatial", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-217", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2173", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2179", "domain": "social", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-218", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"1\",\"4\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2196", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\",\"4\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-22", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2200", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2201", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"Jennifer\",\"Robert\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2202", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-2205", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2216", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2218", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2220", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2226", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2229", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2230", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2231", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2243", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"Lily\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2246", "domain": "natural", "answer": ["C"], "raw_output": "```json\n{\"answer\":[\"C\"]}\n```", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2258", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2264", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-2272", "domain": "social", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2274", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2283", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\"answer\":[\"B\",\"C\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2286", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2287", "domain": "hybrid", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2297", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2300", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2302", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2319", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2321", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2322", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2331", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-2340", "domain": "social", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2344", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2346", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2347", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-235", "domain": "temporal", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["A", "C", "D"], "correct": true}
+{"id": "SCoRE2026-train-2350", "domain": "natural", "answer": ["C", "D"], "raw_output": "```json\n{\"answer\":[\"C\",\"D\"]}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2353", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-2354", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2356", "domain": "spatial", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2362", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2365", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-2367", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-237", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2373", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2374", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2377", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2378", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-238", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\": [\"A\", \"C\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2380", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2383", "domain": "temporal", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A", "B", "C"], "correct": true}
+{"id": "SCoRE2026-train-2393", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2395", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2399", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-240", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-2410", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2414", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2416", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\",\"4\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2418", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-2423", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2425", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-2433", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2445", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2447", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2448", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2454", "domain": "hybrid", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2458", "domain": "social", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2463", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"天竺葵\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2466", "domain": "natural", "answer": ["B"], "raw_output": "```json\n{\"answer\":[\"B\"]}\n```", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2472", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2473", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2477", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-249", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"Susan\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2496", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-250", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2503", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2511", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2513", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2522", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2531", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2533", "domain": "hybrid", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-254", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-2543", "domain": "spatial", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2544", "domain": "temporal", "answer": ["A", "B", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\",\"D\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-2547", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2551", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"David\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2560", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2577", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2580", "domain": "temporal", "answer": ["B", "C", "D"], "raw_output": "{\"answer\":[\"B\",\"C\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2581", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2586", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2593", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-260", "domain": "social", "answer": ["C", "D"], "raw_output": "{\"answer\": [\"C\", \"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2603", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2608", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\n  \"answer\": [\"B\", \"C\"]\n}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2609", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2615", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2616", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\": [\"A\", \"C\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2623", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2637", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-264", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"4\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2645", "domain": "temporal", "answer": ["B", "C", "D"], "raw_output": "{\"answer\":[\"B\",\"C\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2648", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-265", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2659", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2660", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2661", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2665", "domain": "spatial", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2667", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2671", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2672", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-2675", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2678", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-269", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2690", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-2691", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-2696", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2699", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-270", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-2704", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\",\"4\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2707", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2709", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\"answer\":[\"B\",\"C\"]}\n```", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2711", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\n  \"answer\": [\"B\", \"C\"]\n}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2715", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-2716", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["A", "D"], "correct": true}
+{"id": "SCoRE2026-train-2722", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"1\",\"4\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2723", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-273", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2730", "domain": "temporal", "answer": ["A", "B", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"D\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2732", "domain": "social", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2749", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2750", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\",\"4\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2751", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-2753", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2754", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2756", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-2758", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-276", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2768", "domain": "temporal", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-277", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-2773", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2777", "domain": "natural", "answer": ["A", "B"], "raw_output": "```json\n{\"answer\":[\"A\",\"B\"]}\n```", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2795", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2796", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2800", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2801", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2812", "domain": "natural", "answer": ["D"], "raw_output": "```json\n{\"answer\":[\"D\"]}\n```", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-282", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2828", "domain": "temporal", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-2831", "domain": "spatial", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "C"], "correct": true}
+{"id": "SCoRE2026-train-2835", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2841", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-285", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2856", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-2857", "domain": "natural", "answer": ["B", "D"], "raw_output": "```json\n{\n  \"answer\": [\"B\", \"D\"]\n}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-286", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2864", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"Clivia\",\"Monthly Rose\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-2869", "domain": "hybrid", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-287", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\": [\"A\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2872", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-2873", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\": [\"A\", \"C\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2882", "domain": "temporal", "answer": ["B", "C", "D"], "raw_output": "{\"answer\":[\"B\",\"C\",\"D\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-2887", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-29", "domain": "natural", "answer": ["C", "D"], "raw_output": "```json\n{\"answer\":[\"C\",\"D\"]}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2900", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-2913", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-2917", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\": [\"A\", \"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2919", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2921", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-2923", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2924", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2926", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-2930", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-2936", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-2941", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2942", "domain": "hybrid", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2946", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\"answer\":[\"B\",\"C\"]}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2949", "domain": "social", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2951", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-2955", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-2966", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-297", "domain": "natural", "answer": ["A"], "raw_output": "```json\n{\"answer\":[\"A\"]}\n```", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-2970", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-2977", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-2980", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-2981", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2985", "domain": "social", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-299", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-2990", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-2994", "domain": "hybrid", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-2999", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-3002", "domain": "natural", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-301", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3011", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\": [\"A\", \"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3012", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3013", "domain": "spatial", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3020", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-3026", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-303", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-3037", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3039", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3042", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3048", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-3054", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3055", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-3063", "domain": "natural", "answer": ["A", "B", "C", "D"], "raw_output": "```json\n{\"answer\":[\"A\",\"B\",\"C\",\"D\"]}\n```\n\nLet's break down the information:\n\n- 1号场馆 (1号 venue): We need to determine what animal is in this venue.\n- 2号场馆 (2号 venue): The animal has more legs than the 3号场馆 (3号 venue) animal.\n- 3号场馆 (3号 venue): The animal can swim.\n- 4号场馆 (4号 venue): The animal lives in fresh water and with the 2号场馆 (2号 venue) animal, they have 8 legs in total.\n\nNow let's analyze each animal:\n\n- **蟒蛇 (Mamba)**: Cannot swim, does not live in fresh water.\n- **鲤鱼 (Goldfish)**: Can swim, lives in fresh water.\n- **驯鹿 (Reindeer)**: Lives on land, has 4 legs.\n- **蛙 (Frog)**: Can swim, lives in fresh water.\n\nFrom the given information:\n- 3号场馆 (3号 venue) must be either 鲤鱼 (Goldfish) or 蛙 (Frog) because these animals can swim.\n- 2号场馆 (2号 venue) must be 驯鹿 (Reindeer) because it has 4 more legs than the 3号场馆 (3号 venue) animal, and 驯鹿 (Reindeer) has 4 legs.\n- 4号场馆 (4号 venue) must be 蟒蛇 (Mamba) because it lives in fresh water and together with the 2号场馆 (2号 venue) animal (驯鹿 (Reindeer)), they have 8 legs in total (4 + 4).\n\nThus, 1号场馆 (1号 venue) must be 蟒蛇 (Mamba), 鲤鱼 (Goldfish), 驯鹿 (Reindeer), or 蛙 (Frog). Given the constraints, all four animals fit the criteria for 1号场馆 (1号 venue). Therefore, the answer includes all options.", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3069", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-3073", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3075", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3081", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"David\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3083", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3085", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3091", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3100", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3105", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3106", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-311", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3110", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3114", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3117", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3126", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-3146", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3159", "domain": "temporal", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-316", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3163", "domain": "hybrid", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3167", "domain": "natural", "answer": ["A"], "raw_output": "```json\n{\"answer\":[\"A\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3176", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3179", "domain": "temporal", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3187", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3193", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-3195", "domain": "social", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3196", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3198", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3201", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3204", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\": [\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3207", "domain": "social", "answer": ["A", "B", "C"], "raw_output": "{\"answer\": [\"A\", \"B\", \"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3218", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3225", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-3226", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3230", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-3231", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-3232", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3235", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"James\",\"Michael\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-3252", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3254", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-326", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3262", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3273", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3285", "domain": "natural", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3299", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3301", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3311", "domain": "natural", "answer": ["A"], "raw_output": "```json\n{\"answer\":[\"A\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3313", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3318", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3331", "domain": "spatial", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3337", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3338", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3342", "domain": "natural", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3346", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3355", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3357", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3358", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\": [\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3360", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3362", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3372", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3380", "domain": "temporal", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3384", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-3386", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\": [\"C\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-339", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3391", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-3397", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3406", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3413", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3417", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3418", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-3422", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3426", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\": [\"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3433", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3435", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-3438", "domain": "natural", "answer": ["A"], "raw_output": "```json\n{\"answer\":[\"A\"]}\n```", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-3439", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-345", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3454", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-3457", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"David\",\"Michael\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3475", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3478", "domain": "natural", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3494", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-3495", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3497", "domain": "spatial", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-350", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3500", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"4\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-3508", "domain": "spatial", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3514", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3526", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-3529", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3530", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\": [\"B\", \"D\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3532", "domain": "natural", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3536", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3538", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-3540", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-3546", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-355", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-3559", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"David\",\"Jennifer\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-356", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-3561", "domain": "natural", "answer": ["D"], "raw_output": "```json\n{\"answer\":[\"D\"]}\n```", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-3564", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-3589", "domain": "spatial", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-3590", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-3592", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-36", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-362", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-366", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-368", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-384", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-389", "domain": "natural", "answer": ["B", "C"], "raw_output": "```json\n{\"answer\":[\"B\",\"C\"]}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-39", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-390", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-399", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-4", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-400", "domain": "spatial", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-402", "domain": "temporal", "answer": ["A", "B", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"D\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-403", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-405", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-409", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-413", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "B", "D"], "correct": false}
+{"id": "SCoRE2026-train-418", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-42", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-421", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-422", "domain": "natural", "answer": ["D"], "raw_output": "```json\n{\"answer\":[\"D\"]}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-427", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-432", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-442", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-444", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-470", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\": [\"A\", \"C\"]}", "gold": ["A", "B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-472", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-478", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-479", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-491", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"3\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-498", "domain": "temporal", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-504", "domain": "natural", "answer": ["A", "C"], "raw_output": "```json\n{\"answer\":[\"A\",\"C\"]}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-505", "domain": "social", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-508", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-523", "domain": "social", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-526", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-527", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-528", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-533", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-534", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-535", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-545", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-547", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-548", "domain": "hybrid", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-549", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\",\"4\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-551", "domain": "social", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-559", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-561", "domain": "natural", "answer": ["C"], "raw_output": "```json\n{\"answer\":[\"C\"]}\n```", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-574", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B", "C"], "correct": true}
+{"id": "SCoRE2026-train-577", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-583", "domain": "social", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-589", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-590", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-592", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-594", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-595", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\": [\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-599", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-606", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-616", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-617", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"1\",\"2\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-618", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-62", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-626", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-630", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-633", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-646", "domain": "social", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-657", "domain": "temporal", "answer": ["A", "B", "C"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\"]}", "gold": ["A", "B", "C"], "correct": true}
+{"id": "SCoRE2026-train-673", "domain": "natural", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-675", "domain": "temporal", "answer": ["A", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"C\",\"D\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-677", "domain": "natural", "answer": ["A", "B", "C"], "raw_output": "```json\n{\"answer\":[\"A\",\"B\",\"C\"]}\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-68", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-683", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-685", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-689", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-69", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-691", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"David\",\"James\",\"Jennifer\",\"William\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-694", "domain": "natural", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-697", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-706", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\": [\"B\", \"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-714", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-717", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-719", "domain": "social", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-726", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-729", "domain": "social", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-73", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-730", "domain": "natural", "answer": ["B"], "raw_output": "```json\n{\n  \"answer\": [\"B\"]\n}\n```", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-732", "domain": "spatial", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-736", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-746", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-747", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["C", "D"], "correct": false}
+{"id": "SCoRE2026-train-748", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-749", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-75", "domain": "social", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-753", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-754", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-759", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-761", "domain": "spatial", "answer": ["A", "B", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"D\"]}", "gold": ["B", "D"], "correct": false}
+{"id": "SCoRE2026-train-768", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-773", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "D"], "correct": false}
+{"id": "SCoRE2026-train-774", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-776", "domain": "social", "answer": ["A", "B", "C", "D"], "raw_output": "{\"answer\":[\"A\",\"B\",\"C\",\"D\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-784", "domain": "natural", "answer": ["B", "D"], "raw_output": "```json\n{\"answer\":[\"B\",\"D\"]}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-786", "domain": "natural", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-788", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-792", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-794", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-795", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-797", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-8", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\": [\"A\", \"B\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-804", "domain": "social", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-805", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["C"], "correct": true}
+{"id": "SCoRE2026-train-808", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["A"], "correct": true}
+{"id": "SCoRE2026-train-810", "domain": "natural", "answer": ["C"], "raw_output": "```json\n{\n  \"answer\": [\"C\"]\n}\n```", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-819", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-821", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-824", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-830", "domain": "natural", "answer": [], "raw_output": "{\"answer\":[\"2\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-836", "domain": "temporal", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-837", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-839", "domain": "temporal", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-840", "domain": "temporal", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["B", "C"], "correct": false}
+{"id": "SCoRE2026-train-841", "domain": "spatial", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-847", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-854", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["B", "C", "D"], "correct": false}
+{"id": "SCoRE2026-train-864", "domain": "social", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-865", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-868", "domain": "natural", "answer": ["A", "D"], "raw_output": "{\"answer\":[\"A\",\"D\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-869", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-873", "domain": "temporal", "answer": ["B", "C"], "raw_output": "{\"answer\":[\"B\",\"C\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-880", "domain": "spatial", "answer": [], "raw_output": "{\"answer\":[\"Tulip\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-882", "domain": "temporal", "answer": ["B", "D"], "raw_output": "{\"answer\":[\"B\",\"D\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-888", "domain": "temporal", "answer": [], "raw_output": "{\"answer\":[]}```json\n```", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-890", "domain": "natural", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["A", "C"], "correct": false}
+{"id": "SCoRE2026-train-905", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-906", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["B"], "correct": true}
+{"id": "SCoRE2026-train-918", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-930", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-938", "domain": "natural", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-939", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["A", "B", "C"], "correct": false}
+{"id": "SCoRE2026-train-944", "domain": "spatial", "answer": ["A"], "raw_output": "{\"answer\":[\"A\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-950", "domain": "temporal", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-952", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-953", "domain": "temporal", "answer": ["B"], "raw_output": "{\"answer\":[\"B\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-963", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["D"], "correct": true}
+{"id": "SCoRE2026-train-965", "domain": "natural", "answer": ["A", "C"], "raw_output": "{\"answer\":[\"A\",\"C\"]}", "gold": ["D"], "correct": false}
+{"id": "SCoRE2026-train-966", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-973", "domain": "natural", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A"], "correct": false}
+{"id": "SCoRE2026-train-974", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-975", "domain": "spatial", "answer": ["C"], "raw_output": "{\"answer\":[\"C\"]}", "gold": ["A", "B"], "correct": false}
+{"id": "SCoRE2026-train-978", "domain": "social", "answer": ["C", "D"], "raw_output": "{\"answer\":[\"C\",\"D\"]}", "gold": ["C"], "correct": false}
+{"id": "SCoRE2026-train-99", "domain": "natural", "answer": ["A", "B"], "raw_output": "{\"answer\":[\"A\",\"B\"]}", "gold": ["B"], "correct": false}
+{"id": "SCoRE2026-train-990", "domain": "spatial", "answer": ["D"], "raw_output": "{\"answer\":[\"D\"]}", "gold": ["C"], "correct": false}
