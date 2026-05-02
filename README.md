@@ -8,7 +8,7 @@
 - 模型规模：7B Dense，满足 Dense 模型不超过 8B 的规则
 - 官方训练集：3600 题
 - 官方测试集：1000 题
-- 第一次线上测试提交：ACC `7.9%`
+- 第一次线上测试提交：ACC `7.8%`
 - Dev split：2880 train / 720 dev，seed `2026`
 - Qwen zero-shot dev baseline：`131 / 720`，ACC `0.1819444444`
 - 最低 dev 领域：`temporal`，ACC `0.105`
@@ -64,6 +64,9 @@
 
 - 新增 dev 过滤脚本：`scripts/filter_split_records.py`
 - 新增错题分析脚本：`scripts/analyze_errors.py`
+- 新增 LoRA 训练与评测脚本：
+  - `scripts/train_lora.py`
+  - `scripts/run_lora_eval.py`
 - Dev gold：`outputs/dev_prompts.jsonl`
 - 真实 Qwen zero-shot dev baseline：
   - `outputs/dev_baseline_predictions.jsonl`
@@ -86,12 +89,14 @@
 
 主要错误类型：
 
-- `spatial_reference_error`: 231
 - `single_to_multi`: 132
 - `multi_missing`: 76
-- `natural_property_error`: 63
+- `natural_property_error`: 78
 - `output_format_error`: 49
-- `temporal_calculation_error`: 38
+- `spatial_reference_error`: 128
+- `temporal_calculation_error`: 89
+- `social_relation_error`: 23
+- `multi_constraint_failure`: 14
 
 ## 快速开始
 
@@ -180,6 +185,20 @@ python scripts/format_submission.py \
   --output outputs/submission_qwen7b.json
 ```
 
+### Phase C: LoRA 训练
+
+训练说明见：
+
+- `docs/PHASE_C_LORA_PLAN.md`
+
+有卡环境下的最小流程：
+
+```bash
+python scripts/train_lora.py --config configs/train_lora.yaml --dry-run
+python scripts/train_lora.py --config configs/train_lora.yaml
+python scripts/run_lora_eval.py --config configs/train_lora.yaml
+```
+
 ## 项目结构
 
 ```text
@@ -199,7 +218,7 @@ tests/                   单元测试与 smoke 链路测试
 python -m unittest discover -s tests -v
 ```
 
-当前本地验证通过：31 个测试全部 OK。
+当前本地验证通过：35 个测试全部 OK。
 
 ## 文档索引
 
@@ -210,6 +229,7 @@ python -m unittest discover -s tests -v
 - `docs/DELIVERY_STATUS.md`
 - `docs/ERROR_ANALYSIS_BASELINE.md`
 - `docs/PHASE_A0_SERVER_BOOTSTRAP.md`
+- `docs/PHASE_C_LORA_PLAN.md`
 
 ## 下一步
 
