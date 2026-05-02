@@ -21,6 +21,11 @@ models/*
 outputs/*
 !outputs/.gitkeep
 !outputs/dev_split_report.json
+!outputs/sft_train_answer_only.jsonl
+!outputs/sft_valid_answer_only.jsonl
+!outputs/sft_train_rationale_json.jsonl
+!outputs/sft_valid_rationale_json.jsonl
+!outputs/sft_data_report.json
 tmp*/
 .codex_tmp_python_deps/
 
