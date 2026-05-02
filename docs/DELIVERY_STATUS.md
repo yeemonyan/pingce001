@@ -25,31 +25,47 @@
    - `scripts/analyze_errors.py`
    - `docs/ERROR_ANALYSIS_BASELINE.md`
 
+6. Baseline dev predictions and evaluation
+   - `outputs/dev_baseline_predictions.jsonl`
+   - `outputs/dev_baseline_eval.json`
+   - Accuracy: `0.18194444444444444`
+   - Correct: `131 / 720`
+
+7. Baseline dev error report
+   - `outputs/error_report_baseline_dev.json`
+   - `outputs/error_cases_baseline_dev.jsonl`
+   - refreshed `docs/ERROR_ANALYSIS_BASELINE.md`
+   - Error cases retained: `48`
+
+## Baseline Dev Result
+
+| Domain | Total | Correct | Accuracy |
+| --- | ---: | ---: | ---: |
+| natural | 200 | 50 | 0.25 |
+| spatial | 200 | 36 | 0.18 |
+| temporal | 200 | 21 | 0.105 |
+| social | 100 | 19 | 0.19 |
+| hybrid | 20 | 5 | 0.25 |
+
+Top failure types:
+
+- `spatial_reference_error`: 231
+- `single_to_multi`: 132
+- `multi_missing`: 76
+- `natural_property_error`: 63
+- `output_format_error`: 49
+- `temporal_calculation_error`: 38
+
 ## Pending
 
-1. Baseline dev predictions
-   - Expected output: `outputs/dev_baseline_predictions.jsonl`
-   - Blocker: GPU server is currently unreachable at `connect.bjb2.seetacloud.com:50890`.
-
-2. Baseline dev evaluation report
-   - Expected output: `outputs/dev_baseline_eval.json`
-   - Depends on `outputs/dev_baseline_predictions.jsonl`.
-
-3. Baseline dev error report
-   - Expected outputs:
-     - `outputs/error_report_baseline_dev.json`
-     - `outputs/error_cases_baseline_dev.jsonl`
-     - refreshed `docs/ERROR_ANALYSIS_BASELINE.md`
-   - Depends on `outputs/dev_baseline_predictions.jsonl`.
-
-4. Prompt improvement versions
+1. Prompt improvement versions
    - Not started yet.
    - Future prompt files should be versioned, for example `configs/system_prompts_v2.yaml`.
    - Notes should go in `docs/PROMPT_NOTES.md`.
 
-## Commands To Finish Pending Baseline Work
+## Reproduction Commands
 
-Run these on the GPU server after it is reachable and the repo branch is synced.
+Run these on the GPU server to reproduce the baseline/dev reports.
 
 ```bash
 cd /root/autodl-tmp/pingce001
