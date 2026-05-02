@@ -1,9 +1,12 @@
 """Convert inference predictions into SCoRE2026 submission files.
 
-The safer default is ``jsonl_with_id`` because the official repository notes
-that result files can be JSONL with one object per line containing ``id`` and
-``answer``. ``system_json`` is kept for compatibility with systems that accept
-a plain JSON array.
+The online platform requires a JSON array. Every item must contain the test
+``id`` and an ``answers`` list, for example:
+
+[
+  {"id": "SCoRE2026-test-1", "answers": ["A"]},
+  {"id": "SCoRE2026-test-2", "answers": ["B", "C"]}
+]
 """
 
 from __future__ import annotations
@@ -16,8 +19,8 @@ from typing import Any, Literal
 
 
 VALID_LABELS = ("A", "B", "C", "D")
-OFFICIAL_FORMATS = ("jsonl_with_id", "system_json")
-OfficialFormat = Literal["jsonl_with_id", "system_json"]
+OFFICIAL_FORMATS = ("official_json", "jsonl_with_id", "system_json")
+OfficialFormat = Literal["official_json", "jsonl_with_id", "system_json"]
 
 
 def load_predictions(path: Path) -> list[dict[str, Any]]:
@@ -66,9 +69,11 @@ def convert_records(
 ) -> list[dict[str, Any]]:
     submission = []
     for index, prediction in enumerate(predictions):
-        answer = normalize_answer(prediction.get("answer"), fallback)
+        answer = normalize_answer(prediction.get("answers", prediction.get("answer")), fallback)
         if official_format == "jsonl_with_id":
             item: dict[str, Any] = {"id": prediction.get("id", index), "answer": answer}
+        elif official_format == "official_json":
+            item = {"id": prediction.get("id", index), "answers": answer}
         else:
             item = {"answer": answer}
         submission.append(item)
@@ -95,9 +100,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", required=True, help="Submission output path.")
     parser.add_argument(
         "--official-format",
-        default="jsonl_with_id",
+        default="official_json",
         choices=OFFICIAL_FORMATS,
-        help="Output format. Default keeps id and writes JSONL, matching the stricter official note.",
+        help="Output format. Default matches the online platform: JSON array with id and answers.",
     )
     parser.add_argument(
         "--fallback",
