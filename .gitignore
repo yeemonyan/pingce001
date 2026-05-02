@@ -14,11 +14,25 @@ venv/
 data/*
 !data/.gitkeep
 !data/day2_smoke.json
+!data/splits/
+!data/splits/*.json
 models/*
 !models/.gitkeep
 outputs/*
 !outputs/.gitkeep
+!outputs/dev_split_report.json
+!outputs/sft_train_answer_only.jsonl
+!outputs/sft_valid_answer_only.jsonl
+!outputs/sft_train_rationale_json.jsonl
+!outputs/sft_valid_rationale_json.jsonl
+!outputs/sft_data_report.json
+!outputs/dev_prompts.jsonl
+!outputs/dev_baseline_predictions.jsonl
+!outputs/dev_baseline_eval.json
+!outputs/error_report_baseline_dev.json
+!outputs/error_cases_baseline_dev.jsonl
 tmp*/
+.codex_tmp_python_deps/
 
 # OS/editor
 .DS_Store

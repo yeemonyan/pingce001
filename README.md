@@ -1,69 +1,107 @@
 # SCoRE2026 Baseline
 
-本仓库用于第一届基于情景的常识推理评测任务（SCoRE2026）的 12 天落地计划。当前已经完成 Day 1 到 Day 3：环境与模型入口、五类任务提示词与推理脚本、官方提交格式与本地评测链路。
+本仓库用于第一届基于情景的常识推理评测任务（SCoRE2026）的参赛工程。当前已经完成基础推理链路、第一次线上提交、稳定 dev split、SFT 数据构造、真实 dev baseline 评测和 baseline 错题分析。
+
+## 当前状态
+
+- 主模型：`Qwen/Qwen2.5-7B-Instruct`
+- 模型规模：7B Dense，满足 Dense 模型不超过 8B 的规则
+- 官方训练集：3600 题
+- 官方测试集：1000 题
+- 第一次线上测试提交：ACC `7.9%`
+- Dev split：2880 train / 720 dev，seed `2026`
+- Qwen zero-shot dev baseline：`131 / 720`，ACC `0.1819444444`
+- 最低 dev 领域：`temporal`，ACC `0.105`
 
 ## 任务约束
-Day 1 的目标是完成基础环境、合规模型选型/下载入口，以及官方 JSON 数据解析脚本。评测约束来自任务说明：Dense 模型总参数量不超过 8B；训练/微调阶段只能使用 SCoRE2026 官方数据；测试集不得用于提示示例、伪标签或人工作答。
 
 - Dense 模型总参数量不得超过 8B。
-- 训练和微调阶段只使用 SCoRE2026 官方公开数据；当前按公开仓库的 `train/test` 文件组织，若后续官方提供验证集再单独接入。
+- 训练和微调阶段只使用 SCoRE2026 官方公开数据。
 - 测试集不得用于提示词示例、伪标签生成或人工作答。
 - 最终结果需要可复现：模型、脚本、随机种子、推理参数和提交文件都要保留。
 
-## Day 1 完成内容
+## 已完成
 
-Day 1 目标是完成环境配置、模型选型、模型下载入口和官方数据解析脚本。
+### Phase A: Baseline 链路
 
-已完成：
+- 建立项目结构：`configs/`、`data/`、`models/`、`outputs/`、`scripts/`、`tests/`、`docs/`。
+- 固定默认合规模型：`Qwen/Qwen2.5-7B-Instruct`。
+- 新增环境与模型下载脚本：
+  - `scripts/setup_linux_cuda.sh`
+  - `scripts/bootstrap_autodl.sh`
+  - `scripts/download_model.py`
+- 新增数据解析、推理、评测与提交脚本：
+  - `scripts/parse_score_json.py`
+  - `scripts/infer_score.py`
+  - `scripts/evaluate_score.py`
+  - `scripts/format_submission.py`
+- 完成第一次线上提交：
+  - `submissions/score2026_first_submission_qwen7b.json`
+  - 线上 ACC：`7.9%`
 
-- 新增 Linux CUDA/PyTorch 环境脚本：`scripts/setup_linux_cuda.sh`
-- 固定默认合规模型：`Qwen/Qwen2.5-7B-Instruct`
-- 新增模型下载脚本：`scripts/download_model.py`
-- 新增 SCoRE JSON/JSONL 解析脚本：`scripts/parse_score_json.py`
-- 建立 `configs/`、`data/`、`models/`、`outputs/`、`scripts/`、`tests/`、`docs/` 项目结构
-- 添加 `.gitignore`，避免提交官方数据、模型权重和推理输出
-- 添加 Day 1 进度文档：`docs/DAY1_PROGRESS.md`
+### Phase B0: Dev Split
 
-## Day 2 完成内容
+- 新增稳定分层切分脚本：`scripts/make_dev_split.py`
+- 切分维度：`domain`、`language`、单选/多选
+- 固定随机种子：`2026`
+- 产物：
+  - `data/splits/train_ids.json`
+  - `data/splits/dev_ids.json`
+  - `outputs/dev_split_report.json`
 
-Day 2 目标是构建 CoT Zero-shot baseline：针对空间、时间、社会、自然、融合常识五类任务分别设计 System Prompt，并编写推理脚本。
+### Phase B: SFT 数据
 
-已完成：
+- 新增 SFT 数据构造脚本：`scripts/build_sft_data.py`
+- 保留字段：`id`、`text`、`question`、`options`、`answers`、`domain`、`language`
+- 生成两套训练/验证数据：
+  - `outputs/sft_train_answer_only.jsonl`
+  - `outputs/sft_valid_answer_only.jsonl`
+  - `outputs/sft_train_rationale_json.jsonl`
+  - `outputs/sft_valid_rationale_json.jsonl`
+- 数据报告：`outputs/sft_data_report.json`
 
-- 新增五类 System Prompt：`configs/system_prompts.yaml`
-- 新增推理脚本：`scripts/infer_score.py`
-- 支持 `mock` 后端，用于本地无模型烟测
-- 支持 `transformers` 后端，用于云服务器加载本地 7B 模型推理
-- 支持答案抽取、非法输出清洗、带答案数据的 ACC 计算
-- 新增五类 smoke 样例：`data/day2_smoke.json`
-- 添加 Day 2 测试与进度文档：`tests/test_infer_score.py`、`docs/DAY2_PROGRESS.md`
+### Phase D: Dev Baseline 与错题分析
 
-## Day 3 完成内容
+- 新增 dev 过滤脚本：`scripts/filter_split_records.py`
+- 新增错题分析脚本：`scripts/analyze_errors.py`
+- Dev gold：`outputs/dev_prompts.jsonl`
+- 真实 Qwen zero-shot dev baseline：
+  - `outputs/dev_baseline_predictions.jsonl`
+  - `outputs/dev_baseline_eval.json`
+- 错题分析：
+  - `outputs/error_report_baseline_dev.json`
+  - `outputs/error_cases_baseline_dev.jsonl`
+  - `docs/ERROR_ANALYSIS_BASELINE.md`
+- 交付状态：`docs/DELIVERY_STATUS.md`
 
-Day 3 目标是完成格式对齐与首次测评链路：把模型输出转为官方提交文件，并编写本地评测脚本。
+## Dev Baseline 结果
 
-已完成：
+| Domain | Total | Correct | Accuracy |
+| --- | ---: | ---: | ---: |
+| natural | 200 | 50 | 0.25 |
+| spatial | 200 | 36 | 0.18 |
+| temporal | 200 | 21 | 0.105 |
+| social | 100 | 19 | 0.19 |
+| hybrid | 20 | 5 | 0.25 |
 
-- 新增官方提交格式脚本：`scripts/format_submission.py`，默认生成更保守的 `jsonl_with_id` 格式
-- 新增本地评测脚本：`scripts/evaluate_score.py`
-- 支持按 `id` 或顺序对齐 gold/prediction
-- 输出整体 ACC、分领域 ACC、缺失预测数和错题样例
-- 解析脚本保留 `domain/category/type/task_type` 元数据，便于分领域统计
-- 添加 Day 3 测试与进度文档：`tests/test_format_submission.py`、`tests/test_evaluate_score.py`、`docs/DAY3_PROGRESS.md`
+主要错误类型：
+
+- `spatial_reference_error`: 231
+- `single_to_multi`: 132
+- `multi_missing`: 76
+- `natural_property_error`: 63
+- `output_format_error`: 49
+- `temporal_calculation_error`: 38
 
 ## 快速开始
 
-### 1. 配置环境
-
-在 4090/A800 Linux 云服务器上执行：
+### 配置环境
 
 ```bash
 bash scripts/setup_linux_cuda.sh
 ```
 
-脚本会创建 `.venv` 并安装 PyTorch、Transformers、Accelerate、Hugging Face Hub 等依赖。
-
-### 2. 下载模型
+### 下载模型
 
 ```bash
 python scripts/download_model.py \
@@ -77,90 +115,81 @@ python scripts/download_model.py \
 export HF_ENDPOINT=https://hf-mirror.com
 ```
 
-### 3. 解析官方数据
+### 解析官方数据
 
 ```bash
 python scripts/parse_score_json.py \
-  --input data/train.json \
+  --input data/raw/train.json \
   --output outputs/train_prompts.jsonl
+
+python scripts/parse_score_json.py \
+  --input data/raw/test.json \
+  --output outputs/test_prompts.jsonl
 ```
 
-输出为 JSONL，每行包含 `id`、`text`、`question`、`options`、`answer`、`has_answer`、`prompt` 等字段。
-脚本兼容官方训练集里的 `answers` 字段，并统一输出为 JSONL。每行包含 `id`、`prompt`、`answer`、`has_answer` 等字段，可直接作为 Day 2 零样本推理脚本的输入。
-
-### 4. 本地烟测完整链路
+### 生成 dev gold
 
 ```bash
-python scripts/parse_score_json.py \
-  --input data/day2_smoke.json \
-  --output outputs/day2_smoke_prompts.jsonl
-
-python scripts/infer_score.py \
-  --backend mock \
-  --input outputs/day2_smoke_prompts.jsonl \
-  --output outputs/day2_smoke_predictions.jsonl
-
-python scripts/evaluate_score.py \
-  --gold outputs/day2_smoke_prompts.jsonl \
-  --pred outputs/day2_smoke_predictions.jsonl \
-  --report outputs/day2_smoke_eval_report.json
-
-python scripts/format_submission.py \
-  --input outputs/day2_smoke_predictions.jsonl \
-  --output outputs/day2_smoke_submission.jsonl
+python scripts/filter_split_records.py \
+  --input data/raw/train.json \
+  --ids-file data/splits/dev_ids.json \
+  --output outputs/dev_prompts.jsonl
 ```
 
-当前 smoke 链路预期结果：
-
-- 总样本数：5
-- 覆盖领域：空间、时间、社会、自然、融合
-- ACC：1.0
-
-### 5. 运行真实模型推理
-
-云服务器下载模型后，将 `--backend mock` 改为 `--backend transformers`：
+### 跑 dev baseline
 
 ```bash
 python scripts/infer_score.py \
   --backend transformers \
   --model-path models/Qwen2.5-7B-Instruct \
-  --input outputs/test_prompts.jsonl \
-  --output outputs/test_predictions.jsonl
+  --input outputs/dev_prompts.jsonl \
+  --output outputs/dev_baseline_predictions.jsonl
+
+python scripts/evaluate_score.py \
+  --gold outputs/dev_prompts.jsonl \
+  --pred outputs/dev_baseline_predictions.jsonl \
+  --report outputs/dev_baseline_eval.json \
+  --max-mistakes 100
+
+python scripts/analyze_errors.py \
+  --gold outputs/dev_prompts.jsonl \
+  --pred outputs/dev_baseline_predictions.jsonl \
+  --report outputs/error_report_baseline_dev.json \
+  --cases outputs/error_cases_baseline_dev.jsonl \
+  --doc docs/ERROR_ANALYSIS_BASELINE.md
 ```
 
-生成官方提交文件。默认输出 `jsonl_with_id`，每行一个对象，包含 `id` 和 `answer`：
+### 生成官方提交文件
+
+平台提交格式为 JSON 数组，每条包含 `id` 和 `answers`：
+
+```json
+[
+  {
+    "id": "SCoRE2026-test-1",
+    "answers": ["A"]
+  }
+]
+```
+
+生成命令：
 
 ```bash
 python scripts/format_submission.py \
-  --input outputs/test_predictions.jsonl \
-  --output outputs/submission_day3.jsonl
-```
-
-默认提交格式：
-
-```jsonl
-{"id":"example-1","answer":["A"]}
-{"id":"example-2","answer":["A","B"]}
-```
-
-如果线上系统要求 JSON 数组格式，可显式切换：
-
-```bash
-python scripts/format_submission.py \
-  --official-format system_json \
-  --input outputs/test_predictions.jsonl \
-  --output outputs/submission_day3.json
+  --input outputs/test_predictions_qwen7b.jsonl \
+  --output outputs/submission_qwen7b.json
 ```
 
 ## 项目结构
 
 ```text
-configs/                 模型配置与五类 System Prompt
-data/                    本地数据目录，官方数据不提交 Git
-docs/                    Day 1-3 进度与服务器部署文档
+configs/                 模型配置与 System Prompt
+data/                    本地数据目录，官方原始数据不提交 Git
+docs/                    阶段进度、部署、交付和分析文档
 models/                  本地模型权重目录，不提交 Git
-outputs/                 解析、推理、评测、提交输出目录，不提交 Git
-scripts/                 环境、下载、解析、推理、评测、提交脚本
+outputs/                 可复现实验产物和报告
+scripts/                 环境、下载、解析、推理、评测、提交、分析脚本
+submissions/             已完成线上提交的 JSON 文件
 tests/                   单元测试与 smoke 链路测试
 ```
 
@@ -170,19 +199,21 @@ tests/                   单元测试与 smoke 链路测试
 python -m unittest discover -s tests -v
 ```
 
-当前本地验证通过：17 个测试全部 OK。
+当前本地验证通过：31 个测试全部 OK。
 
 ## 文档索引
 
-- Day 1 进度：`docs/DAY1_PROGRESS.md`
-- Day 2 进度：`docs/DAY2_PROGRESS.md`
-- Day 3 进度：`docs/DAY3_PROGRESS.md`
-- AutoDL 部署：`docs/PHASE_A0_SERVER_BOOTSTRAP.md`
+- `docs/DAY1_PROGRESS.md`
+- `docs/DAY2_PROGRESS.md`
+- `docs/DAY3_PROGRESS.md`
+- `docs/PHASE_BD_PROGRESS.md`
+- `docs/DELIVERY_STATUS.md`
+- `docs/ERROR_ANALYSIS_BASELINE.md`
+- `docs/PHASE_A0_SERVER_BOOTSTRAP.md`
 
-## 后续计划
+## 下一步
 
-- 在服务器上拉取集成分支并接入真实模型推理。
-- 用官方带答案数据跑真实模型推理并记录 ACC。
-- 用官方测试集生成 `outputs/submission_day3.jsonl`。
-- 上传官方评测系统，完成第一次提交。
-- Day 4 开始构造 SFT 数据，准备监督微调。
+- 新建 `configs/system_prompts_v2.yaml`，优先优化 `temporal`、`social`、`hybrid`。
+- 在 `docs/PROMPT_NOTES.md` 记录每次 prompt 版本变化和原因。
+- 用 dev baseline 作为对照，比较 prompt v2 和后续 LoRA 模型。
+- 开始 LoRA/SFT 训练，优先观察 temporal、多选漏选和过选问题。
