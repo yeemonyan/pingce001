@@ -1,0 +1,273 @@
+{
+  "total": 720,
+  "correct": 261,
+  "accuracy": 0.3625,
+  "missing_predictions": 0,
+  "invalid_gold_records": 0,
+  "per_domain": {
+    "hybrid": {
+      "total": 20,
+      "correct": 5,
+      "accuracy": 0.25,
+      "errors": 15,
+      "failure_types": {
+        "multi_missing": 1,
+        "single_to_multi": 1,
+        "spatial_reference_error": 13
+      }
+    },
+    "natural": {
+      "total": 200,
+      "correct": 91,
+      "accuracy": 0.455,
+      "errors": 109,
+      "failure_types": {
+        "multi_missing": 2,
+        "natural_property_error": 85,
+        "single_to_multi": 1,
+        "spatial_reference_error": 21
+      }
+    },
+    "social": {
+      "total": 100,
+      "correct": 55,
+      "accuracy": 0.55,
+      "errors": 45,
+      "failure_types": {
+        "spatial_reference_error": 45
+      }
+    },
+    "spatial": {
+      "total": 200,
+      "correct": 68,
+      "accuracy": 0.34,
+      "errors": 132,
+      "failure_types": {
+        "multi_missing": 6,
+        "single_to_multi": 16,
+        "spatial_reference_error": 110
+      }
+    },
+    "temporal": {
+      "total": 200,
+      "correct": 42,
+      "accuracy": 0.21,
+      "errors": 158,
+      "failure_types": {
+        "multi_missing": 34,
+        "single_to_multi": 29,
+        "spatial_reference_error": 60,
+        "temporal_calculation_error": 35
+      }
+    }
+  },
+  "failure_counts": {
+    "multi_missing": 43,
+    "natural_property_error": 85,
+    "single_to_multi": 47,
+    "spatial_reference_error": 249,
+    "temporal_calculation_error": 35
+  },
+  "case_count": 50,
+  "recommendations": [
+    "Prioritize temporal because it has the lowest dev accuracy (0.21).",
+    "Strengthen multi-answer training and decoding; many errors miss one or more gold labels.",
+    "Add constraints that discourage over-selecting labels on single-answer questions.",
+    "Improve temporal prompts with explicit timeline tables and weekday/year arithmetic.",
+    "Improve spatial prompts with explicit reference-frame tracking for left/right/up/down."
+  ],
+  "focus_failure_counts": {
+    "single_to_multi": 47,
+    "multi_missing": 43,
+    "temporal_calculation_error": 35,
+    "spatial_reference_error": 249
+  },
+  "hybrid_analysis": {
+    "total": 20,
+    "correct": 5,
+    "accuracy": 0.25,
+    "failure_counts": {
+      "multi_missing": 1,
+      "single_to_multi": 1,
+      "spatial_reference_error": 13
+    },
+    "gold_answer_patterns": {
+      "A": 3,
+      "A,B": 1,
+      "B": 4,
+      "C": 5,
+      "D": 7
+    },
+    "pred_answer_patterns": {
+      "A": 5,
+      "A,B": 1,
+      "B": 1,
+      "D": 13
+    },
+    "drag_signal": {
+      "likely_prompt_drag": true,
+      "reason": "Hybrid dev accuracy is low and failures cluster around joint/spatial constraints; test a shorter hybrid prompt with explicit fallback to general."
+    },
+    "examples": [
+      {
+        "index": 137,
+        "id": "SCoRE2026-train-1599",
+        "failure_type": "multi_missing",
+        "gold": [
+          "A",
+          "B"
+        ],
+        "prediction": [
+          "A"
+        ],
+        "question": "___所在层和绿豆所在层相邻",
+        "text_preview": "花瓶、牛角包、百事可乐、三色堇、绿豆、绿豆粥六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n花草在绿色的物品上一层；\n绿豆粥和牛角包隔着一层；\n工具在绿豆粥左下方且二者不隔层；\n谷物在牛角包正上方且二者不隔层；\n绿豆粥是花草的右邻；\n饮品在工具下一层；\n饮品在底层东侧。"
+      },
+      {
+        "index": 186,
+        "id": "SCoRE2026-train-1802",
+        "failure_type": "single_to_multi",
+        "gold": [
+          "D"
+        ],
+        "prediction": [
+          "A",
+          "B"
+        ],
+        "question": "___在花生糖上方",
+        "text_preview": "铃铛、电饭锅、沙丁鱼、花生糖、连裤袜、高粱六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n顶层右侧是电饭锅；\n加工食品在谷物右下方；\n甜的物品所在层和服饰所在层相邻；\n没有腿的动物在铃铛右下方且二者不隔层；\n铃铛在服饰上一层；\n甜的物品在谷物右下方且二者不隔层；\n铃铛在第二层。"
+      },
+      {
+        "index": 214,
+        "id": "SCoRE2026-train-1950",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "D"
+        ],
+        "prediction": [
+          "A"
+        ],
+        "question": "山楂糕和___在同一层",
+        "text_preview": "山楂糕、彩色电视、蝇拍、牛蛙、番茄汁、玩具熊六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n加工食品在会游泳的物品左边且二者同层；\n蝇拍在中间层；\n玩具熊在饮品右边；\n会游泳的物品的左邻在饮品的正下方；\n加工食品的右邻在蝇拍的右下方；\n底层右侧是会游泳的物品；\n玩具熊在三层。"
+      },
+      {
+        "index": 264,
+        "id": "SCoRE2026-train-2200",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "B"
+        ],
+        "prediction": [
+          "D"
+        ],
+        "question": "___是电池的右邻",
+        "text_preview": "海螺、丝巾、电池、红烧狮子头、柠檬、金橘六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n工具在加工食品左上方且二者隔了一层；\n软体动物在服饰右上方且二者不隔层；\n没有腿的动物和工具左右相邻；\n有壳的物品在酸的物品右上方且二者隔了一层；\n服饰在中间层东侧。"
+      },
+      {
+        "index": 283,
+        "id": "SCoRE2026-train-2287",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "C"
+        ],
+        "prediction": [
+          "D"
+        ],
+        "question": "___在鳕鱼右边且二者同层",
+        "text_preview": "大头钉、寿面、丹参、提拉米苏、鳕鱼、腰果鸡丁六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n腰果鸡丁在甜的物品左下方；\n甜的物品在三层；\n花草和鱼隔着一层；\n底层东侧是工具；\n顶层左侧是会游泳的物品；\n腰果鸡丁和工具上下相邻。"
+      },
+      {
+        "index": 324,
+        "id": "SCoRE2026-train-2448",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "D"
+        ],
+        "prediction": [
+          "B"
+        ],
+        "question": "___在虾右边",
+        "text_preview": "虾、冰淇淋、莲藕、碱电池、手机、国际象棋六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n底层右侧是手机；\n加工食品在白色的物品左边且二者同层；\n碱电池所在层和有壳的物品所在层相邻；\n节肢动物在底层东侧；\n手机的正上方是甜的物品的右下方；\n碱电池的右邻在蔬菜的正下方。"
+      },
+      {
+        "index": 325,
+        "id": "SCoRE2026-train-2454",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "B"
+        ],
+        "prediction": [
+          "D"
+        ],
+        "question": "平鱼的正上方是___的左下方",
+        "text_preview": "纸巾、睡莲、小麦、平鱼、桔子水、粉笔六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n饮品和花草左右相邻；\n饮品的正下方是粉笔的正上方；\n底层左侧是鱼；\n饮品在顶层西侧；\n谷物和鱼上下相邻；\n谷物的右邻在花草的右下方。"
+      },
+      {
+        "index": 340,
+        "id": "SCoRE2026-train-2533",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "D"
+        ],
+        "prediction": [
+          "A"
+        ],
+        "question": "浮萍在___左边",
+        "text_preview": "奶粉、钓鱼竿、菠萝、豆乳、蜂蜜、浮萍六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n水果的右邻在花草的右上方；\n饮品的右邻在工具的正下方；\n一层东侧是饮品；\n奶粉在花草右下方且二者不隔层；\n奶粉和饮品左右相邻；\n工具在第三层；\n奶粉和开紫色花的物品隔了一层。"
+      },
+      {
+        "index": 417,
+        "id": "SCoRE2026-train-2869",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "B"
+        ],
+        "prediction": [
+          "D"
+        ],
+        "question": "___在腐竹左上方且二者隔了一层",
+        "text_preview": "花卷儿、紫苏、腐竹、韭菜、安全帽、海螺六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n服饰在腐竹正上方；\n花卷儿和绿色的物品隔了一层；\n一层右侧是腐竹；\n腐竹和开白色花的物品左右相邻；\n服饰和蔬菜隔着一层；\n软体动物在花卷儿正下方且二者不隔层。"
+      },
+      {
+        "index": 435,
+        "id": "SCoRE2026-train-2942",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "C"
+        ],
+        "prediction": [
+          "D"
+        ],
+        "question": "___在河豚右边且二者同层",
+        "text_preview": "睡衣、茶叶罐、煮鸡蛋、河豚、石榴、米线六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n服饰在开红色花的物品左下方；\n圆形的物品在三层；\n煮鸡蛋和鱼隔着一层；\n底层东侧是工具；\n顶层左侧是鱼；\n服饰和工具上下相邻。"
+      },
+      {
+        "index": 484,
+        "id": "SCoRE2026-train-3163",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "C"
+        ],
+        "prediction": [
+          "D"
+        ],
+        "question": "雨衣和___在同一层",
+        "text_preview": "兔、白葡萄酒、黄连、雨衣、提拉米苏、番茄六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n饮品在二层左侧；\n蔬菜在饮品右下方且二者不隔层；\n哺乳动物和加工食品左右相邻；\n加工食品在服饰右上方且二者隔了一层；\n开黄色花的物品在哺乳动物右下方且二者隔了一层；\n哺乳动物在服饰正上方。"
+      },
+      {
+        "index": 493,
+        "id": "SCoRE2026-train-3201",
+        "failure_type": "spatial_reference_error",
+        "gold": [
+          "C"
+        ],
+        "prediction": [
+          "D"
+        ],
+        "question": "___在丝瓜右边且二者同层",
+        "text_preview": "茶杯、草莓蛋糕、长柄平底锅、卷尺、卡布奇诺、丝瓜六种商品在三层货架上放置，货架紧靠商店南墙放置，每层两格，各放一种商品，一在东，一在西。顾客站在货架前选购商品。在描述各商品的位置关系时，约定以顾客自身左右方位为参照，即东侧商品为左，西侧商品为右。已知：\n绿色的物品的正上方是饮品的正下方；\n甜的物品在开黄色花的物品正上方；\n底层右侧是卷尺；\n卷尺在加工食品下一层；\n绿色的物品在甜的物品正下方且二者不隔层；\n饮品在长柄平底锅左边。"
+      }
+    ]
+  },
+  "prompt_config": "configs\\system_prompts_round3_short.yaml"
+}

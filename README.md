@@ -190,6 +190,7 @@ python scripts/format_submission.py \
 训练说明见：
 
 - `docs/PHASE_C_LORA_PLAN.md`
+- `docs/ROUND3_INFER_PLAN.md`
 
 有卡环境下的最小流程：
 
@@ -198,6 +199,12 @@ python scripts/train_lora.py --config configs/train_lora.yaml --dry-run
 python scripts/train_lora.py --config configs/train_lora.yaml
 python scripts/run_lora_eval.py --config configs/train_lora.yaml
 ```
+
+Round 3 优先不重训，先做推理侧对比实验，入口见：
+
+- `docs/ROUND3_INFER_PLAN.md`
+- `configs/system_prompts_round3_short.yaml`
+- `scripts/analyze_lora_round3.py`
 
 ## 项目结构
 
