@@ -272,18 +272,27 @@ def run_inference(
     records: list[dict[str, Any]],
     prompts: dict[str, str],
     backend: GenerationBackend,
+    force_domain: str | None = None,
+    fallback_general: bool = False,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     outputs = []
     correct = 0
     scored = 0
     domain_counts: Counter[str] = Counter()
+    prompt_domain_counts: Counter[str] = Counter()
 
     for record in records:
         if isinstance(backend, MockBackend):
             backend.current_record = record
-        domain = infer_domain(record)
-        domain_counts[domain] += 1
-        system_prompt = prompts.get(domain) or prompts["general"]
+        inferred_domain = infer_domain(record)
+        domain_counts[inferred_domain] += 1
+
+        prompt_domain = force_domain or inferred_domain
+        if fallback_general and prompt_domain == "hybrid":
+            prompt_domain = "general"
+        system_prompt = prompts.get(prompt_domain) or prompts["general"]
+        prompt_domain_counts[prompt_domain] += 1
+
         allowed_labels = set(record["options"].keys())
         raw_output = backend.generate(system_prompt, build_user_prompt(record))
         prediction = extract_answer(raw_output, allowed_labels)
@@ -294,7 +303,8 @@ def run_inference(
         outputs.append(
             {
                 "id": record.get("id"),
-                "domain": domain,
+                "domain": inferred_domain,
+                "prompt_domain": prompt_domain,
                 "answer": prediction,
                 "raw_output": raw_output,
                 "gold": record.get("answer"),
@@ -308,6 +318,9 @@ def run_inference(
         "correct": correct,
         "accuracy": (correct / scored) if scored else None,
         "domain_counts": dict(domain_counts),
+        "prompt_domain_counts": dict(prompt_domain_counts),
+        "force_domain": force_domain,
+        "fallback_general": fallback_general,
     }
     return outputs, metrics
 
@@ -327,6 +340,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--backend", choices=("mock", "transformers"), default="transformers")
     parser.add_argument("--model-path", default="models/Qwen2.5-7B-Instruct")
     parser.add_argument("--adapter-path", default=None, help="Optional LoRA adapter path.")
+    parser.add_argument(
+        "--force-domain",
+        default=None,
+        choices=("general", "spatial", "temporal", "social", "natural", "hybrid"),
+        help="Force all records to use the same system prompt domain.",
+    )
+    parser.add_argument(
+        "--fallback-general",
+        action="store_true",
+        help="Route hybrid predictions to the general prompt instead of the hybrid prompt.",
+    )
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--top-p", type=float, default=1.0)
@@ -353,7 +377,13 @@ def main() -> None:
             device_map=args.device_map,
         )
 
-    outputs, metrics = run_inference(records, prompts, backend)
+    outputs, metrics = run_inference(
+        records,
+        prompts,
+        backend,
+        force_domain=args.force_domain,
+        fallback_general=args.fallback_general,
+    )
     dump_jsonl(outputs, Path(args.output))
     print(json.dumps(metrics, ensure_ascii=False))
 

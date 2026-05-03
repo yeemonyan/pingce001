@@ -50,6 +50,44 @@ class InferScoreTest(unittest.TestCase):
         self.assertEqual(outputs[0]["answer"], ["A"])
         self.assertEqual(metrics["accuracy"], 1.0)
 
+    def test_run_inference_force_domain_uses_general_prompt(self):
+        records = [
+            {
+                "id": 1,
+                "domain": "social",
+                "text": "Given: A is B's friend.",
+                "question": "Which is correct?",
+                "options": {"A": "A is B's friend", "B": "A is B's father"},
+                "answer": ["A"],
+            }
+        ]
+        prompts = {"social": "social prompt", "general": "general prompt"}
+
+        outputs, metrics = run_inference(records, prompts, MockBackend(), force_domain="general")
+
+        self.assertEqual(outputs[0]["domain"], "social")
+        self.assertEqual(outputs[0]["prompt_domain"], "general")
+        self.assertEqual(metrics["prompt_domain_counts"], {"general": 1})
+
+    def test_run_inference_fallback_general_maps_hybrid_prompt(self):
+        records = [
+            {
+                "id": 1,
+                "text": "The animal is on the left shelf and watches TV 3 days after Monday.",
+                "question": "Which item is correct?",
+                "options": {"A": "A", "B": "B"},
+                "answer": ["A"],
+            }
+        ]
+        prompts = {"hybrid": "hybrid prompt", "general": "general prompt"}
+
+        outputs, metrics = run_inference(records, prompts, MockBackend(), fallback_general=True)
+
+        self.assertEqual(outputs[0]["domain"], "hybrid")
+        self.assertEqual(outputs[0]["prompt_domain"], "general")
+        self.assertEqual(metrics["domain_counts"], {"hybrid": 1})
+        self.assertEqual(metrics["prompt_domain_counts"], {"general": 1})
+
 
 if __name__ == "__main__":
     unittest.main()
