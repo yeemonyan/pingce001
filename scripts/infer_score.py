@@ -262,6 +262,37 @@ def dedupe_valid_labels(labels: list[str], allowed_labels: set[str]) -> list[str
     return result
 
 
+def vote_answers(candidates: list[list[str]], option_order: list[str]) -> list[str]:
+    if not candidates:
+        return []
+
+    answer_counter = Counter(tuple(candidate) for candidate in candidates)
+    best_count = max(answer_counter.values())
+    best_answers = [
+        list(answer_tuple)
+        for answer_tuple, count in answer_counter.items()
+        if count == best_count
+    ]
+    if len(best_answers) == 1:
+        return best_answers[0]
+
+    label_scores: Counter[str] = Counter()
+    for candidate in candidates:
+        for label in candidate:
+            label_scores[label] += 1
+
+    ranked_answers = sorted(
+        best_answers,
+        key=lambda answer: (
+            -(sum(label_scores[label] for label in answer) / len(answer)),
+            len(answer),
+            -sum(label_scores[label] for label in answer),
+            [option_order.index(label) for label in answer],
+        ),
+    )
+    return ranked_answers[0]
+
+
 def is_correct(prediction: list[str], gold: Any) -> bool | None:
     if gold is None:
         return None
@@ -274,6 +305,7 @@ def run_inference(
     backend: GenerationBackend,
     force_domain: str | None = None,
     fallback_general: bool = False,
+    num_samples: int = 1,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     outputs = []
     correct = 0
@@ -294,8 +326,16 @@ def run_inference(
         prompt_domain_counts[prompt_domain] += 1
 
         allowed_labels = set(record["options"].keys())
-        raw_output = backend.generate(system_prompt, build_user_prompt(record))
-        prediction = extract_answer(raw_output, allowed_labels)
+        user_prompt = build_user_prompt(record)
+        sample_outputs = []
+        sample_answers = []
+        for _ in range(num_samples):
+            raw_output = backend.generate(system_prompt, user_prompt)
+            sample_outputs.append(raw_output)
+            sample_answers.append(extract_answer(raw_output, allowed_labels))
+
+        prediction = vote_answers(sample_answers, list(record["options"].keys()))
+        raw_output = sample_outputs[0]
         matched = is_correct(prediction, record.get("answer"))
         if matched is not None:
             scored += 1
@@ -307,6 +347,8 @@ def run_inference(
                 "prompt_domain": prompt_domain,
                 "answer": prediction,
                 "raw_output": raw_output,
+                "sample_answers": sample_answers,
+                "sample_outputs": sample_outputs,
                 "gold": record.get("answer"),
                 "correct": matched,
             }
@@ -321,6 +363,7 @@ def run_inference(
         "prompt_domain_counts": dict(prompt_domain_counts),
         "force_domain": force_domain,
         "fallback_general": fallback_general,
+        "num_samples": num_samples,
     }
     return outputs, metrics
 
@@ -350,6 +393,12 @@ def parse_args() -> argparse.Namespace:
         "--fallback-general",
         action="store_true",
         help="Route hybrid predictions to the general prompt instead of the hybrid prompt.",
+    )
+    parser.add_argument(
+        "--num-samples",
+        type=int,
+        default=1,
+        help="Number of generations per question before majority voting.",
     )
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.0)
@@ -383,6 +432,7 @@ def main() -> None:
         backend,
         force_domain=args.force_domain,
         fallback_general=args.fallback_general,
+        num_samples=args.num_samples,
     )
     dump_jsonl(outputs, Path(args.output))
     print(json.dumps(metrics, ensure_ascii=False))

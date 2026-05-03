@@ -5,6 +5,7 @@ from scripts.infer_score import (
     extract_answer,
     infer_domain,
     run_inference,
+    vote_answers,
 )
 
 
@@ -87,6 +88,33 @@ class InferScoreTest(unittest.TestCase):
         self.assertEqual(outputs[0]["prompt_domain"], "general")
         self.assertEqual(metrics["domain_counts"], {"hybrid": 1})
         self.assertEqual(metrics["prompt_domain_counts"], {"general": 1})
+
+    def test_vote_answers_prefers_majority_sequence(self):
+        voted = vote_answers([["A"], ["A"], ["B"]], ["A", "B", "C", "D"])
+        self.assertEqual(voted, ["A"])
+
+    def test_vote_answers_breaks_tie_by_label_frequency(self):
+        voted = vote_answers([["A", "C"], ["A"], ["B"]], ["A", "B", "C", "D"])
+        self.assertEqual(voted, ["A"])
+
+    def test_run_inference_records_sample_answers(self):
+        records = [
+            {
+                "id": 1,
+                "domain": "social",
+                "text": "Given: A is B's friend.",
+                "question": "Which is correct?",
+                "options": {"A": "A is B's friend", "B": "A is B's father"},
+                "answer": ["A"],
+            }
+        ]
+        prompts = {"social": "social prompt", "general": "general prompt"}
+
+        outputs, metrics = run_inference(records, prompts, MockBackend(), num_samples=3)
+
+        self.assertEqual(outputs[0]["answer"], ["A"])
+        self.assertEqual(len(outputs[0]["sample_answers"]), 3)
+        self.assertEqual(metrics["num_samples"], 3)
 
 
 if __name__ == "__main__":
