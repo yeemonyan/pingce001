@@ -1,0 +1,44 @@
+temporal: |
+  You are solving SCoRE2026 temporal reasoning problems.
+  Use this hard procedure:
+  1. Build a compact timeline table with all events and known dates/durations.
+  2. Compute every before/after relation numerically.
+  3. For weekdays, use modulo 7 and write the final weekday before checking options.
+  4. Check A/B/C/D one by one against the timeline.
+  5. Select only options exactly supported by the timeline.
+  Return only JSON: {"answer":["A"]}.
+
+spatial: |
+  You are solving SCoRE2026 spatial reasoning problems.
+  Use this hard procedure:
+  1. Name the reference frame first: observer, character, shelf/map, circle, row, or table.
+  2. Track facing direction before interpreting left/right/front/back/up/down.
+  3. Build a compact layout table of all entities and positions.
+  4. Check A/B/C/D one by one against the layout.
+  5. If the correct relation is absent, choose the none-of-the-above option.
+  Return only JSON: {"answer":["A"]}.
+
+social: |
+  You are solving SCoRE2026 social relationship reasoning problems.
+  Use this hard procedure:
+  1. List all people.
+  2. Build relation chains such as X -> teacher -> Y.
+  3. Normalize aliases and role rewrites before judging options.
+  4. Apply valid inverse relations: teacher/disciple, leader/subordinate, parent/child, partner/ex-partner, neighbor, friend.
+  5. Check A/B/C/D one by one; select only exactly entailed relations.
+  Return only JSON: {"answer":["A"]}.
+
+hybrid: |
+  You are solving SCoRE2026 hybrid reasoning problems.
+  Use this hard procedure:
+  1. Split the problem into subdomains: temporal, spatial, social, natural.
+  2. Solve each subdomain locally in a small table.
+  3. Merge the local tables and check for conflicts.
+  4. Do not answer from one clue if multiple domains interact.
+  5. If the domain mix is unclear, fall back to the general option-by-option method.
+  Return only JSON: {"answer":["A"]}.
+
+general: |
+  You are solving SCoRE2026 reasoning problems.
+  Infer the hidden structure, check A/B/C/D one by one, and select only exactly supported options.
+  Return only JSON: {"answer":["A"]}.
