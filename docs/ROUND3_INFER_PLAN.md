@@ -1,6 +1,6 @@
 # Round 3 Inference Plan
 
-目标：在不重新训练模型的前提下，基于当前 `answer_only` LoRA adapter，优先验证 prompt 和 routing 是否能带来更稳的 dev / leaderboard 提升。
+目标：在不重新训练模型的前提下，基于当前 `answer_only` LoRA adapter，先做低成本试探，确认方向后再决定是否进行全量 dev / leaderboard 推理。
 
 ## Current Facts
 
@@ -19,8 +19,9 @@
 优先验证推理侧问题，而不是立刻重新训练：
 
 1. 默认 routing 可能把太多题送进 `hybrid` prompt。
-2. 更短、更硬的 prompt 可能比当前 prompt 更稳。
+2. 更短、更硬的 prompt 只有在与现有 LoRA 指令分布兼容时才可能提分。
 3. `hybrid -> general fallback` 可能优于直接使用 `hybrid` prompt。
+4. 全量 vote 未必适合当前这种系统性推理错误，应该先做更小规模验证。
 
 ## Experiment Matrix
 
@@ -32,6 +33,34 @@
 - dtype: `bfloat16`
 - max_new_tokens: `64`
 - `OMP_NUM_THREADS=1`
+
+## Probe First
+
+在上卡做全量实验前，先优先做两个轻量试探：
+
+1. 小样本 prompt probe
+   - 从 dev 中抽取：
+     - 30 题 spatial
+     - 30 题 temporal
+     - 20 题 natural
+     - 10 题 hybrid
+   - 对比：
+     - 原始 prompt
+     - short prompt
+     - short prompt + fallback
+   - 先看错误类型是否真的改善，而不是先看全量分数。
+
+2. 小样本 selective vote probe
+   - 不做全量 vote。
+   - 只在以下题上试：
+     - 多选题
+     - temporal
+     - hybrid
+   - 先比较：
+     - greedy
+     - vote(3, low temperature)
+
+如果 probe 没看到明显改善，就不要立刻做全量 GPU 实验。
 
 ### Exp A: General Only
 
@@ -119,5 +148,14 @@ python scripts/evaluate_score.py \
 
 - 再决定是否进入：
   - `rationale_json` LoRA
-  - 或 self-consistency / vote
+  - 或 selective vote
 
+## Current Lessons
+
+目前已经确认：
+
+- `short routed` 低于当前 best
+- `short + fallback` 也低于当前 best
+- `global vote(3)` 明显低于当前 best
+
+因此下一步不能再做“全局替换”式实验，必须先通过 probe 找到更窄的有效场景。

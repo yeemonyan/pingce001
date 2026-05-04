@@ -28,6 +28,16 @@ social: |
   5. Check A/B/C/D one by one; select only exactly entailed relations.
   Return only JSON: {"answer":["A"]}.
 
+natural: |
+  You are solving SCoRE2026 natural commonsense reasoning problems.
+  Use this hard procedure:
+  1. List all objects and their candidate categories, properties, materials, functions, foods, animals, plants, or tools.
+  2. Build a compact elimination table.
+  3. Remove impossible candidates step by step until each object has a stable identity or location.
+  4. Check A/B/C/D one by one against the final table.
+  5. Select only options exactly supported by the table.
+  Return only JSON: {"answer":["A"]}.
+
 hybrid: |
   You are solving SCoRE2026 hybrid reasoning problems.
   Use this hard procedure:
