@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Any, Protocol
@@ -93,6 +94,15 @@ class TransformersBackend:
     ) -> None:
         from transformers import AutoModelForCausalLM, AutoTokenizer
         import torch
+
+        requested_accelerator = device_map != "cpu"
+        if requested_accelerator and not torch.cuda.is_available():
+            raise RuntimeError(
+                "CUDA is not available in this environment. "
+                "The current server session cannot see a GPU, so 7B inference would run in the wrong mode "
+                "or be killed. Reattach/start the GPU instance, verify `torch.cuda.is_available()` is true, "
+                "or explicitly pass `--device-map cpu` only for tiny smoke tests."
+            )
 
         dtype_map = {
             "auto": "auto",
@@ -303,17 +313,21 @@ def run_inference(
     records: list[dict[str, Any]],
     prompts: dict[str, str],
     backend: GenerationBackend,
+    output_path: Path | None = None,
     force_domain: str | None = None,
     fallback_general: bool = False,
     num_samples: int = 1,
+    log_every: int = 0,
+    save_every: int = 0,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     outputs = []
     correct = 0
     scored = 0
     domain_counts: Counter[str] = Counter()
     prompt_domain_counts: Counter[str] = Counter()
+    start_time = time.time()
 
-    for record in records:
+    for index, record in enumerate(records, 1):
         if isinstance(backend, MockBackend):
             backend.current_record = record
         inferred_domain = infer_domain(record)
@@ -353,6 +367,25 @@ def run_inference(
                 "correct": matched,
             }
         )
+
+        if save_every > 0 and output_path is not None and index % save_every == 0:
+            dump_jsonl(outputs, output_path)
+
+        if log_every > 0 and (index % log_every == 0 or index == len(records)):
+            elapsed = time.time() - start_time
+            avg_seconds = elapsed / index if index else 0.0
+            eta_seconds = avg_seconds * (len(records) - index)
+            running_accuracy = (correct / scored) if scored else None
+            progress = {
+                "done": index,
+                "total": len(records),
+                "elapsed_seconds": round(elapsed, 2),
+                "avg_seconds_per_item": round(avg_seconds, 2),
+                "eta_seconds": round(eta_seconds, 2),
+                "running_accuracy": round(running_accuracy, 6) if running_accuracy is not None else None,
+                "prompt_domain_counts": dict(prompt_domain_counts),
+            }
+            print(json.dumps({"progress": progress}, ensure_ascii=False), flush=True)
 
     metrics: dict[str, Any] = {
         "total": len(records),
@@ -405,6 +438,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--top-p", type=float, default=1.0)
     parser.add_argument("--dtype", default="bfloat16", choices=("auto", "float16", "bfloat16", "float32"))
     parser.add_argument("--device-map", default="auto")
+    parser.add_argument(
+        "--log-every",
+        type=int,
+        default=10,
+        help="Print progress every N records. Set 0 to disable.",
+    )
+    parser.add_argument(
+        "--save-every",
+        type=int,
+        default=10,
+        help="Rewrite the prediction JSONL every N records for resumable monitoring. Set 0 to disable.",
+    )
     return parser.parse_args()
 
 
@@ -430,9 +475,12 @@ def main() -> None:
         records,
         prompts,
         backend,
+        output_path=Path(args.output),
         force_domain=args.force_domain,
         fallback_general=args.fallback_general,
         num_samples=args.num_samples,
+        log_every=args.log_every,
+        save_every=args.save_every,
     )
     dump_jsonl(outputs, Path(args.output))
     print(json.dumps(metrics, ensure_ascii=False))

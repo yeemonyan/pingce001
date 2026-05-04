@@ -1,5 +1,8 @@
 import unittest
+from types import ModuleType, SimpleNamespace
+from unittest.mock import patch
 
+import scripts.infer_score as infer_score
 from scripts.infer_score import (
     MockBackend,
     extract_answer,
@@ -115,6 +118,27 @@ class InferScoreTest(unittest.TestCase):
         self.assertEqual(outputs[0]["answer"], ["A"])
         self.assertEqual(len(outputs[0]["sample_answers"]), 3)
         self.assertEqual(metrics["num_samples"], 3)
+
+    def test_transformers_backend_requires_cuda_for_non_cpu_device_map(self):
+        fake_torch = ModuleType("torch")
+        fake_torch.cuda = SimpleNamespace(is_available=lambda: False)
+        fake_torch.float16 = "float16"
+        fake_torch.bfloat16 = "bfloat16"
+        fake_torch.float32 = "float32"
+        fake_transformers = ModuleType("transformers")
+        fake_transformers.AutoModelForCausalLM = object()
+        fake_transformers.AutoTokenizer = object()
+        with self.assertRaisesRegex(RuntimeError, "CUDA is not available"):
+            with patch.dict("sys.modules", {"torch": fake_torch, "transformers": fake_transformers}):
+                infer_score.TransformersBackend(
+                    model_path="dummy-model",
+                    adapter_path=None,
+                    max_new_tokens=8,
+                    temperature=0.0,
+                    top_p=1.0,
+                    dtype="float16",
+                    device_map="auto",
+                )
 
 
 if __name__ == "__main__":

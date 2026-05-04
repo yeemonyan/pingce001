@@ -50,6 +50,14 @@ Use this hard procedure:
 4. Apply valid inverse relations: teacher/disciple, leader/subordinate, parent/child, partner/ex-partner, neighbor, friend.
 5. Check A/B/C/D one by one; select only exactly entailed relations.
 Return only JSON: {\"answer\":[\"A\"]}.""",
+    "natural": """You are solving SCoRE2026 natural commonsense reasoning problems.
+Use this hard procedure:
+1. List all objects and their candidate categories, properties, materials, functions, foods, animals, plants, or tools.
+2. Build a compact elimination table.
+3. Remove impossible candidates step by step until each object has a stable identity or location.
+4. Check A/B/C/D one by one against the final table.
+5. Select only options exactly supported by the table.
+Return only JSON: {\"answer\":[\"A\"]}.""",
     "hybrid": """You are solving SCoRE2026 hybrid reasoning problems.
 Use this hard procedure:
 1. Split the problem into subdomains: temporal, spatial, social, natural.
@@ -163,9 +171,20 @@ def write_jsonl(records: list[dict[str, Any]], path: Path) -> None:
             file.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def resolve_prediction_path(path: Path) -> Path:
+    if path.exists():
+        return path
+    candidates = sorted(Path("outputs").glob("*pred*.json*"))
+    candidate_text = ", ".join(str(candidate) for candidate in candidates[:8]) if candidates else "none"
+    raise FileNotFoundError(
+        f"Prediction file not found: {path}. "
+        f"Pass --pred explicitly. Available prediction-like files: {candidate_text}"
+    )
+
+
 def write_prompt_config(path: Path) -> None:
     lines = []
-    for key in ("temporal", "spatial", "social", "hybrid", "general"):
+    for key in ("temporal", "spatial", "social", "natural", "hybrid", "general"):
         lines.append(f"{key}: |")
         for line in PROMPT_DRAFT[key].splitlines():
             lines.append(f"  {line}")
@@ -235,7 +254,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     gold_records = load_json_or_jsonl(Path(args.gold))
-    pred_records = load_json_or_jsonl(Path(args.pred))
+    pred_records = load_json_or_jsonl(resolve_prediction_path(Path(args.pred)))
     report, _ = analyze(gold_records, pred_records, max_cases_per_type=args.max_cases_per_type)
     cases = build_cases(gold_records, pred_records, max_cases_per_type=args.max_cases_per_type)
     focus_counts = {key: report["failure_counts"].get(key, 0) for key in FOCUS_TYPES}

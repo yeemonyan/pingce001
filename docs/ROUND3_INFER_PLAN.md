@@ -157,5 +157,22 @@ python scripts/evaluate_score.py \
 - `short routed` 低于当前 best
 - `short + fallback` 也低于当前 best
 - `global vote(3)` 明显低于当前 best
+- 2026-05-04 的 90 题 baseline probe 未产出结果，根因不是 prompt，而是服务器会话里 `torch.cuda.is_available() == False`；7B 推理在无 GPU 可见状态下启动后被系统直接 `Killed`
 
 因此下一步不能再做“全局替换”式实验，必须先通过 probe 找到更窄的有效场景。
+
+## Environment Gate
+
+在继续任何 7B / LoRA 推理前，先做这一条环境闸门：
+
+```bash
+python -c "import torch; print(torch.cuda.is_available(), torch.cuda.device_count())"
+```
+
+只有输出为 `True` 且设备数大于 `0` 时，才继续执行 probe / dev / test 推理。
+
+如果这里仍然是 `False`：
+
+- 先不要继续烧卡跑实验
+- 先检查当前 AutoDL 实例是否真的处于带 GPU 的运行态
+- 再确认进入的是正确容器/实例，而不是只挂载了项目目录的无卡环境
