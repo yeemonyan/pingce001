@@ -31,6 +31,10 @@ outputs/*
 !outputs/dev_baseline_eval.json
 !outputs/error_report_baseline_dev.json
 !outputs/error_cases_baseline_dev.jsonl
+!outputs/verifier_train.jsonl
+!outputs/verifier_valid.jsonl
+!outputs/verifier_data_report.json
+!outputs/dev_verifier_mock_eval.json
 tmp*/
 .codex_tmp_python_deps/
 

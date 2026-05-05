@@ -1,0 +1,47 @@
+{
+  "total": 720,
+  "correct": 720,
+  "accuracy": 1.0,
+  "missing_predictions": 0,
+  "invalid_gold_records": 0,
+  "per_domain": {
+    "hybrid": {
+      "total": 20,
+      "correct": 20,
+      "accuracy": 1.0
+    },
+    "natural": {
+      "total": 200,
+      "correct": 200,
+      "accuracy": 1.0
+    },
+    "social": {
+      "total": 100,
+      "correct": 100,
+      "accuracy": 1.0
+    },
+    "spatial": {
+      "total": 200,
+      "correct": 200,
+      "accuracy": 1.0
+    },
+    "temporal": {
+      "total": 200,
+      "correct": 200,
+      "accuracy": 1.0
+    }
+  },
+  "single_vs_multi": {
+    "multi": {
+      "total": 171,
+      "correct": 171,
+      "accuracy": 1.0
+    },
+    "single": {
+      "total": 549,
+      "correct": 549,
+      "accuracy": 1.0
+    }
+  },
+  "prediction_error_types": {}
+}
