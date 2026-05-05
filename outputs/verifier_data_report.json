@@ -1,0 +1,56 @@
+{
+  "files": {
+    "outputs\\verifier_train.jsonl": {
+      "split": "train",
+      "count": 11520,
+      "questions": 2880,
+      "label": {
+        "no": 7553,
+        "yes": 3967
+      },
+      "domain": {
+        "hybrid": 320,
+        "natural": 3200,
+        "social": 1600,
+        "spatial": 3200,
+        "temporal": 3200
+      },
+      "answer_kind": {
+        "multi": 2708,
+        "single": 8812
+      },
+      "positive_rate": 0.344358
+    },
+    "outputs\\verifier_valid.jsonl": {
+      "split": "valid",
+      "count": 2880,
+      "questions": 720,
+      "label": {
+        "no": 1887,
+        "yes": 993
+      },
+      "domain": {
+        "hybrid": 80,
+        "natural": 800,
+        "social": 400,
+        "spatial": 800,
+        "temporal": 800
+      },
+      "answer_kind": {
+        "multi": 684,
+        "single": 2196
+      },
+      "positive_rate": 0.344792
+    }
+  },
+  "source": {
+    "input": "data\\raw\\train.json",
+    "train_ids": "data\\splits\\train_ids.json",
+    "dev_ids": "data\\splits\\dev_ids.json",
+    "test_data_used": false
+  },
+  "format": {
+    "unit": "one training row per option",
+    "label": "yes iff option label is in the official answer set, else no"
+  }
+}
