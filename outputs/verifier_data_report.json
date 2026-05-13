@@ -4,7 +4,7 @@
       "split": "train",
       "count": 11520,
       "questions": 2880,
-      "label": {
+      "target_label": {
         "no": 7553,
         "yes": 3967
       },
@@ -25,7 +25,7 @@
       "split": "valid",
       "count": 2880,
       "questions": 720,
-      "label": {
+      "target_label": {
         "no": 1887,
         "yes": 993
       },
@@ -51,6 +51,6 @@
   },
   "format": {
     "unit": "one training row per option",
-    "label": "yes iff option label is in the official answer set, else no"
+    "target_label": "yes iff option label is in the official answer set, else no"
   }
 }

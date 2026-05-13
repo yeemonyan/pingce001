@@ -1,0 +1,752 @@
+{
+  "source_count": 2880,
+  "question_count": 720,
+  "seed": 2026,
+  "validation": {
+    "passed": true,
+    "error_count": 0,
+    "errors": []
+  },
+  "sample_requirements": {
+    "single_questions": 10,
+    "multi_questions": 10,
+    "temporal_questions": 5,
+    "spatial_questions": 5,
+    "hybrid_questions": 5
+  },
+  "samples": {
+    "single": [
+      {
+        "question_id": "SCoRE2026-train-754",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "B"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Jasmine",
+          "B": "Camellia",
+          "C": "Geranium",
+          "D": "None of the above"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2466",
+        "domain": "natural",
+        "answer_kind": "single",
+        "gold_answer": [
+          "B"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "生菜",
+          "B": "黄豆",
+          "C": "西瓜",
+          "D": "玉兰"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3358",
+        "domain": "social",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "赵伟的媳妇是孙大伟的同事的女儿",
+          "B": "赵伟的媳妇是李晓静的同事的徒弟",
+          "C": "赵伟是孙大伟的领导的弟弟",
+          "D": "赵伟是孙大伟的领导的老公"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1133",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Lily",
+          "B": "Tulip",
+          "C": "Camellia",
+          "D": "None of the above"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2028",
+        "domain": "natural",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "1",
+          "B": "2",
+          "C": "3",
+          "D": "4"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1703",
+        "domain": "temporal",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "谷歌创立和联合国成立之间相隔97年。",
+          "B": "他成为父亲的时间比谷歌创立早20年。",
+          "C": "他开始上初中是在第一届普利策奖颁发之后。",
+          "D": "他开始上高中和他出生之间相隔16年。"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1730",
+        "domain": "temporal",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Jack graduated from elementary school before IBM released the first personal computer.",
+          "B": "Jack started university 18 years after the first Nobel Prizes were awarded.",
+          "C": "IBM released the first personal computer after Jack started university.",
+          "D": "The gap between the time the first Nobel Prizes were awarded and the time Jack graduated from elementary school is 19 years."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2377",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "月季",
+          "B": "茶花",
+          "C": "君子兰",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3159",
+        "domain": "temporal",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Jack practices the guitar",
+          "B": "Jack has a group meeting",
+          "C": "Jack cleans his dormitory room",
+          "D": "Jack reads research papers"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2593",
+        "domain": "natural",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "1",
+          "B": "2",
+          "C": "3",
+          "D": "4"
+        }
+      }
+    ],
+    "multi": [
+      {
+        "question_id": "SCoRE2026-train-950",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Jack has a group meeting",
+          "B": "Jack plays badminton",
+          "C": "Jack goes on a date",
+          "D": "Jack practices the guitar"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1937",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Jack graduated from elementary school before the United Nations was founded.",
+          "B": "Jack started elementary school before he became a father.",
+          "C": "There is a 1-year gap between the first Pulitzer Prizes were announced and Jack started dating.",
+          "D": "Jack graduated from high school in 1919."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1998",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "在IBM发布第一款个人电脑之前92年，他开始上大学。",
+          "B": "他进入公司和他开始上大学中间差了52年。",
+          "C": "在IBM发布第一款个人电脑之前86年，他开始上初中。",
+          "D": "在他初中毕业之后，迈克尔·杰克逊出生。"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1193",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "The gap between the time Jack learns Japanese and the time he goes jogging is 4 days.",
+          "B": "Jack learns Japanese 3 days before he practices the guitar.",
+          "C": "There is a 2-day gap between Jack has a group meeting and he watches a movie.",
+          "D": "Jack learns Japanese 5 days after he goes jogging."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1783",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "B",
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Jack met his future wife before Michael Jackson was born.",
+          "B": "Jack passed away 6 years before he retired.",
+          "C": "Jack became a father 38 years after he was born.",
+          "D": "Jack retired 34 years before the first Pulitzer Prizes were announced."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1710",
+        "domain": "spatial",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "B",
+          "C"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "波斯菊",
+          "B": "茉莉",
+          "C": "百合",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-574",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "B",
+          "C"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Jack practices the guitar",
+          "B": "Jack goes jogging",
+          "C": "Jack has a group meeting",
+          "D": "Jack cleans his dormitory room"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-427",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "3 days after Jack goes on a date, he learns Japanese.",
+          "B": "On Friday, Jack goes on a date.",
+          "C": "Jack goes jogging 4 days after he reads research papers.",
+          "D": "None of the options above meet the requirements of the question."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3532",
+        "domain": "natural",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "1",
+          "B": "2",
+          "C": "3",
+          "D": "4"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1496",
+        "domain": "spatial",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "B",
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Robert",
+          "B": "Jennifer",
+          "C": "John",
+          "D": "William"
+        }
+      }
+    ],
+    "temporal": [
+      {
+        "question_id": "SCoRE2026-train-2690",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "D"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "阿波罗11号在月球着陆和他出生之间相隔69年。",
+          "B": "在他开始上初中的64年之后，他退休。",
+          "C": "在他遇见未来的妻子之后，他开始上初中。",
+          "D": "在迈克尔·杰克逊出生的43年之前，他遇见未来的妻子。"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2648",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "D"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Michael Jackson was born after Jack graduated from elementary school.",
+          "B": "Jack started elementary school before he started junior high school.",
+          "C": "There is a 30-year gap between Michael Jackson was born and Jack started dating.",
+          "D": "Michael Jackson was born after Jack was born."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2580",
+        "domain": "temporal",
+        "answer_kind": "single",
+        "gold_answer": [
+          "B"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Jack cleans his dormitory room 3 days after he learns Japanese.",
+          "B": "Jack learns Japanese on Wednesday.",
+          "C": "5 days before Jack reads research papers, he learns Japanese.",
+          "D": "The gap between the time Jack practices the guitar and the time he reads research papers is 1 day."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1937",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Jack graduated from elementary school before the United Nations was founded.",
+          "B": "Jack started elementary school before he became a father.",
+          "C": "There is a 1-year gap between the first Pulitzer Prizes were announced and Jack started dating.",
+          "D": "Jack graduated from high school in 1919."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1104",
+        "domain": "temporal",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "D"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Jack started dating before he graduated from junior high school.",
+          "B": "Jack started junior high school before he started university.",
+          "C": "Jack retired after he graduated from high school.",
+          "D": "There is a 19-year gap between the United Nations was founded and the first Nobel Prizes were awarded."
+        }
+      }
+    ],
+    "spatial": [
+      {
+        "question_id": "SCoRE2026-train-1895",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "茉莉",
+          "B": "君子兰",
+          "C": "郁金香",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3105",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "天竺葵",
+          "B": "牡丹",
+          "C": "茉莉",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3114",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "周伯通",
+          "B": "孙不二",
+          "C": "丘处机",
+          "D": "柯镇恶"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2707",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Monthly Rose",
+          "B": "Clivia",
+          "C": "Geranium",
+          "D": "None of the above"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-808",
+        "domain": "spatial",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "曹国舅",
+          "B": "张天师",
+          "C": "何仙姑",
+          "D": "张果老"
+        }
+      }
+    ],
+    "hybrid": [
+      {
+        "question_id": "SCoRE2026-train-1802",
+        "domain": "hybrid",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "沙丁鱼",
+          "B": "铃铛",
+          "C": "连裤袜",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2287",
+        "domain": "hybrid",
+        "answer_kind": "single",
+        "gold_answer": [
+          "C"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "大头钉",
+          "B": "寿面",
+          "C": "提拉米苏",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1022",
+        "domain": "hybrid",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "大黄鱼",
+          "B": "摩卡咖啡",
+          "C": "金橘",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2533",
+        "domain": "hybrid",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "钓鱼竿",
+          "B": "奶粉",
+          "C": "菠萝",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1209",
+        "domain": "hybrid",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "地瓜",
+          "B": "台灯",
+          "C": "海参",
+          "D": "以上选项都不是"
+        }
+      }
+    ]
+  }
+}

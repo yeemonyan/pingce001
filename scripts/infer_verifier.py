@@ -40,10 +40,14 @@ class GoldMockVerifierBackend:
     def generate(self, system_prompt: str, user_prompt: str) -> str:
         answers = set(ordered_answers(self.current_record or {}))
         label = "yes" if self.current_label in answers else "no"
-        return json.dumps({"label": label}, ensure_ascii=False)
+        return json.dumps({"target_label": label}, ensure_ascii=False)
 
 
-def run_verifier(records: list[dict[str, Any]], backend: VerifierBackend) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def run_verifier(
+    records: list[dict[str, Any]],
+    backend: VerifierBackend,
+    yes_threshold: float | None = None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     option_outputs = []
     for record in records:
         domain = infer_domain(record)
@@ -59,12 +63,13 @@ def run_verifier(records: list[dict[str, Any]], backend: VerifierBackend) -> tup
                     "question_id": record.get("id"),
                     "domain": domain,
                     "option_label": option_label,
+                    "target_label": verdict or "no",
                     "label": verdict or "no",
                     "raw_output": raw_output,
                     "gold_answer": record.get("answer"),
                 }
             )
-    return option_outputs, merge_option_predictions(option_outputs)
+    return option_outputs, merge_option_predictions(option_outputs, yes_threshold=yes_threshold)
 
 
 def parse_args() -> argparse.Namespace:
@@ -78,6 +83,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-new-tokens", type=int, default=64)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--top-p", type=float, default=1.0)
+    parser.add_argument(
+        "--yes-threshold",
+        type=float,
+        default=None,
+        help="Reserved for future probability/logit outputs. If yes_score exists, select options above this threshold.",
+    )
     parser.add_argument("--dtype", default="bfloat16", choices=("auto", "float16", "bfloat16", "float32"))
     parser.add_argument("--device-map", default="auto")
     return parser.parse_args()
@@ -98,7 +109,7 @@ def main() -> None:
             device_map=args.device_map,
         )
 
-    option_outputs, merged_outputs = run_verifier(records, backend)
+    option_outputs, merged_outputs = run_verifier(records, backend, yes_threshold=args.yes_threshold)
     write_jsonl(merged_outputs, Path(args.output))
     if args.option_output:
         write_jsonl(option_outputs, Path(args.option_output))

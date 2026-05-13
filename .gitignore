@@ -34,6 +34,7 @@ outputs/*
 !outputs/verifier_train.jsonl
 !outputs/verifier_valid.jsonl
 !outputs/verifier_data_report.json
+!outputs/verifier_data_audit.json
 !outputs/dev_verifier_mock_eval.json
 tmp*/
 .codex_tmp_python_deps/
