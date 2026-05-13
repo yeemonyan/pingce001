@@ -1,0 +1,40 @@
+# Draft LoRA config for option-level verifier training.
+# If a canonical configs/train_lora.yaml is later added, keep only these fields changed:
+# train_file, valid_file, output_dir, adapter_name.
+
+base_model: models/Qwen2.5-7B-Instruct
+train_file: outputs/verifier_train.jsonl
+valid_file: outputs/verifier_valid.jsonl
+output_dir: outputs/lora_verifier_qwen25_7b
+adapter_name: score2026_verifier_lora
+
+training:
+  task: sft
+  format: chat_messages
+  max_seq_length: 2048
+  num_train_epochs: 2
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  learning_rate: 0.0001
+  warmup_ratio: 0.03
+  logging_steps: 10
+  save_strategy: epoch
+  eval_strategy: epoch
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+notes:
+  source: official train split only
+  target: option-level yes/no verifier
+  assistant_json_key: target_label

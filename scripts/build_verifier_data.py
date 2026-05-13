@@ -45,14 +45,16 @@ def validate_items(items: list[dict[str, Any]]) -> None:
     for item in items:
         if str(item["question_id"]).startswith("SCoRE2026-test-"):
             raise ValueError(f"test sample leaked into verifier data: {item['question_id']}")
-        if item["label"] not in {"yes", "no"}:
+        if item["target_label"] not in {"yes", "no"}:
             raise ValueError(f"bad verifier label: {item['id']}")
+        if item["label"] != item["target_label"]:
+            raise ValueError(f"label alias mismatch: {item['id']}")
         if item["option_label"] not in {"A", "B", "C", "D"}:
             raise ValueError(f"bad option label: {item['id']}")
         if [message["role"] for message in item["messages"]] != ["system", "user", "assistant"]:
             raise ValueError(f"bad messages: {item['id']}")
         payload = json.loads(item["messages"][2]["content"])
-        if payload != {"label": item["label"]}:
+        if payload != {"target_label": item["target_label"]}:
             raise ValueError(f"assistant label mismatch: {item['id']}")
 
 
@@ -60,11 +62,11 @@ def summarize(items: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "count": len(items),
         "questions": len({item["question_id"] for item in items}),
-        "label": dict(sorted(Counter(item["label"] for item in items).items())),
+        "target_label": dict(sorted(Counter(item["target_label"] for item in items).items())),
         "domain": dict(sorted(Counter(item["domain"] for item in items).items())),
         "answer_kind": dict(sorted(Counter(item["answer_kind"] for item in items).items())),
         "positive_rate": round(
-            sum(1 for item in items if item["label"] == "yes") / len(items),
+            sum(1 for item in items if item["target_label"] == "yes") / len(items),
             6,
         ) if items else None,
     }
@@ -114,7 +116,7 @@ def main() -> None:
         },
         "format": {
             "unit": "one training row per option",
-            "label": "yes iff option label is in the official answer set, else no",
+            "target_label": "yes iff option label is in the official answer set, else no",
         },
     }
     write_json(report, Path(args.report))

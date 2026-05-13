@@ -28,19 +28,33 @@ class VerifierUtilsTest(unittest.TestCase):
 
         self.assertEqual(yes_item["label"], "yes")
         self.assertEqual(no_item["label"], "no")
-        self.assertEqual(json.loads(yes_item["messages"][2]["content"]), {"label": "yes"})
+        self.assertEqual(yes_item["target_label"], "yes")
+        self.assertEqual(no_item["target_label"], "no")
+        self.assertEqual(json.loads(yes_item["messages"][2]["content"]), {"target_label": "yes"})
 
     def test_extract_verdict_from_json_and_text(self):
         self.assertEqual(extract_verdict('{"label":"yes"}'), "yes")
+        self.assertEqual(extract_verdict('{"target_label":"no"}'), "no")
         self.assertEqual(extract_verdict("not entailed"), "no")
         self.assertIsNone(extract_verdict("maybe"))
 
     def test_merge_option_predictions(self):
         merged = merge_option_predictions(
             [
-                {"question_id": "q1", "domain": "temporal", "option_label": "A", "label": "yes", "gold_answer": ["A"]},
-                {"question_id": "q1", "domain": "temporal", "option_label": "B", "label": "no", "gold_answer": ["A"]},
+                {"question_id": "q1", "domain": "temporal", "option_label": "A", "target_label": "yes", "gold_answer": ["A"]},
+                {"question_id": "q1", "domain": "temporal", "option_label": "B", "target_label": "no", "gold_answer": ["A"]},
             ]
+        )
+
+        self.assertEqual(merged[0]["answer"], ["A"])
+
+    def test_merge_option_predictions_can_use_threshold_scores(self):
+        merged = merge_option_predictions(
+            [
+                {"question_id": "q1", "domain": "temporal", "option_label": "A", "target_label": "no", "yes_score": 0.7},
+                {"question_id": "q1", "domain": "temporal", "option_label": "B", "target_label": "yes", "yes_score": 0.2},
+            ],
+            yes_threshold=0.5,
         )
 
         self.assertEqual(merged[0]["answer"], ["A"])

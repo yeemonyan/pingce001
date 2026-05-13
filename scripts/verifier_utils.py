@@ -14,7 +14,7 @@ from scripts.infer_score import VALID_LABELS, infer_domain
 
 VERIFIER_SYSTEM_PROMPT = (
     "You are a SCoRE2026 option verifier. Decide whether one option is entailed "
-    "by the text and question. Return only JSON: {\"label\":\"yes\"} or {\"label\":\"no\"}."
+    "by the text and question. Return only JSON: {\"target_label\":\"yes\"} or {\"target_label\":\"no\"}."
 )
 
 YES_VALUES = {"yes", "y", "true", "1", "entailed", "correct"}
@@ -50,7 +50,7 @@ def verifier_item_id(record_id: Any, option_label: str) -> str:
 
 def build_verifier_item(record: dict[str, Any], option_label: str, system_prompt: str = VERIFIER_SYSTEM_PROMPT) -> dict[str, Any]:
     answers = ordered_answers(record)
-    label = "yes" if option_label in answers else "no"
+    target_label = "yes" if option_label in answers else "no"
     return {
         "id": verifier_item_id(record["id"], option_label),
         "question_id": record["id"],
@@ -60,11 +60,12 @@ def build_verifier_item(record: dict[str, Any], option_label: str, system_prompt
         "language": record.get("language"),
         "answer_kind": answer_kind(answers),
         "gold_answer": answers,
-        "label": label,
+        "target_label": target_label,
+        "label": target_label,
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": build_option_prompt(record, option_label)},
-            {"role": "assistant", "content": json.dumps({"label": label}, ensure_ascii=False)},
+            {"role": "assistant", "content": json.dumps({"target_label": target_label}, ensure_ascii=False)},
         ],
     }
 
@@ -73,7 +74,7 @@ def extract_verdict(output: str) -> str | None:
     try:
         parsed = json.loads(output)
         if isinstance(parsed, dict):
-            value = parsed.get("label") or parsed.get("verdict") or parsed.get("answer")
+            value = parsed.get("target_label") or parsed.get("label") or parsed.get("verdict") or parsed.get("answer")
             if isinstance(value, bool):
                 return "yes" if value else "no"
             if isinstance(value, str):
@@ -97,7 +98,7 @@ def extract_verdict(output: str) -> str | None:
     return None
 
 
-def merge_option_predictions(option_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def merge_option_predictions(option_records: list[dict[str, Any]], yes_threshold: float | None = None) -> list[dict[str, Any]]:
     grouped: dict[Any, list[dict[str, Any]]] = {}
     metadata: dict[Any, dict[str, Any]] = {}
     for item in option_records:
@@ -118,7 +119,7 @@ def merge_option_predictions(option_records: list[dict[str, Any]]) -> list[dict[
         answer = [
             label
             for label in VALID_LABELS
-            if by_label.get(label, {}).get("label") == "yes"
+            if is_positive_verdict(by_label.get(label, {}), yes_threshold)
         ]
         if not answer:
             scored = [
@@ -135,6 +136,7 @@ def merge_option_predictions(option_records: list[dict[str, Any]]) -> list[dict[
                 "option_verdicts": {
                     label: {
                         "label": by_label[label].get("label"),
+                        "target_label": by_label[label].get("target_label"),
                         "raw_output": by_label[label].get("raw_output"),
                         "yes_score": by_label[label].get("yes_score"),
                     }
@@ -144,6 +146,12 @@ def merge_option_predictions(option_records: list[dict[str, Any]]) -> list[dict[
             }
         )
     return outputs
+
+
+def is_positive_verdict(item: dict[str, Any], yes_threshold: float | None = None) -> bool:
+    if yes_threshold is not None and isinstance(item.get("yes_score"), (int, float)):
+        return float(item["yes_score"]) >= yes_threshold
+    return (item.get("target_label") or item.get("label")) == "yes"
 
 
 def detailed_metrics(gold_records: list[dict[str, Any]], pred_records: list[dict[str, Any]]) -> dict[str, Any]:
