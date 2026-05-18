@@ -1,6 +1,6 @@
 {
   "files": {
-    "outputs\\verifier_train.jsonl": {
+    "outputs\\sft_train_verifier.jsonl": {
       "split": "train",
       "count": 11520,
       "questions": 2880,
@@ -19,9 +19,15 @@
         "multi": 2708,
         "single": 8812
       },
+      "input_variant": {
+        "all_options": 11520
+      },
+      "instruction_variant": {
+        "base": 11520
+      },
       "positive_rate": 0.344358
     },
-    "outputs\\verifier_valid.jsonl": {
+    "outputs\\sft_valid_verifier.jsonl": {
       "split": "valid",
       "count": 2880,
       "questions": 720,
@@ -40,6 +46,12 @@
         "multi": 684,
         "single": 2196
       },
+      "input_variant": {
+        "all_options": 2880
+      },
+      "instruction_variant": {
+        "base": 2880
+      },
       "positive_rate": 0.344792
     }
   },
@@ -51,6 +63,13 @@
   },
   "format": {
     "unit": "one training row per option",
-    "target_label": "yes iff option label is in the official answer set, else no"
+    "target_label": "yes iff option label is in the official answer set, else no",
+    "include_all_options": true,
+    "instruction_variant": "base",
+    "oversample_priority_train_only": 1
+  },
+  "aliases": {
+    "train_alias": "outputs\\verifier_train.jsonl",
+    "valid_alias": "outputs\\verifier_valid.jsonl"
   }
 }

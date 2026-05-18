@@ -3,8 +3,8 @@
 # train_file, valid_file, output_dir, adapter_name.
 
 base_model: models/Qwen2.5-7B-Instruct
-train_file: outputs/verifier_train.jsonl
-valid_file: outputs/verifier_valid.jsonl
+train_file: outputs/sft_train_verifier.jsonl
+valid_file: outputs/sft_valid_verifier.jsonl
 output_dir: outputs/lora_verifier_qwen25_7b
 adapter_name: score2026_verifier_lora
 
@@ -38,3 +38,5 @@ notes:
   source: official train split only
   target: option-level yes/no verifier
   assistant_json_key: target_label
+  input_variant: all_options
+  instruction_variant: base
