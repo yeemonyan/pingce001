@@ -18,12 +18,14 @@ class AuditVerifierDataTest(unittest.TestCase):
                         "id": f"{qid}::option::{label}",
                         "question_id": qid,
                         "domain": domain,
+                        "language": "zh" if qid == "q2" else "en",
                         "answer_kind": answer_kind,
                         "gold_answer": gold,
                         "option_label": label,
                         "option_text": label,
                         "target_label": target,
                         "label": target,
+                        "messages": [{}, {"content": "x" * (100 if qid == "q2" else 5)}],
                     }
                 )
 
@@ -36,6 +38,8 @@ class AuditVerifierDataTest(unittest.TestCase):
             self.assertEqual(target, expected)
         self.assertEqual(len(report["samples"]["multi"]), 1)
         self.assertEqual(len(report["samples"]["hybrid"]), 1)
+        self.assertEqual(len(report["samples"]["chinese"]), 1)
+        self.assertEqual(report["samples"]["long_constraints"][0]["question_id"], "q2")
 
     def test_audit_catches_target_mismatch(self):
         items = [

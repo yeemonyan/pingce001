@@ -19,6 +19,11 @@ VERIFIER_SYSTEM_PROMPT = (
 
 YES_VALUES = {"yes", "y", "true", "1", "entailed", "correct"}
 NO_VALUES = {"no", "n", "false", "0", "not_entailed", "incorrect"}
+DOMAIN_HINTS = {
+    "temporal": "For temporal questions, build a compact timeline mentally and verify before/after, gaps, and weekday cycles.",
+    "spatial": "For spatial questions, fix the reference frame first, then verify left/right/up/down, layer, row, and neighbor relations.",
+    "hybrid": "For hybrid questions, split the local constraints by domain and verify only whether this option follows after merging them.",
+}
 
 
 def option_labels(options: dict[str, Any]) -> list[str]:
@@ -34,11 +39,32 @@ def answer_kind(answer: list[str]) -> str:
     return "multi" if len(answer) > 1 else "single"
 
 
-def build_option_prompt(record: dict[str, Any], option_label: str) -> str:
+def build_option_prompt(
+    record: dict[str, Any],
+    option_label: str,
+    include_all_options: bool = True,
+    instruction_variant: str = "base",
+) -> str:
     options = record["options"]
+    option_block = (
+        "Options:\n"
+        + "\n".join(f"{label}. {value}" for label, value in options.items())
+        + "\n\n"
+        if include_all_options
+        else ""
+    )
+    domain_hint = ""
+    if instruction_variant == "domain_hint":
+        domain_hint = DOMAIN_HINTS.get(infer_domain(record), "")
+    elif instruction_variant != "base":
+        raise ValueError(f"unsupported verifier instruction variant: {instruction_variant}")
+    domain_hint_block = f"{domain_hint}\n" if domain_hint else ""
     return (
         f"Text:\n{record['text']}\n\n"
         f"Question:\n{record['question']}\n\n"
+        f"{option_block}"
+        f"{domain_hint_block}"
+        "Judge only the current candidate option. Decide whether the current option is entailed by the text and question.\n\n"
         f"Option {option_label}:\n{options[option_label]}\n\n"
         "Does this option correctly answer the question? Output only JSON."
     )
@@ -48,23 +74,39 @@ def verifier_item_id(record_id: Any, option_label: str) -> str:
     return f"{record_id}::option::{option_label}"
 
 
-def build_verifier_item(record: dict[str, Any], option_label: str, system_prompt: str = VERIFIER_SYSTEM_PROMPT) -> dict[str, Any]:
+def build_verifier_item(
+    record: dict[str, Any],
+    option_label: str,
+    system_prompt: str = VERIFIER_SYSTEM_PROMPT,
+    include_all_options: bool = True,
+    instruction_variant: str = "base",
+) -> dict[str, Any]:
     answers = ordered_answers(record)
     target_label = "yes" if option_label in answers else "no"
     return {
         "id": verifier_item_id(record["id"], option_label),
         "question_id": record["id"],
         "option_label": option_label,
-        "option_text": record["options"][option_label],
-        "domain": infer_domain(record),
-        "language": record.get("language"),
-        "answer_kind": answer_kind(answers),
-        "gold_answer": answers,
-        "target_label": target_label,
-        "label": target_label,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": build_option_prompt(record, option_label)},
+            "option_text": record["options"][option_label],
+            "domain": infer_domain(record),
+            "language": record.get("language"),
+            "answer_kind": answer_kind(answers),
+            "gold_answer": answers,
+            "input_variant": "all_options" if include_all_options else "candidate_only",
+            "instruction_variant": instruction_variant,
+            "target_label": target_label,
+            "label": target_label,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+            {
+                "role": "user",
+                "content": build_option_prompt(
+                    record,
+                    option_label,
+                    include_all_options=include_all_options,
+                    instruction_variant=instruction_variant,
+                ),
+            },
             {"role": "assistant", "content": json.dumps({"target_label": target_label}, ensure_ascii=False)},
         ],
     }

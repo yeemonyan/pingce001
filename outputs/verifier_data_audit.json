@@ -12,17 +12,23 @@
     "multi_questions": 10,
     "temporal_questions": 5,
     "spatial_questions": 5,
-    "hybrid_questions": 5
+    "hybrid_questions": 5,
+    "chinese_questions": 10,
+    "long_constraint_questions": 10
   },
   "samples": {
     "single": [
       {
         "question_id": "SCoRE2026-train-754",
         "domain": "spatial",
+        "language": "en",
         "answer_kind": "single",
         "gold_answer": [
           "B"
         ],
+        "prompt_length": 1425,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "yes",
@@ -39,10 +45,14 @@
       {
         "question_id": "SCoRE2026-train-2466",
         "domain": "natural",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "B"
         ],
+        "prompt_length": 392,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "yes",
@@ -59,10 +69,14 @@
       {
         "question_id": "SCoRE2026-train-3358",
         "domain": "social",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 377,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -79,10 +93,14 @@
       {
         "question_id": "SCoRE2026-train-1133",
         "domain": "spatial",
+        "language": "en",
         "answer_kind": "single",
         "gold_answer": [
           "A"
         ],
+        "prompt_length": 1400,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -99,10 +117,14 @@
       {
         "question_id": "SCoRE2026-train-2028",
         "domain": "natural",
+        "language": "en",
         "answer_kind": "single",
         "gold_answer": [
           "A"
         ],
+        "prompt_length": 621,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -119,10 +141,14 @@
       {
         "question_id": "SCoRE2026-train-1703",
         "domain": "temporal",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 568,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -139,10 +165,14 @@
       {
         "question_id": "SCoRE2026-train-1730",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 1398,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -159,10 +189,14 @@
       {
         "question_id": "SCoRE2026-train-2377",
         "domain": "spatial",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "A"
         ],
+        "prompt_length": 512,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -179,10 +213,14 @@
       {
         "question_id": "SCoRE2026-train-3159",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "single",
         "gold_answer": [
           "A"
         ],
+        "prompt_length": 781,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -199,10 +237,14 @@
       {
         "question_id": "SCoRE2026-train-2593",
         "domain": "natural",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "A"
         ],
+        "prompt_length": 339,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -221,11 +263,15 @@
       {
         "question_id": "SCoRE2026-train-950",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "B"
         ],
+        "prompt_length": 777,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -242,6 +288,7 @@
       {
         "question_id": "SCoRE2026-train-1937",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
@@ -249,6 +296,9 @@
           "C",
           "D"
         ],
+        "prompt_length": 1377,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -265,12 +315,16 @@
       {
         "question_id": "SCoRE2026-train-1998",
         "domain": "temporal",
+        "language": "zh",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "B",
           "C"
         ],
+        "prompt_length": 591,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -287,12 +341,16 @@
       {
         "question_id": "SCoRE2026-train-1193",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "B",
           "C"
         ],
+        "prompt_length": 1019,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -309,11 +367,15 @@
       {
         "question_id": "SCoRE2026-train-1783",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "B",
           "D"
         ],
+        "prompt_length": 962,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "yes",
@@ -330,11 +392,15 @@
       {
         "question_id": "SCoRE2026-train-1710",
         "domain": "spatial",
+        "language": "zh",
         "answer_kind": "multi",
         "gold_answer": [
           "B",
           "C"
         ],
+        "prompt_length": 503,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "yes",
@@ -351,11 +417,15 @@
       {
         "question_id": "SCoRE2026-train-574",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "B",
           "C"
         ],
+        "prompt_length": 784,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "yes",
@@ -372,12 +442,16 @@
       {
         "question_id": "SCoRE2026-train-427",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "B",
           "C"
         ],
+        "prompt_length": 932,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -394,12 +468,16 @@
       {
         "question_id": "SCoRE2026-train-3532",
         "domain": "natural",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "B",
           "C"
         ],
+        "prompt_length": 635,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -416,11 +494,15 @@
       {
         "question_id": "SCoRE2026-train-1496",
         "domain": "spatial",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "B",
           "D"
         ],
+        "prompt_length": 1011,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "yes",
@@ -439,11 +521,15 @@
       {
         "question_id": "SCoRE2026-train-2690",
         "domain": "temporal",
+        "language": "zh",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "D"
         ],
+        "prompt_length": 572,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -460,12 +546,16 @@
       {
         "question_id": "SCoRE2026-train-2648",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "B",
           "D"
         ],
+        "prompt_length": 1395,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -482,10 +572,14 @@
       {
         "question_id": "SCoRE2026-train-2580",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "single",
         "gold_answer": [
           "B"
         ],
+        "prompt_length": 1024,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "yes",
@@ -502,6 +596,7 @@
       {
         "question_id": "SCoRE2026-train-1937",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
@@ -509,6 +604,9 @@
           "C",
           "D"
         ],
+        "prompt_length": 1377,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "yes",
@@ -525,11 +623,15 @@
       {
         "question_id": "SCoRE2026-train-1104",
         "domain": "temporal",
+        "language": "en",
         "answer_kind": "multi",
         "gold_answer": [
           "A",
           "D"
         ],
+        "prompt_length": 1547,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -548,10 +650,14 @@
       {
         "question_id": "SCoRE2026-train-1895",
         "domain": "spatial",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "A"
         ],
+        "prompt_length": 520,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -568,10 +674,14 @@
       {
         "question_id": "SCoRE2026-train-3105",
         "domain": "spatial",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 507,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -588,10 +698,14 @@
       {
         "question_id": "SCoRE2026-train-3114",
         "domain": "spatial",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 434,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -608,10 +722,14 @@
       {
         "question_id": "SCoRE2026-train-2707",
         "domain": "spatial",
+        "language": "en",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 1469,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -628,10 +746,14 @@
       {
         "question_id": "SCoRE2026-train-808",
         "domain": "spatial",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "A"
         ],
+        "prompt_length": 440,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "yes",
           "B": "no",
@@ -650,10 +772,14 @@
       {
         "question_id": "SCoRE2026-train-1802",
         "domain": "hybrid",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 482,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -670,10 +796,14 @@
       {
         "question_id": "SCoRE2026-train-2287",
         "domain": "hybrid",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "C"
         ],
+        "prompt_length": 461,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -690,10 +820,14 @@
       {
         "question_id": "SCoRE2026-train-1022",
         "domain": "hybrid",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 502,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -710,10 +844,14 @@
       {
         "question_id": "SCoRE2026-train-2533",
         "domain": "hybrid",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 470,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -730,10 +868,14 @@
       {
         "question_id": "SCoRE2026-train-1209",
         "domain": "hybrid",
+        "language": "zh",
         "answer_kind": "single",
         "gold_answer": [
           "D"
         ],
+        "prompt_length": 460,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
         "targets": {
           "A": "no",
           "B": "no",
@@ -745,6 +887,503 @@
           "B": "台灯",
           "C": "海参",
           "D": "以上选项都不是"
+        }
+      }
+    ],
+    "chinese": [
+      {
+        "question_id": "SCoRE2026-train-2472",
+        "domain": "social",
+        "language": "zh",
+        "answer_kind": "single",
+        "gold_answer": [
+          "B"
+        ],
+        "prompt_length": 383,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "钱静的前夫是李晓静的儿子的弟弟",
+          "B": "钱静的前夫是李晓静的儿子的挚友",
+          "C": "李晓静的师傅是孙大伟的前妻的师傅",
+          "D": "赵伟的弟子是孙大伟的挚友的姐姐"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1977",
+        "domain": "spatial",
+        "language": "zh",
+        "answer_kind": "single",
+        "gold_answer": [
+          "C"
+        ],
+        "prompt_length": 473,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "月季",
+          "B": "天竺葵",
+          "C": "茉莉",
+          "D": "百合"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3299",
+        "domain": "spatial",
+        "language": "zh",
+        "answer_kind": "single",
+        "gold_answer": [
+          "B"
+        ],
+        "prompt_length": 505,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "茶花",
+          "B": "牡丹",
+          "C": "茉莉",
+          "D": "以上选项都不是"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1786",
+        "domain": "spatial",
+        "language": "zh",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B"
+        ],
+        "prompt_length": 493,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "君子兰",
+          "B": "月季",
+          "C": "波斯菊",
+          "D": "百合"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2980",
+        "domain": "temporal",
+        "language": "zh",
+        "answer_kind": "single",
+        "gold_answer": [
+          "B"
+        ],
+        "prompt_length": 379,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "他跑步",
+          "B": "他约会",
+          "C": "他开组会",
+          "D": "他打羽毛球"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2116",
+        "domain": "temporal",
+        "language": "zh",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C"
+        ],
+        "prompt_length": 457,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "在他看论文的3天之前，他整理宿舍。",
+          "B": "在他整理宿舍之前4天，他看论文。",
+          "C": "在他跑步的5天之后，他打羽毛球。",
+          "D": "在他练习吉他之后3天，他学日语。"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1820",
+        "domain": "social",
+        "language": "zh",
+        "answer_kind": "single",
+        "gold_answer": [
+          "C"
+        ],
+        "prompt_length": 473,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "钱静的闺蜜是吴晶的某位名字中带有强的同学的同学",
+          "B": "赵伟是孙大伟的前妻的徒弟",
+          "C": "赵伟的弟子是王丽的同学的前妻",
+          "D": "赵伟的弟子是王丽的同学的前女友"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1208",
+        "domain": "natural",
+        "language": "zh",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "prompt_length": 374,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "猢狲",
+          "B": "树蛙",
+          "C": "武昌鱼",
+          "D": "黄鱼"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3331",
+        "domain": "spatial",
+        "language": "zh",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "B",
+          "C"
+        ],
+        "prompt_length": 458,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "刘处玄",
+          "B": "赵志敬",
+          "C": "周伯通",
+          "D": "丘处机"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-3357",
+        "domain": "spatial",
+        "language": "zh",
+        "answer_kind": "single",
+        "gold_answer": [
+          "A"
+        ],
+        "prompt_length": 499,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "牡丹",
+          "B": "茉莉",
+          "C": "郁金香",
+          "D": "以上选项都不是"
+        }
+      }
+    ],
+    "long_constraints": [
+      {
+        "question_id": "SCoRE2026-train-3037",
+        "domain": "temporal",
+        "language": "en",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "prompt_length": 1601,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "The gap between the time Jack started junior high school and the time he passed away is 30 years.",
+          "B": "The gap between the time Jack started junior high school and the time he started elementary school is 26 years.",
+          "C": "The first Pulitzer Prizes were announced 82 years before Jack started elementary school.",
+          "D": "IBM released the first personal computer 18 years before Jack started working at a company."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-413",
+        "domain": "temporal",
+        "language": "en",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "D"
+        ],
+        "prompt_length": 1588,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Google was founded 34 years after Jack started junior high school.",
+          "B": "There is a 36-year gap between the first Nobel Prizes were awarded and Jack ended his romantic relationship.",
+          "C": "The first Nobel Prizes were awarded before the first Pulitzer Prizes were announced.",
+          "D": "Jack started university before he graduated from elementary school."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1086",
+        "domain": "spatial",
+        "language": "en",
+        "answer_kind": "single",
+        "gold_answer": [
+          "B"
+        ],
+        "prompt_length": 1548,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "no",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Jasmine",
+          "B": "Monthly Rose",
+          "C": "Clivia",
+          "D": "Tulip"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1104",
+        "domain": "temporal",
+        "language": "en",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "D"
+        ],
+        "prompt_length": 1547,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "yes",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Jack started dating before he graduated from junior high school.",
+          "B": "Jack started junior high school before he started university.",
+          "C": "Jack retired after he graduated from high school.",
+          "D": "There is a 19-year gap between the United Nations was founded and the first Nobel Prizes were awarded."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2378",
+        "domain": "spatial",
+        "language": "en",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "prompt_length": 1541,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Cosmos",
+          "B": "Narcissus",
+          "C": "Monthly Rose",
+          "D": "None of the above"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1390",
+        "domain": "spatial",
+        "language": "en",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "prompt_length": 1540,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Narcissus",
+          "B": "Lily",
+          "C": "Camellia",
+          "D": "None of the above"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-350",
+        "domain": "spatial",
+        "language": "en",
+        "answer_kind": "single",
+        "gold_answer": [
+          "D"
+        ],
+        "prompt_length": 1521,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "no",
+          "D": "yes"
+        },
+        "option_text": {
+          "A": "Jasmine",
+          "B": "Narcissus",
+          "C": "Monthly Rose",
+          "D": "None of the above"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2864",
+        "domain": "spatial",
+        "language": "en",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "B",
+          "C"
+        ],
+        "prompt_length": 1516,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Tulip",
+          "B": "Clivia",
+          "C": "Lily",
+          "D": "Monthly Rose"
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-1633",
+        "domain": "temporal",
+        "language": "en",
+        "answer_kind": "multi",
+        "gold_answer": [
+          "A",
+          "B",
+          "C"
+        ],
+        "prompt_length": 1514,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "yes",
+          "B": "yes",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "There is a 4-year gap between Jack started junior high school and the first Pulitzer Prizes were announced.",
+          "B": "The gap between the time bubble gum was invented and the time Jack ended his romantic relationship is 2 years.",
+          "C": "Jack graduated from junior high school after the first Nobel Prizes were awarded.",
+          "D": "Apollo 11 landed on the moon 53 years after Jack was born."
+        }
+      },
+      {
+        "question_id": "SCoRE2026-train-2923",
+        "domain": "spatial",
+        "language": "en",
+        "answer_kind": "single",
+        "gold_answer": [
+          "C"
+        ],
+        "prompt_length": 1513,
+        "input_variant": "all_options",
+        "instruction_variant": "base",
+        "targets": {
+          "A": "no",
+          "B": "no",
+          "C": "yes",
+          "D": "no"
+        },
+        "option_text": {
+          "A": "Cosmos",
+          "B": "Narcissus",
+          "C": "Camellia",
+          "D": "Clivia"
         }
       }
     ]

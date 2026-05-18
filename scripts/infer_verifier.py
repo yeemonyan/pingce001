@@ -47,6 +47,8 @@ def run_verifier(
     records: list[dict[str, Any]],
     backend: VerifierBackend,
     yes_threshold: float | None = None,
+    include_all_options: bool = True,
+    instruction_variant: str = "base",
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     option_outputs = []
     for record in records:
@@ -55,7 +57,15 @@ def run_verifier(
             if isinstance(backend, GoldMockVerifierBackend):
                 backend.current_record = record
                 backend.current_label = option_label
-            raw_output = backend.generate(VERIFIER_SYSTEM_PROMPT, build_option_prompt(record, option_label))
+            raw_output = backend.generate(
+                VERIFIER_SYSTEM_PROMPT,
+                build_option_prompt(
+                    record,
+                    option_label,
+                    include_all_options=include_all_options,
+                    instruction_variant=instruction_variant,
+                ),
+            )
             verdict = extract_verdict(raw_output)
             option_outputs.append(
                 {
@@ -67,6 +77,8 @@ def run_verifier(
                     "label": verdict or "no",
                     "raw_output": raw_output,
                     "gold_answer": record.get("answer"),
+                    "input_variant": "all_options" if include_all_options else "candidate_only",
+                    "instruction_variant": instruction_variant,
                 }
             )
     return option_outputs, merge_option_predictions(option_outputs, yes_threshold=yes_threshold)
@@ -91,6 +103,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--dtype", default="bfloat16", choices=("auto", "float16", "bfloat16", "float32"))
     parser.add_argument("--device-map", default="auto")
+    parser.add_argument("--candidate-only", action="store_true", help="Only include current candidate option in user prompt.")
+    parser.add_argument("--instruction-variant", choices=("base", "domain_hint"), default="base")
     return parser.parse_args()
 
 
@@ -109,7 +123,13 @@ def main() -> None:
             device_map=args.device_map,
         )
 
-    option_outputs, merged_outputs = run_verifier(records, backend, yes_threshold=args.yes_threshold)
+    option_outputs, merged_outputs = run_verifier(
+        records,
+        backend,
+        yes_threshold=args.yes_threshold,
+        include_all_options=not args.candidate_only,
+        instruction_variant=args.instruction_variant,
+    )
     write_jsonl(merged_outputs, Path(args.output))
     if args.option_output:
         write_jsonl(option_outputs, Path(args.option_output))

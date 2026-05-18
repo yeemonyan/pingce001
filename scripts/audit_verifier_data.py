@@ -41,11 +41,16 @@ def validate_question_items(question_id: str, items: list[dict[str, Any]]) -> li
 
 def question_summary(items: list[dict[str, Any]]) -> dict[str, Any]:
     first = items[0]
+    user_prompt = first.get("messages", [{}, {"content": ""}])[1].get("content", "")
     return {
         "question_id": first["question_id"],
         "domain": first.get("domain"),
+        "language": first.get("language"),
         "answer_kind": first.get("answer_kind"),
         "gold_answer": first.get("gold_answer"),
+        "prompt_length": len(user_prompt),
+        "input_variant": first.get("input_variant"),
+        "instruction_variant": first.get("instruction_variant"),
         "targets": {
             item["option_label"]: item["target_label"]
             for item in sorted(items, key=lambda item: item["option_label"])
@@ -68,7 +73,14 @@ def sample_questions(
     return [question_summary(items) for items in candidates[:count]]
 
 
-def audit(items: list[dict[str, Any]], seed: int, sample_count: int, domain_count: int) -> dict[str, Any]:
+def audit(
+    items: list[dict[str, Any]],
+    seed: int,
+    sample_count: int,
+    domain_count: int,
+    language_count: int = 10,
+    long_count: int = 10,
+) -> dict[str, Any]:
     grouped = group_by_question(items)
     errors = []
     for question_id, question_items in grouped.items():
@@ -106,6 +118,20 @@ def audit(items: list[dict[str, Any]], seed: int, sample_count: int, domain_coun
             domain_count,
             rng,
         ),
+        "chinese": sample_questions(
+            grouped,
+            lambda item: item.get("language") == "zh",
+            language_count,
+            rng,
+        ),
+        "long_constraints": [
+            question_summary(items)
+            for items in sorted(
+                grouped.values(),
+                key=lambda question_items: len(question_items[0].get("messages", [{}, {"content": ""}])[1].get("content", "")),
+                reverse=True,
+            )[:long_count]
+        ],
     }
     return {
         "source_count": len(items),
@@ -122,6 +148,8 @@ def audit(items: list[dict[str, Any]], seed: int, sample_count: int, domain_coun
             "temporal_questions": domain_count,
             "spatial_questions": domain_count,
             "hybrid_questions": domain_count,
+            "chinese_questions": language_count,
+            "long_constraint_questions": long_count,
         },
         "samples": samples,
     }
@@ -134,12 +162,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--sample-count", type=int, default=10)
     parser.add_argument("--domain-count", type=int, default=5)
+    parser.add_argument("--language-count", type=int, default=10)
+    parser.add_argument("--long-count", type=int, default=10)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    report = audit(load_jsonl(Path(args.input)), args.seed, args.sample_count, args.domain_count)
+    report = audit(
+        load_jsonl(Path(args.input)),
+        args.seed,
+        args.sample_count,
+        args.domain_count,
+        language_count=args.language_count,
+        long_count=args.long_count,
+    )
     write_json(report, Path(args.output))
     print(json.dumps(report["validation"], ensure_ascii=False))
     if not report["validation"]["passed"]:

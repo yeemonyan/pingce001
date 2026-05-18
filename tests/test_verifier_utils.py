@@ -3,6 +3,7 @@ import unittest
 
 from scripts.infer_verifier import GoldMockVerifierBackend, run_verifier
 from scripts.verifier_utils import (
+    build_option_prompt,
     build_verifier_item,
     detailed_metrics,
     extract_verdict,
@@ -31,6 +32,15 @@ class VerifierUtilsTest(unittest.TestCase):
         self.assertEqual(yes_item["target_label"], "yes")
         self.assertEqual(no_item["target_label"], "no")
         self.assertEqual(json.loads(yes_item["messages"][2]["content"]), {"target_label": "yes"})
+
+    def test_build_option_prompt_variants(self):
+        all_options = build_option_prompt(self.record, "A")
+        candidate_only = build_option_prompt(self.record, "A", include_all_options=False)
+        hinted = build_option_prompt(self.record, "A", instruction_variant="domain_hint")
+
+        self.assertIn("Options:", all_options)
+        self.assertNotIn("Options:", candidate_only)
+        self.assertIn("timeline", hinted)
 
     def test_extract_verdict_from_json_and_text(self):
         self.assertEqual(extract_verdict('{"label":"yes"}'), "yes")
