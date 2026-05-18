@@ -206,6 +206,11 @@ Round 3 优先不重训，先做推理侧对比实验，入口见：
 - `configs/system_prompts_round3_short.yaml`
 - `scripts/analyze_lora_round3.py`
 
+当前诊断与 verifier 新路线见：
+
+- `docs/DIAGNOSIS_AND_VERIFIER_PLAN.md`
+- `scripts/build_verifier_data.py`
+
 ## 项目结构
 
 ```text
