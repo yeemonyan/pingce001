@@ -211,6 +211,18 @@ Round 3 优先不重训，先做推理侧对比实验，入口见：
 - `docs/DIAGNOSIS_AND_VERIFIER_PLAN.md`
 - `scripts/build_verifier_data.py`
 
+当前 verifier 进度：
+
+- 已完成 option-level verifier 数据构造脚手架
+- 已完成 verifier 推理脚手架：`scripts/infer_verifier.py`
+- 已完成 verifier 专用评测脚手架：`scripts/evaluate_verifier.py`
+- 已新增 verifier 训练配置：`configs/train_verifier.yaml`
+- 已完成本地单元测试与 mock smoke 验证
+- 服务器侧已生成：
+  - `outputs/sft_train_verifier.jsonl`
+  - `outputs/sft_valid_verifier.jsonl`
+  - `outputs/verifier_data_report.json`
+
 ## 项目结构
 
 ```text
