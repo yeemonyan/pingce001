@@ -1,0 +1,49 @@
+model:
+  base_model: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+  local_model_path: models/DeepSeek-R1-Distill-Qwen-7B
+  trust_remote_code: true
+
+data:
+  train_file: outputs/sft_train_verifier_probe_600q.jsonl
+  valid_file: outputs/sft_valid_verifier.jsonl
+  prompt_config: configs/system_prompts_v2.yaml
+
+training:
+  output_dir: checkpoints/deepseek_r1_distill_qwen_7b_verifier_probe_600q_seed2026
+  adapter_name: deepseek_r1_distill_qwen_7b_verifier_probe_600q_seed2026
+  seed: 2026
+  num_train_epochs: 2
+  learning_rate: 1.0e-4
+  weight_decay: 0.0
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  max_seq_length: 2048
+  logging_steps: 10
+  save_strategy: epoch
+  eval_strategy: epoch
+  save_total_limit: 2
+  bf16: true
+  fp16: false
+  gradient_checkpointing: true
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  bias: none
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+evaluation:
+  dev_prompts: outputs/dev_prompts.jsonl
+  prediction_output: outputs/dev_deepseek_verifier_probe_predictions.jsonl
+  eval_report: outputs/dev_deepseek_verifier_probe_eval.json

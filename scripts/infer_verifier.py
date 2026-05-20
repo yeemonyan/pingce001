@@ -92,6 +92,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--report", default=None, help="Optional detailed metric report JSON.")
     parser.add_argument("--backend", choices=("mock", "transformers"), default="transformers")
     parser.add_argument("--model-path", default="models/Qwen2.5-7B-Instruct")
+    parser.add_argument("--adapter-path", default=None)
     parser.add_argument("--max-new-tokens", type=int, default=64)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--top-p", type=float, default=1.0)
@@ -116,6 +117,7 @@ def main() -> None:
     else:
         backend = TransformersBackend(
             model_path=args.model_path,
+            adapter_path=args.adapter_path,
             max_new_tokens=args.max_new_tokens,
             temperature=args.temperature,
             top_p=args.top_p,
