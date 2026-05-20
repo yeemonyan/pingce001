@@ -84,6 +84,7 @@ class TransformersBackend:
     def __init__(
         self,
         model_path: str,
+        adapter_path: str | None,
         max_new_tokens: int,
         temperature: float,
         top_p: float,
@@ -104,12 +105,17 @@ class TransformersBackend:
             raise ValueError(f"Unsupported dtype: {dtype}")
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-        self.model = AutoModelForCausalLM.from_pretrained(
+        model = AutoModelForCausalLM.from_pretrained(
             model_path,
             torch_dtype=torch_dtype,
             device_map=device_map,
             trust_remote_code=True,
         )
+        if adapter_path:
+            from peft import PeftModel
+
+            model = PeftModel.from_pretrained(model, adapter_path)
+        self.model = model
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
         self.top_p = top_p
@@ -321,6 +327,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--prompts", default=str(DEFAULT_PROMPTS_PATH), help="System prompts YAML.")
     parser.add_argument("--backend", choices=("mock", "transformers"), default="transformers")
     parser.add_argument("--model-path", default="models/Qwen2.5-7B-Instruct")
+    parser.add_argument("--adapter-path", default=None)
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--top-p", type=float, default=1.0)
@@ -339,6 +346,7 @@ def main() -> None:
     else:
         backend = TransformersBackend(
             model_path=args.model_path,
+            adapter_path=args.adapter_path,
             max_new_tokens=args.max_new_tokens,
             temperature=args.temperature,
             top_p=args.top_p,
