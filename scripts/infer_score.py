@@ -220,16 +220,49 @@ def infer_domain(record: dict[str, Any]) -> str:
 
 
 def build_user_prompt(record: dict[str, Any]) -> str:
+    return build_user_prompt_with_count_hint(record, include_answer_count_hint=False)
+
+
+def infer_answer_kind(record: dict[str, Any]) -> str:
+    answers = record.get("answer")
+    if isinstance(answers, list) and len(answers) > 1:
+        return "multi"
+    return "single"
+
+
+def answer_count_hint(record: dict[str, Any]) -> str:
+    language = str(record.get("language") or "").strip().lower()
+    if not language:
+        text = f"{record.get('text', '')} {record.get('question', '')}"
+        language = "zh" if any("\u4e00" <= ch <= "\u9fff" for ch in text) else "en"
+    kind = infer_answer_kind(record)
+    if kind == "single":
+        return (
+            "这是一道单选题。你只能选择一个最符合题意的选项。"
+            if language == "zh"
+            else "This is a single-answer question. You must select exactly one best-supported option."
+        )
+    return (
+        "这是一道多选题。请选出所有正确选项，不要漏选，也不要多选。"
+        if language == "zh"
+        else "This is a multi-answer question. Select all supported options without missing any and without adding extras."
+    )
+
+
+def build_user_prompt_with_count_hint(record: dict[str, Any], *, include_answer_count_hint: bool) -> str:
     option_lines = "\n".join(
         f"{label}. {value}"
         for label, value in record["options"].items()
     )
-    return (
+    prompt = (
         f"Text:\n{record['text']}\n\n"
         f"Question:\n{record['question']}\n\n"
         f"Options:\n{option_lines}\n\n"
         "Choose all correct option labels. Output only JSON."
     )
+    if include_answer_count_hint:
+        prompt += "\n\n" + answer_count_hint(record)
+    return prompt
 
 
 def extract_answer(output: str, allowed_labels: set[str]) -> list[str]:
@@ -273,6 +306,8 @@ def run_inference(
     records: list[dict[str, Any]],
     prompts: dict[str, str],
     backend: GenerationBackend,
+    *,
+    include_answer_count_hint: bool = False,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     outputs = []
     correct = 0
@@ -286,7 +321,10 @@ def run_inference(
         domain_counts[domain] += 1
         system_prompt = prompts.get(domain) or prompts["general"]
         allowed_labels = set(record["options"].keys())
-        raw_output = backend.generate(system_prompt, build_user_prompt(record))
+        raw_output = backend.generate(
+            system_prompt,
+            build_user_prompt_with_count_hint(record, include_answer_count_hint=include_answer_count_hint),
+        )
         prediction = extract_answer(raw_output, allowed_labels)
         matched = is_correct(prediction, record.get("answer"))
         if matched is not None:
@@ -333,6 +371,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--top-p", type=float, default=1.0)
     parser.add_argument("--dtype", default="bfloat16", choices=("auto", "float16", "bfloat16", "float32"))
     parser.add_argument("--device-map", default="auto")
+    parser.add_argument(
+        "--answer-count-hint",
+        action="store_true",
+        help="Append a single-answer or multi-answer hint to the user prompt.",
+    )
     return parser.parse_args()
 
 
@@ -354,7 +397,7 @@ def main() -> None:
             device_map=args.device_map,
         )
 
-    outputs, metrics = run_inference(records, prompts, backend)
+    outputs, metrics = run_inference(records, prompts, backend, include_answer_count_hint=bool(args.answer_count_hint))
     dump_jsonl(outputs, Path(args.output))
     print(json.dumps(metrics, ensure_ascii=False))
 

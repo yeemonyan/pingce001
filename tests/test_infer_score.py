@@ -5,6 +5,8 @@ from unittest.mock import patch
 from scripts.infer_score import (
     MockBackend,
     TransformersBackend,
+    answer_count_hint,
+    build_user_prompt_with_count_hint,
     extract_answer,
     infer_domain,
     run_inference,
@@ -19,6 +21,28 @@ class InferScoreTest(unittest.TestCase):
     def test_extract_answer_from_text(self):
         output = "推理完成，最终答案是 A 和 C。"
         self.assertEqual(extract_answer(output, {"A", "B", "C", "D"}), ["A", "C"])
+
+    def test_build_user_prompt_with_answer_count_hint(self):
+        record = {
+            "text": "A happened before B.",
+            "question": "Which is correct?",
+            "options": {"A": "A before B", "B": "B before A"},
+            "answer": ["A"],
+            "language": "en",
+        }
+        prompt = build_user_prompt_with_count_hint(record, include_answer_count_hint=True)
+        self.assertIn("single-answer question", prompt)
+
+    def test_answer_count_hint_for_multi_zh(self):
+        record = {
+            "text": "甲在乙左边。",
+            "question": "以下选项正确的是____",
+            "options": {"A": "甲在左", "B": "乙在右"},
+            "answer": ["A", "B"],
+            "language": "zh",
+        }
+        hint = answer_count_hint(record)
+        self.assertIn("多选题", hint)
 
     def test_infer_domain_from_explicit_field(self):
         record = {"domain": "时间", "text": "", "question": ""}
@@ -49,6 +73,25 @@ class InferScoreTest(unittest.TestCase):
         prompts = {"social": "social prompt", "general": "general prompt"}
 
         outputs, metrics = run_inference(records, prompts, MockBackend())
+
+        self.assertEqual(outputs[0]["answer"], ["A"])
+        self.assertEqual(metrics["accuracy"], 1.0)
+
+    def test_run_inference_can_include_answer_count_hint(self):
+        records = [
+            {
+                "id": 1,
+                "domain": "temporal",
+                "text": "A happened before B.",
+                "question": "Which is correct?",
+                "options": {"A": "A before B", "B": "B before A"},
+                "answer": ["A"],
+                "language": "en",
+            }
+        ]
+        prompts = {"temporal": "temporal prompt", "general": "general prompt"}
+
+        outputs, metrics = run_inference(records, prompts, MockBackend(), include_answer_count_hint=True)
 
         self.assertEqual(outputs[0]["answer"], ["A"])
         self.assertEqual(metrics["accuracy"], 1.0)
