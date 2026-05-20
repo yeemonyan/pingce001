@@ -29,6 +29,8 @@ OUTPUTS = {
     ("valid", "answer_only"): DEFAULT_OUTPUT_DIR / "sft_valid_answer_only.jsonl",
     ("train", "rationale_json"): DEFAULT_OUTPUT_DIR / "sft_train_rationale_json.jsonl",
     ("valid", "rationale_json"): DEFAULT_OUTPUT_DIR / "sft_valid_rationale_json.jsonl",
+    ("train", "reasoning_short_json"): DEFAULT_OUTPUT_DIR / "sft_train_reasoning_short_json.jsonl",
+    ("valid", "reasoning_short_json"): DEFAULT_OUTPUT_DIR / "sft_valid_reasoning_short_json.jsonl",
 }
 DEFAULT_REPORT = DEFAULT_OUTPUT_DIR / "sft_data_report.json"
 
@@ -101,6 +103,22 @@ def metadata(record: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def answer_count_instruction(record: dict[str, Any]) -> str:
+    kind = answer_kind(record)
+    language = record["language"]
+    if kind == "single":
+        if language == "zh":
+            return "这是一道单选题。你只能输出一个最符合题意的选项。"
+        return "This is a single-answer question. You must output exactly one best-supported option."
+    if language == "zh":
+        return "这是一道多选题。你必须保留所有被材料支持的选项，且不要多选。"
+    return "This is a multi-answer question. Keep every supported option and do not add unsupported ones."
+
+
+def build_sft_user_prompt(record: dict[str, Any]) -> str:
+    return build_user_prompt(record) + "\n\n" + answer_count_instruction(record)
+
+
 def build_answer_only_assistant(record: dict[str, Any]) -> str:
     return json.dumps({"answers": option_ordered_answers(record)}, ensure_ascii=False, separators=(",", ":"))
 
@@ -117,11 +135,102 @@ def build_rationale_assistant(record: dict[str, Any]) -> str:
     return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
 
 
+def reasoning_steps(record: dict[str, Any]) -> list[str]:
+    domain = record["domain"]
+    language = record["language"]
+    kind = answer_kind(record)
+
+    if language == "zh":
+        domain_steps = {
+            "temporal": [
+                "先按题干中的先后、间隔和星期信息整理时间线。",
+                "逐个核对选项是否与时间线完全一致。",
+            ],
+            "spatial": [
+                "先固定参考系，再整理左右、上下、同层和相邻关系。",
+                "逐个核对选项是否与位置关系完全一致。",
+            ],
+            "social": [
+                "先整理人物关系链，再统一正向和逆向称谓。",
+                "逐个核对选项是否与关系链完全一致。",
+            ],
+            "natural": [
+                "先整理类别、属性、用途或位置等事实。",
+                "逐个核对选项是否与已知事实完全一致。",
+            ],
+            "hybrid": [
+                "先按题型分别整理关键约束，再联立所有条件。",
+                "逐个核对选项是否同时满足全部约束。",
+            ],
+            "general": [
+                "先整理题干中的关键约束。",
+                "逐个核对选项是否与约束完全一致。",
+            ],
+        }
+        count_step = (
+            "这是单选题，所以最终只能保留一个最符合条件的选项。"
+            if kind == "single"
+            else "这是多选题，所以最终要保留所有正确选项，不能漏选也不能多选。"
+        )
+    else:
+        domain_steps = {
+            "temporal": [
+                "First build a timeline from before/after, gap, and weekday clues.",
+                "Then check each option against the completed timeline.",
+            ],
+            "spatial": [
+                "First fix the reference frame, then map left/right, above/below, same-tier, and adjacency clues.",
+                "Then check each option against the completed layout.",
+            ],
+            "social": [
+                "First build the relation chain, then normalize forward and inverse kinship or role terms.",
+                "Then check each option against the completed relation chain.",
+            ],
+            "natural": [
+                "First organize category, property, function, or location facts.",
+                "Then check each option against the known facts.",
+            ],
+            "hybrid": [
+                "First separate the constraints by sub-domain, then merge them into one joint solution.",
+                "Then check each option against all merged constraints.",
+            ],
+            "general": [
+                "First organize the key constraints from the passage.",
+                "Then check each option against those constraints.",
+            ],
+        }
+        count_step = (
+            "This is a single-answer question, so keep exactly one supported option."
+            if kind == "single"
+            else "This is a multi-answer question, so keep all supported options and avoid both misses and extras."
+        )
+
+    steps = list(domain_steps.get(domain, domain_steps["general"]))
+    steps.append(count_step)
+    return steps
+
+
+def build_reasoning_short_assistant(record: dict[str, Any]) -> str:
+    payload = {
+        "analysis": {
+            "domain": record["domain"],
+            "language": record["language"],
+            "answer_kind": answer_kind(record),
+            "key_constraints": compact_constraints(record, limit=4),
+            "reasoning_steps": reasoning_steps(record),
+        },
+        "answers": option_ordered_answers(record),
+    }
+    return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+
+
 def build_sft_item(record: dict[str, Any], system_prompt: str, variant: str) -> dict[str, Any]:
     if variant == "answer_only":
         assistant = build_answer_only_assistant(record)
     elif variant == "rationale_json":
         assistant = build_rationale_assistant(record)
+    elif variant == "reasoning_short_json":
+        assistant = build_reasoning_short_assistant(record)
     else:
         raise ValueError(f"unsupported SFT variant: {variant}")
 
@@ -135,7 +244,7 @@ def build_sft_item(record: dict[str, Any], system_prompt: str, variant: str) -> 
         "answers": option_ordered_answers(record),
         "messages": [
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": build_user_prompt(record)},
+            {"role": "user", "content": build_sft_user_prompt(record)},
             {"role": "assistant", "content": assistant},
         ],
     }
@@ -234,6 +343,8 @@ def main() -> None:
         ("valid", "answer_only"): output_dir / "sft_valid_answer_only.jsonl",
         ("train", "rationale_json"): output_dir / "sft_train_rationale_json.jsonl",
         ("valid", "rationale_json"): output_dir / "sft_valid_rationale_json.jsonl",
+        ("train", "reasoning_short_json"): output_dir / "sft_train_reasoning_short_json.jsonl",
+        ("valid", "reasoning_short_json"): output_dir / "sft_valid_reasoning_short_json.jsonl",
     }
 
     by_id = normalize_records_by_id(Path(args.input))
@@ -246,6 +357,8 @@ def main() -> None:
         "valid_answer_only": build_dataset(valid_records, prompts, "answer_only"),
         "train_rationale_json": build_dataset(train_records, prompts, "rationale_json"),
         "valid_rationale_json": build_dataset(valid_records, prompts, "rationale_json"),
+        "train_reasoning_short_json": build_dataset(train_records, prompts, "reasoning_short_json"),
+        "valid_reasoning_short_json": build_dataset(valid_records, prompts, "reasoning_short_json"),
     }
     for items in outputs.values():
         validate_items(items)
