@@ -24,7 +24,7 @@ except ImportError:  # pragma: no cover - handled by runtime message
 
 
 VALID_LABELS = ("A", "B", "C", "D")
-DEFAULT_PROMPTS_PATH = Path("configs") / "system_prompts.yaml"
+DEFAULT_PROMPTS_PATH = Path("configs") / "system_prompts_v2.yaml"
 
 
 DOMAIN_ALIASES = {

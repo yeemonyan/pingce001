@@ -21,7 +21,7 @@ from scripts.parse_score_json import load_records, normalize_record
 DEFAULT_INPUT = Path("data/raw/train.json")
 DEFAULT_TRAIN_IDS = Path("data/splits/train_ids.json")
 DEFAULT_DEV_IDS = Path("data/splits/dev_ids.json")
-DEFAULT_PROMPTS = Path("configs/system_prompts.yaml")
+DEFAULT_PROMPTS = Path("configs/system_prompts_v2.yaml")
 DEFAULT_OUTPUT_DIR = Path("outputs")
 
 OUTPUTS = {
