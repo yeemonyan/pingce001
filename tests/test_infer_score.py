@@ -1,7 +1,10 @@
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from scripts.infer_score import (
     MockBackend,
+    TransformersBackend,
     extract_answer,
     infer_domain,
     run_inference,
@@ -49,6 +52,37 @@ class InferScoreTest(unittest.TestCase):
 
         self.assertEqual(outputs[0]["answer"], ["A"])
         self.assertEqual(metrics["accuracy"], 1.0)
+
+    def test_transformers_backend_loads_adapter_when_requested(self):
+        fake_tokenizer = SimpleNamespace()
+        fake_model = object()
+        fake_wrapped_model = object()
+
+        with patch.dict(
+            "sys.modules",
+            {
+                "torch": SimpleNamespace(float16="fp16", bfloat16="bf16", float32="fp32"),
+                "transformers": SimpleNamespace(
+                    AutoTokenizer=SimpleNamespace(from_pretrained=lambda *args, **kwargs: fake_tokenizer),
+                    AutoModelForCausalLM=SimpleNamespace(from_pretrained=lambda *args, **kwargs: fake_model),
+                ),
+                "peft": SimpleNamespace(
+                    PeftModel=SimpleNamespace(from_pretrained=lambda model, adapter_path: fake_wrapped_model)
+                ),
+            },
+        ):
+            backend = TransformersBackend(
+                model_path="models/base",
+                adapter_path="checkpoints/adapter",
+                max_new_tokens=32,
+                temperature=0.0,
+                top_p=1.0,
+                dtype="bfloat16",
+                device_map="auto",
+            )
+
+        self.assertIs(backend.tokenizer, fake_tokenizer)
+        self.assertIs(backend.model, fake_wrapped_model)
 
 
 if __name__ == "__main__":
