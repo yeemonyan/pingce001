@@ -18,6 +18,10 @@ class InferScoreTest(unittest.TestCase):
         output = '{"answer":["B","A"]}'
         self.assertEqual(extract_answer(output, {"A", "B", "C"}), ["B", "A"])
 
+    def test_extract_answer_from_answers_json(self):
+        output = '{"answers":["C","A"]}'
+        self.assertEqual(extract_answer(output, {"A", "B", "C"}), ["C", "A"])
+
     def test_extract_answer_from_text(self):
         output = "推理完成，最终答案是 A 和 C。"
         self.assertEqual(extract_answer(output, {"A", "B", "C", "D"}), ["A", "C"])

@@ -268,21 +268,24 @@ def build_user_prompt_with_count_hint(record: dict[str, Any], *, include_answer_
 def extract_answer(output: str, allowed_labels: set[str]) -> list[str]:
     try:
         parsed = json.loads(output)
-        if isinstance(parsed, dict) and isinstance(parsed.get("answer"), list):
-            labels = [str(item).strip().upper() for item in parsed["answer"]]
-            return dedupe_valid_labels(labels, allowed_labels)
+        if isinstance(parsed, dict):
+            for key in ("answer", "answers"):
+                if isinstance(parsed.get(key), list):
+                    labels = [str(item).strip().upper() for item in parsed[key]]
+                    return dedupe_valid_labels(labels, allowed_labels)
         if isinstance(parsed, list):
             labels = [str(item).strip().upper() for item in parsed]
             return dedupe_valid_labels(labels, allowed_labels)
     except json.JSONDecodeError:
         pass
 
-    match = re.search(r'"answer"\s*:\s*\[([^\]]+)\]', output, flags=re.IGNORECASE)
-    if match:
-        labels = re.findall(r"[A-D]", match.group(1).upper())
-        result = dedupe_valid_labels(labels, allowed_labels)
-        if result:
-            return result
+    for key in ("answer", "answers"):
+        match = re.search(rf'"{key}"\s*:\s*\[([^\]]+)\]', output, flags=re.IGNORECASE)
+        if match:
+            labels = re.findall(r"[A-D]", match.group(1).upper())
+            result = dedupe_valid_labels(labels, allowed_labels)
+            if result:
+                return result
 
     labels = re.findall(r"\b[A-D]\b", output.upper())
     return dedupe_valid_labels(labels, allowed_labels)
