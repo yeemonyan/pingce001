@@ -14,7 +14,8 @@ from scripts.infer_score import VALID_LABELS, infer_domain
 
 VERIFIER_SYSTEM_PROMPT = (
     "You are a SCoRE2026 option verifier. Decide whether one option is entailed "
-    "by the text and question. Return only JSON: {\"target_label\":\"yes\"} or {\"target_label\":\"no\"}."
+    "by the text and question. Do not explain. Do not think aloud. "
+    "Reply with only one lowercase word as the very first token: yes or no."
 )
 
 YES_VALUES = {"yes", "y", "true", "1", "entailed", "correct"}
@@ -66,7 +67,7 @@ def build_option_prompt(
         f"{domain_hint_block}"
         "Judge only the current candidate option. Decide whether the current option is entailed by the text and question.\n\n"
         f"Option {option_label}:\n{options[option_label]}\n\n"
-        "Does this option correctly answer the question? Output only JSON."
+        "Does this option correctly answer the question? Reply with only one lowercase word: yes or no."
     )
 
 
@@ -113,8 +114,15 @@ def build_verifier_item(
 
 
 def extract_verdict(output: str) -> str | None:
+    normalized_output = (
+        output.replace("Ġ", " ")
+        .replace("Ċ", "\n")
+        .replace("\u0120", " ")
+        .replace("\u010a", "\n")
+        .strip()
+    )
     try:
-        parsed = json.loads(output)
+        parsed = json.loads(normalized_output)
         if isinstance(parsed, dict):
             value = parsed.get("target_label") or parsed.get("label") or parsed.get("verdict") or parsed.get("answer")
             if isinstance(value, bool):
@@ -128,7 +136,7 @@ def extract_verdict(output: str) -> str | None:
     except json.JSONDecodeError:
         pass
 
-    lowered = output.strip().lower()
+    lowered = normalized_output.lower()
     match = re.search(r"\b(yes|no|true|false|entailed|not entailed|correct|incorrect)\b", lowered)
     if not match:
         return None

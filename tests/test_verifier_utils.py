@@ -46,6 +46,7 @@ class VerifierUtilsTest(unittest.TestCase):
         self.assertEqual(extract_verdict('{"label":"yes"}'), "yes")
         self.assertEqual(extract_verdict('{"target_label":"no"}'), "no")
         self.assertEqual(extract_verdict("not entailed"), "no")
+        self.assertEqual(extract_verdict("ĊĠyes"), "yes")
         self.assertIsNone(extract_verdict("maybe"))
 
     def test_merge_option_predictions(self):
