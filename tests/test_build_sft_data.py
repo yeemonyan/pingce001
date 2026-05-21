@@ -10,6 +10,7 @@ from scripts.build_sft_data import (
     compact_constraints,
     normalize_system_prompt_schema,
     reasoning_steps,
+    resolve_variant_for_record,
     validate_items,
 )
 
@@ -64,6 +65,27 @@ class BuildSftDataTest(unittest.TestCase):
         self.assertEqual([message["role"] for message in item["messages"]], ["system", "user", "assistant"])
         self.assertIn("multi-answer question", item["messages"][1]["content"])
         validate_items([item])
+
+    def test_mixed_variant_uses_short_reasoning_for_hard_domains(self):
+        item = build_sft_item(self.record, "system prompt", "mixed_reasoning_json")
+        assistant = json.loads(item["messages"][2]["content"])
+        self.assertEqual(item["variant"], "reasoning_short_json")
+        self.assertIn("reasoning_steps", assistant["analysis"])
+
+    def test_mixed_variant_keeps_answer_only_for_stable_domains(self):
+        social_record = {**self.record, "domain": "social"}
+        item = build_sft_item(social_record, "system prompt", "mixed_reasoning_json")
+        assistant = json.loads(item["messages"][2]["content"])
+        self.assertEqual(item["variant"], "answer_only")
+        self.assertEqual(assistant, {"answers": ["A", "C"]})
+
+    def test_resolve_variant_for_record(self):
+        self.assertEqual(resolve_variant_for_record(self.record, "mixed_reasoning_json"), "reasoning_short_json")
+        self.assertEqual(
+            resolve_variant_for_record({**self.record, "domain": "natural"}, "mixed_reasoning_json"),
+            "answer_only",
+        )
+        self.assertEqual(resolve_variant_for_record(self.record, "answer_only"), "answer_only")
 
     def test_normalize_system_prompt_schema(self):
         prompt = 'Return only {"answer":["A"]}.'

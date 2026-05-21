@@ -31,6 +31,8 @@ OUTPUTS = {
     ("valid", "rationale_json"): DEFAULT_OUTPUT_DIR / "sft_valid_rationale_json.jsonl",
     ("train", "reasoning_short_json"): DEFAULT_OUTPUT_DIR / "sft_train_reasoning_short_json.jsonl",
     ("valid", "reasoning_short_json"): DEFAULT_OUTPUT_DIR / "sft_valid_reasoning_short_json.jsonl",
+    ("train", "mixed_reasoning_json"): DEFAULT_OUTPUT_DIR / "sft_train_mixed_reasoning_json.jsonl",
+    ("valid", "mixed_reasoning_json"): DEFAULT_OUTPUT_DIR / "sft_valid_mixed_reasoning_json.jsonl",
 }
 DEFAULT_REPORT = DEFAULT_OUTPUT_DIR / "sft_data_report.json"
 
@@ -224,20 +226,30 @@ def build_reasoning_short_assistant(record: dict[str, Any]) -> str:
     return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
 
 
+def resolve_variant_for_record(record: dict[str, Any], variant: str) -> str:
+    if variant != "mixed_reasoning_json":
+        return variant
+    if record["domain"] in {"temporal", "spatial", "hybrid"}:
+        return "reasoning_short_json"
+    return "answer_only"
+
+
 def build_sft_item(record: dict[str, Any], system_prompt: str, variant: str) -> dict[str, Any]:
-    if variant == "answer_only":
+    resolved_variant = resolve_variant_for_record(record, variant)
+    if resolved_variant == "answer_only":
         assistant = build_answer_only_assistant(record)
-    elif variant == "rationale_json":
+    elif resolved_variant == "rationale_json":
         assistant = build_rationale_assistant(record)
-    elif variant == "reasoning_short_json":
+    elif resolved_variant == "reasoning_short_json":
         assistant = build_reasoning_short_assistant(record)
     else:
-        raise ValueError(f"unsupported SFT variant: {variant}")
+        raise ValueError(f"unsupported SFT variant: {resolved_variant}")
 
     return {
         "id": record["id"],
         "domain": record["domain"],
         "language": record["language"],
+        "variant": resolved_variant,
         "text": record["text"],
         "question": record["question"],
         "options": record["options"],
@@ -345,6 +357,8 @@ def main() -> None:
         ("valid", "rationale_json"): output_dir / "sft_valid_rationale_json.jsonl",
         ("train", "reasoning_short_json"): output_dir / "sft_train_reasoning_short_json.jsonl",
         ("valid", "reasoning_short_json"): output_dir / "sft_valid_reasoning_short_json.jsonl",
+        ("train", "mixed_reasoning_json"): output_dir / "sft_train_mixed_reasoning_json.jsonl",
+        ("valid", "mixed_reasoning_json"): output_dir / "sft_valid_mixed_reasoning_json.jsonl",
     }
 
     by_id = normalize_records_by_id(Path(args.input))
@@ -359,6 +373,8 @@ def main() -> None:
         "valid_rationale_json": build_dataset(valid_records, prompts, "rationale_json"),
         "train_reasoning_short_json": build_dataset(train_records, prompts, "reasoning_short_json"),
         "valid_reasoning_short_json": build_dataset(valid_records, prompts, "reasoning_short_json"),
+        "train_mixed_reasoning_json": build_dataset(train_records, prompts, "mixed_reasoning_json"),
+        "valid_mixed_reasoning_json": build_dataset(valid_records, prompts, "mixed_reasoning_json"),
     }
     for items in outputs.values():
         validate_items(items)
