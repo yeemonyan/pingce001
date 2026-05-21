@@ -12,6 +12,7 @@
 - Dev split：2880 train / 720 dev，seed `2026`
 - Qwen zero-shot dev baseline：`131 / 720`，ACC `0.1819444444`
 - 最低 dev 领域：`temporal`，ACC `0.105`
+- 当前实验结论：`answer_only` LoRA 是稳定主线；全量短推理会拉低 `natural/social`，因此新增“高错题型短推理 + 稳定题型 answer_only”的混合路线。
 
 ## 任务约束
 
@@ -54,10 +55,19 @@
 - 新增 SFT 数据构造脚本：`scripts/build_sft_data.py`
 - 保留字段：`id`、`text`、`question`、`options`、`answers`、`domain`、`language`
 - 生成两套训练/验证数据：
+- 生成 answer-only、结构化 JSON、短推理和混合四套训练/验证数据：
   - `outputs/sft_train_answer_only.jsonl`
   - `outputs/sft_valid_answer_only.jsonl`
   - `outputs/sft_train_rationale_json.jsonl`
   - `outputs/sft_valid_rationale_json.jsonl`
+  - `outputs/sft_train_reasoning_short_json.jsonl`
+  - `outputs/sft_valid_reasoning_short_json.jsonl`
+  - `outputs/sft_train_mixed_reasoning_json.jsonl`
+  - `outputs/sft_valid_mixed_reasoning_json.jsonl`
+- 新增混合路线配置：
+  - `configs/system_prompts_v3_mixed_focus.yaml`
+  - `configs/train_qwen_mixed_reasoning.yaml`
+  - `scripts/run_qwen_mixed_reasoning.sh`
 - 数据报告：`outputs/sft_data_report.json`
 
 ### Phase D: Dev Baseline 与错题分析
@@ -213,7 +223,7 @@ python -m unittest discover -s tests -v
 
 ## 下一步
 
-- 新建 `configs/system_prompts_v2.yaml`，优先优化 `temporal`、`social`、`hybrid`。
+- 优先跑 `configs/train_qwen_mixed_reasoning.yaml`，比较混合路线是否能在保住 `natural/social` 的同时提升 `temporal/spatial/hybrid`。
 - 在 `docs/PROMPT_NOTES.md` 记录每次 prompt 版本变化和原因。
-- 用 dev baseline 作为对照，比较 prompt v2 和后续 LoRA 模型。
-- 开始 LoRA/SFT 训练，优先观察 temporal、多选漏选和过选问题。
+- 用 dev baseline 作为对照，比较 `answer_only`、`reasoning_short_json` 和 `mixed_reasoning_json` 三条路线。
+- 继续围绕 `single_to_multi`、`multi_missing`、`spatial_reference_error` 做针对性优化。
