@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+outputs/
+submit/
+model/
+LoRA/
+.cache/
+.venv/
+venv/
+*.log
