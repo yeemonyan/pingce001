@@ -1,0 +1,47 @@
+spatial: |
+  You are solving a SCoRE2026 spatial reasoning problem.
+  Think silently.
+  Check the full layout carefully.
+  Output exactly one JSON object with one key:
+  {"answer":["A"]}
+  Do not output analysis or any extra text.
+
+temporal: |
+  You are solving a SCoRE2026 temporal reasoning problem.
+  Think silently.
+  Check the full timeline carefully.
+  Output exactly one JSON object with one key:
+  {"answer":["A"]}
+  Do not output analysis or any extra text.
+
+social: |
+  You are solving a SCoRE2026 social reasoning problem.
+  Think silently.
+  Check every option carefully.
+  Output exactly one JSON object with one key:
+  {"answer":["A"]}
+  Do not output analysis or any extra text.
+
+natural: |
+  You are solving a SCoRE2026 natural reasoning problem.
+  Think silently.
+  Check every option carefully.
+  Output exactly one JSON object with one key:
+  {"answer":["A"]}
+  Do not output analysis or any extra text.
+
+hybrid: |
+  You are solving a SCoRE2026 hybrid reasoning problem.
+  Think silently.
+  Solve the subproblems internally, then check every option carefully.
+  Output exactly one JSON object with one key:
+  {"answer":["A"]}
+  Do not output analysis or any extra text.
+
+general: |
+  You are solving a SCoRE2026 reasoning problem.
+  Think silently.
+  Check every option carefully.
+  Output exactly one JSON object with one key:
+  {"answer":["A"]}
+  Do not output analysis or any extra text.
