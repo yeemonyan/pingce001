@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from collections import Counter
 from pathlib import Path
@@ -94,6 +95,11 @@ class TransformersBackend:
         from transformers import AutoModelForCausalLM, AutoTokenizer
         import torch
 
+        if os.environ.get("FORCE_GROUPED_MM_FALLBACK") == "1":
+            import transformers.integrations.moe as moe_integration
+
+            moe_integration._can_use_grouped_mm = lambda input, weight, offs: False
+
         dtype_map = {
             "auto": "auto",
             "float16": torch.float16,
@@ -115,6 +121,9 @@ class TransformersBackend:
             from peft import PeftModel
 
             model = PeftModel.from_pretrained(model, adapter_path)
+        moe_experts_implementation = os.environ.get("MOE_EXPERTS_IMPLEMENTATION")
+        if moe_experts_implementation and hasattr(model.config, "_experts_implementation"):
+            model.config._experts_implementation = moe_experts_implementation
         self.model = model
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
@@ -125,11 +134,19 @@ class TransformersBackend:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ]
-        text = self.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        try:
+            text = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False,
+            )
+        except TypeError:
+            text = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+            )
         inputs = self.tokenizer([text], return_tensors="pt").to(self.model.device)
         do_sample = self.temperature > 0
         outputs = self.model.generate(
