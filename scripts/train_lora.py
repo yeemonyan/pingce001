@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import inspect
 import json
+import os
 import random
 import sys
 from pathlib import Path
@@ -61,6 +62,11 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def is_distributed() -> bool:
+    world_size = int(os.environ.get("WORLD_SIZE", "1"))
+    return world_size > 1 or "LOCAL_RANK" in os.environ
+
+
 def build_training_arguments_kwargs(training_cfg: dict[str, Any], training_arguments_cls: Any) -> dict[str, Any]:
     signature = inspect.signature(training_arguments_cls.__init__)
     params = signature.parameters
@@ -83,6 +89,8 @@ def build_training_arguments_kwargs(training_cfg: dict[str, Any], training_argum
         "report_to": [],
         "remove_unused_columns": False,
     }
+    if is_distributed():
+        kwargs["ddp_find_unused_parameters"] = False
     eval_value = str(training_cfg["eval_strategy"])
     if "eval_strategy" in params:
         kwargs["eval_strategy"] = eval_value
@@ -145,11 +153,16 @@ def main() -> None:
     from peft import LoraConfig, get_peft_model
 
     torch_dtype = torch.bfloat16 if bool(training_cfg.get("bf16", False)) else torch.float16
+    model_kwargs: dict[str, Any] = {
+        "torch_dtype": torch_dtype,
+        "trust_remote_code": bool(model_cfg.get("trust_remote_code", True)),
+        "low_cpu_mem_usage": True,
+    }
+    if not is_distributed():
+        model_kwargs["device_map"] = "auto"
     model = AutoModelForCausalLM.from_pretrained(
         resolved_model_path,
-        torch_dtype=torch_dtype,
-        device_map="auto",
-        trust_remote_code=bool(model_cfg.get("trust_remote_code", True)),
+        **model_kwargs,
     )
     model.config.use_cache = False
 
