@@ -11,9 +11,12 @@ Use --backend transformers on the GPU server after downloading the model.
 from __future__ import annotations
 
 import argparse
+import importlib.machinery
 import json
 import os
 import re
+import sys
+import types
 from collections import Counter
 from pathlib import Path
 from typing import Any, Protocol
@@ -81,6 +84,31 @@ class MockBackend:
         return json.dumps({"answer": answer}, ensure_ascii=False)
 
 
+def ensure_sklearn_runtime() -> None:
+    """Provide a tiny sklearn.metrics fallback for broken inference envs."""
+
+    try:
+        from sklearn.metrics import roc_curve  # noqa: F401
+        return
+    except Exception:
+        metrics_module = types.ModuleType("sklearn.metrics")
+        metrics_module.__spec__ = importlib.machinery.ModuleSpec(
+            "sklearn.metrics",
+            loader=None,
+        )
+
+        def roc_curve(*args: object, **kwargs: object) -> None:
+            raise RuntimeError("sklearn.metrics.roc_curve is unavailable in this runtime.")
+
+        metrics_module.roc_curve = roc_curve
+
+        sklearn_module = sys.modules.get("sklearn") or types.ModuleType("sklearn")
+        sklearn_module.__spec__ = importlib.machinery.ModuleSpec("sklearn", loader=None)
+        sklearn_module.metrics = metrics_module
+        sys.modules["sklearn"] = sklearn_module
+        sys.modules["sklearn.metrics"] = metrics_module
+
+
 class TransformersBackend:
     def __init__(
         self,
@@ -92,6 +120,7 @@ class TransformersBackend:
         dtype: str,
         device_map: str,
     ) -> None:
+        ensure_sklearn_runtime()
         from transformers import AutoModelForCausalLM, AutoTokenizer
         import torch
 
