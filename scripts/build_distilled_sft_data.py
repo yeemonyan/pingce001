@@ -15,6 +15,7 @@ if __package__ in (None, ""):
 
 from scripts.build_sft_data import answer_count_instruction
 from scripts.build_teacher_distill_requests import build_request as build_teacher_request
+from scripts.build_teacher_distill_requests import detect_question_polarity
 from scripts.build_teacher_distill_requests import load_prompt_config as load_teacher_prompt_config
 from scripts.infer_score import build_user_prompt, infer_domain, load_prompts
 from scripts.make_dev_split import answer_kind, detect_language
@@ -30,6 +31,14 @@ DEFAULT_TEACHER_TRAIN = Path("outputs/distill/teacher_responses_train.jsonl")
 DEFAULT_TEACHER_VALID = Path("outputs/distill/teacher_responses_valid.jsonl")
 DEFAULT_OUTPUT_DIR = Path("outputs")
 DEFAULT_REPORT = DEFAULT_OUTPUT_DIR / "distill_data_report.json"
+RETRYABLE_STATUSES = {
+    "invalid_json",
+    "missing_option_judgments",
+    "missing_option",
+    "invalid_option_label",
+    "inconsistent_selected_answers",
+    "missing_teacher_output",
+}
 
 
 def load_json(path: Path) -> Any:
@@ -101,6 +110,7 @@ def extract_payload(item: dict[str, Any]) -> dict[str, Any] | None:
 def normalize_teacher_result(record: dict[str, Any], item: dict[str, Any]) -> dict[str, Any]:
     payload = extract_payload(item)
     options = list(record["options"].keys())
+    polarity = detect_question_polarity(record)
     if payload is None:
         return {"status": "invalid_json", "id": record["id"]}
     judgments = payload.get("option_judgments")
@@ -108,25 +118,45 @@ def normalize_teacher_result(record: dict[str, Any], item: dict[str, Any]) -> di
         return {"status": "missing_option_judgments", "id": record["id"], "payload": payload}
 
     normalized_judgments: dict[str, dict[str, Any]] = {}
-    predicted_answers: list[str] = []
+    selected_answers: list[str] = []
+    statement_truth_answers: list[str] = []
     for label in options:
         entry = judgments.get(label)
         if not isinstance(entry, dict):
             return {"status": "missing_option", "id": record["id"], "payload": payload, "option": label}
-        flag = normalize_bool(entry.get("label"))
-        if flag is None:
+        selected_flag = normalize_bool(entry.get("selected"))
+        truth_flag = normalize_bool(entry.get("label"))
+        if selected_flag is None and truth_flag is None:
             return {"status": "invalid_option_label", "id": record["id"], "payload": payload, "option": label}
+        if selected_flag is None and truth_flag is not None:
+            selected_flag = (not truth_flag) if polarity == "select_incorrect" else truth_flag
         reason = normalize_reason(entry.get("reason", ""))
         if not reason:
             reason = "Insufficient explanation."
-        normalized_judgments[label] = {"label": flag, "reason": reason}
-        if flag:
-            predicted_answers.append(label)
+        normalized_judgments[label] = {"label": bool(selected_flag), "reason": reason}
+        if selected_flag:
+            selected_answers.append(label)
+        if truth_flag:
+            statement_truth_answers.append(label)
 
-    if not predicted_answers and isinstance(payload.get("answers"), list):
-        predicted_answers = [str(label).strip().upper() for label in payload["answers"] if str(label).strip().upper() in options]
-        for label in options:
-            normalized_judgments[label]["label"] = label in predicted_answers
+    payload_answers = []
+    if isinstance(payload.get("answers"), list):
+        payload_answers = [str(label).strip().upper() for label in payload["answers"] if str(label).strip().upper() in options]
+
+    predicted_answers = payload_answers or selected_answers
+    if predicted_answers and not payload_answers:
+        payload_answers = predicted_answers
+    if payload_answers and selected_answers and payload_answers != selected_answers:
+        return {
+            "status": "inconsistent_selected_answers",
+            "id": record["id"],
+            "payload": payload,
+            "selected_answers": selected_answers,
+            "payload_answers": payload_answers,
+            "statement_truth_answers": statement_truth_answers,
+        }
+    if not predicted_answers:
+        predicted_answers = selected_answers
 
     final_reasoning = normalize_reason(payload.get("final_reasoning", ""))
     gold_answers = list(record["answers"])
@@ -355,6 +385,19 @@ def main() -> None:
                 )
                 continue
 
+            if status in RETRYABLE_STATUSES:
+                retry_requests.append(
+                    dict(
+                        build_teacher_request(record, teacher_prompts, split),
+                        retry_reason=status,
+                        predicted_answers=normalized.get("predicted_answers", []),
+                    )
+                )
+                continue
+
+            if status == "incorrect_answer" and args.fallback_incorrect_to_answer_only:
+                continue
+
             retry_requests.append(
                 dict(
                     build_teacher_request(record, teacher_prompts, split),
@@ -401,6 +444,8 @@ def main() -> None:
         "boost_buckets": sorted(boost_buckets),
         "boost_factor": max(args.boost_factor, 1),
         "status_counts": dict(sorted(status_counter.items())),
+        "retryable_statuses": sorted(RETRYABLE_STATUSES),
+        "retryable_count": sum(status_counter.get(status, 0) for status in RETRYABLE_STATUSES),
         "split_counts": {
             split: {
                 variant: len(items)

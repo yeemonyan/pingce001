@@ -146,54 +146,59 @@ def run_single(
     session = requests.Session()
     payload = build_request_payload(model, list(item["messages"]), temperature, reasoning_effort, max_tokens)
     last_error = ""
-    for attempt in range(1, max_retries + 1):
-        try:
-            body, content, parsed = request_once(
-                session=session,
-                base_url=base_url,
-                api_key=api_key,
-                payload=payload,
-                timeout=timeout,
-            )
-            result = {
-                "id": item["id"],
-                "split": item.get("split"),
-                "domain": item.get("domain"),
-                "language": item.get("language"),
-                "answer_kind": item.get("answer_kind"),
-                "request_version": item.get("request_version"),
-                "teacher_model": model,
-                "teacher_base_url": base_url,
-                "attempt": attempt,
-                "usage": body.get("usage"),
-                "raw_response": body,
-                "raw_output": content,
-                "response_json": parsed,
-            }
-            if parsed is None:
-                result["parse_error"] = "json_not_found"
-            return result
-        except Exception as exc:  # pragma: no cover - network/runtime
-            last_error = f"{type(exc).__name__}: {exc}"
-            if attempt < max_retries:
-                time.sleep(min(2**attempt + random.random(), 10))
-    result = {
-        "id": item["id"],
-        "split": item.get("split"),
-        "domain": item.get("domain"),
-        "language": item.get("language"),
-        "answer_kind": item.get("answer_kind"),
-        "request_version": item.get("request_version"),
-        "teacher_model": model,
-        "teacher_base_url": base_url,
-        "attempt": max_retries,
-        "response_json": None,
-        "raw_output": "",
-        "error": last_error or "unknown_error",
-    }
-    if sleep_between > 0:
-        time.sleep(sleep_between)
-    return result
+    try:
+        for attempt in range(1, max_retries + 1):
+            try:
+                body, content, parsed = request_once(
+                    session=session,
+                    base_url=base_url,
+                    api_key=api_key,
+                    payload=payload,
+                    timeout=timeout,
+                )
+                result = {
+                    "id": item["id"],
+                    "split": item.get("split"),
+                    "domain": item.get("domain"),
+                    "language": item.get("language"),
+                    "answer_kind": item.get("answer_kind"),
+                    "request_version": item.get("request_version"),
+                    "teacher_model": model,
+                    "teacher_base_url": base_url,
+                    "attempt": attempt,
+                    "usage": body.get("usage"),
+                    "raw_response": body,
+                    "raw_output": content,
+                    "response_json": parsed,
+                }
+                if parsed is None:
+                    result["parse_error"] = "json_not_found"
+                if sleep_between > 0:
+                    time.sleep(sleep_between)
+                return result
+            except Exception as exc:  # pragma: no cover - network/runtime
+                last_error = f"{type(exc).__name__}: {exc}"
+                if attempt < max_retries:
+                    time.sleep(min(2**attempt + random.random(), 10))
+        result = {
+            "id": item["id"],
+            "split": item.get("split"),
+            "domain": item.get("domain"),
+            "language": item.get("language"),
+            "answer_kind": item.get("answer_kind"),
+            "request_version": item.get("request_version"),
+            "teacher_model": model,
+            "teacher_base_url": base_url,
+            "attempt": max_retries,
+            "response_json": None,
+            "raw_output": "",
+            "error": last_error or "unknown_error",
+        }
+        if sleep_between > 0:
+            time.sleep(sleep_between)
+        return result
+    finally:
+        session.close()
 
 
 def append_jsonl(path: Path, items: list[dict[str, Any]]) -> None:
