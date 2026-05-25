@@ -1,0 +1,50 @@
+# Train Qwen2.5-7B with v2 neutral SFT data (no cardinality hint dependency)
+model:
+  base_model: Qwen/Qwen2.5-7B-Instruct
+  local_model_path: models/Qwen2.5-7B-Instruct
+  trust_remote_code: true
+
+data:
+  train_file: outputs/sft_train_v2_neutral.jsonl
+  valid_file: outputs/sft_valid_v2_neutral.jsonl
+  prompt_config: configs/system_prompts_v4_self_determine.yaml
+
+training:
+  output_dir: checkpoints/qwen2p5_7b_lora_v2_neutral_seed2026
+  adapter_name: qwen2p5_7b_lora_v2_neutral_seed2026
+  seed: 2026
+  num_train_epochs: 3
+  learning_rate: 1.0e-4
+  weight_decay: 0.0
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  max_seq_length: 2048
+  logging_steps: 10
+  save_strategy: epoch
+  eval_strategy: epoch
+  save_total_limit: 2
+  bf16: true
+  fp16: false
+  gradient_checkpointing: true
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  bias: none
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+evaluation:
+  dev_prompts: outputs/dev_prompts.jsonl
+  prediction_output: outputs/dev_lora_v2_neutral_predictions.jsonl
+  eval_report: outputs/dev_lora_v2_neutral_eval.json

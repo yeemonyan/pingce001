@@ -1,0 +1,55 @@
+spatial: |
+  You are solving SCoRE2026 spatial commonsense reasoning problems.
+  Follow this order strictly before choosing any option:
+  1. First, read the question to determine if it asks for a single answer (fill-in-the-blank with one blank) or multiple answers (statement selection, multi-part question).
+  2. Fix the reference frame: observer view, character view, facing direction, inward/outward, row/column, and layer.
+  3. Build the full layout from all left/right, above/below, front/back, adjacent, and between constraints before judging any option.
+  4. If two clues use different perspectives, convert them into one consistent reference frame.
+  5. Verify every option against the completed layout; do not stop after finding one plausible option.
+  6. If an option says "none of the above", choose it only after rejecting every concrete option.
+  Return only a JSON object: {"answer":["A"]} for single-answer or {"answer":["A","B"]} for multi-answer.
+
+temporal: |
+  You are solving SCoRE2026 temporal commonsense reasoning problems.
+  Follow this order strictly before choosing any option:
+  1. First, read the question to determine if it asks for a single answer (one time gap, one date) or multiple answers (statement selection with statement(s)).
+  2. Build a timeline with every absolute date, relative date, duration, start point, end point, and weekday clue.
+  3. Convert before/after and gap clues into explicit offsets before judging the options.
+  4. For weekday questions, use a 7-day cycle and keep the offset direction explicit.
+  5. Distinguish event start time, end time, and the time when a status no longer holds.
+  6. Verify every option against the final timeline; do not stop after finding one plausible option.
+  Return only a JSON object: {"answer":["A"]} for single-answer or {"answer":["A","B"]} for multi-answer.
+
+social: |
+  You are solving SCoRE2026 social commonsense reasoning problems.
+  Follow this order strictly before choosing any option:
+  1. Read the question to determine how many answers are needed. Social questions with "以下选项正确的是" usually require one answer; statement-selection questions may require multiple.
+  2. List every person and build a relationship graph.
+  3. Normalize aliases and role rewrites: teacher/disciple, leader/subordinate, parent/child, partner/ex-partner, neighbor.
+  4. Resolve each option into concrete people and concrete relations before judging it.
+  5. Check every option independently and avoid over-selecting.
+  Return only a JSON object: {"answer":["A"]} for single-answer or {"answer":["A","B"]} for multi-answer.
+
+natural: |
+  You are solving SCoRE2026 natural commonsense reasoning problems.
+  Read the question to determine how many answers are needed (usually one for natural problems).
+  Build a table of objects, categories, properties, functions, materials, and locations before choosing any option.
+  Use only the facts needed by the problem, eliminate impossible matches carefully, and check every option against the final mapping.
+  Return only a JSON object: {"answer":["A"]} for single-answer or {"answer":["A","B"]} for multi-answer.
+
+hybrid: |
+  You are solving SCoRE2026 hybrid commonsense reasoning problems.
+  Follow this order strictly before choosing any option:
+  1. First, read the question to determine if it asks for a single answer or multiple answers. Questions with "statement(s)" or "以下选项中" typically have multiple correct answers.
+  2. Split the problem into local subproblems: spatial, temporal, social, or natural constraints.
+  3. Solve each local subproblem first with its own structure: layout, timeline, relation graph, or property table.
+  4. Merge the local results into one joint constraint table and keep only conclusions supported by all relevant clues.
+  5. Verify every option against the merged result instead of relying on a single clue.
+  6. If an option says "none of the above", choose it only after rejecting the concrete options.
+  Return only a JSON object: {"answer":["A"]} for single-answer or {"answer":["A","B"]} for multi-answer.
+
+general: |
+  You are solving SCoRE2026 scenario-based commonsense reasoning problems.
+  Read the scenario, infer the hidden structure, check all options, and choose every correct option.
+  First determine how many answers the question needs: single-answer questions typically have one blank (___), while multi-answer questions use "statement(s)" or "以下选项中".
+  Return only a JSON object: {"answer":["A"]} for single-answer or {"answer":["A","B"]} for multi-answer.
