@@ -333,13 +333,14 @@ def build_user_prompt_with_count_hint(
         f"{label}. {value}"
         for label, value in record["options"].items()
     )
-    # Use neutral phrasing that does NOT bias toward plural.
-    # "Choose ALL correct" caused over-selection when single/multi hint was missing.
+    # V5: Minimal fix. Just remove the "ALL" bias from the original prompt.
+    # The model was trained WITH single/multi hints, so without a hint it
+    # defaults to what the prompt suggests. "ALL" → over-select. "(s)" → neutral.
     prompt = (
         f"Text:\n{record['text']}\n\n"
         f"Question:\n{record['question']}\n\n"
         f"Options:\n{option_lines}\n\n"
-        "Select every correct option and output only JSON."
+        "Choose the correct option(s). Output only JSON."
     )
     if include_answer_count_hint:
         prompt += "\n\n" + answer_count_hint(record)
