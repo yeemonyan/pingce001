@@ -1,6 +1,6 @@
 {
   "files": {
-    "outputs\\sft_train_answer_only.jsonl": {
+    "outputs/sft_train_answer_only.jsonl": {
       "split": "train",
       "variant": "answer_only",
       "count": 2880,
@@ -19,10 +19,10 @@
         "multi": 677,
         "single": 2203
       },
-      "avg_prompt_length": 1113.44,
+      "avg_prompt_length": 1244.98,
       "avg_assistant_length": 18.51
     },
-    "outputs\\sft_valid_answer_only.jsonl": {
+    "outputs/sft_valid_answer_only.jsonl": {
       "split": "valid",
       "variant": "answer_only",
       "count": 720,
@@ -41,10 +41,10 @@
         "multi": 171,
         "single": 549
       },
-      "avg_prompt_length": 1112.55,
+      "avg_prompt_length": 1244.11,
       "avg_assistant_length": 18.52
     },
-    "outputs\\sft_train_rationale_json.jsonl": {
+    "outputs/sft_train_rationale_json.jsonl": {
       "split": "train",
       "variant": "rationale_json",
       "count": 2880,
@@ -63,10 +63,10 @@
         "multi": 677,
         "single": 2203
       },
-      "avg_prompt_length": 1113.44,
+      "avg_prompt_length": 1244.98,
       "avg_assistant_length": 319.48
     },
-    "outputs\\sft_valid_rationale_json.jsonl": {
+    "outputs/sft_valid_rationale_json.jsonl": {
       "split": "valid",
       "variant": "rationale_json",
       "count": 720,
@@ -85,14 +85,102 @@
         "multi": 171,
         "single": 549
       },
-      "avg_prompt_length": 1112.55,
+      "avg_prompt_length": 1244.11,
       "avg_assistant_length": 320.09
+    },
+    "outputs/sft_train_reasoning_short_json.jsonl": {
+      "split": "train",
+      "variant": "reasoning_short_json",
+      "count": 2880,
+      "domain": {
+        "hybrid": 80,
+        "natural": 800,
+        "social": 400,
+        "spatial": 800,
+        "temporal": 800
+      },
+      "language": {
+        "en": 1200,
+        "zh": 1680
+      },
+      "answer_kind": {
+        "multi": 677,
+        "single": 2203
+      },
+      "avg_prompt_length": 1244.98,
+      "avg_assistant_length": 437.3
+    },
+    "outputs/sft_valid_reasoning_short_json.jsonl": {
+      "split": "valid",
+      "variant": "reasoning_short_json",
+      "count": 720,
+      "domain": {
+        "hybrid": 20,
+        "natural": 200,
+        "social": 100,
+        "spatial": 200,
+        "temporal": 200
+      },
+      "language": {
+        "en": 300,
+        "zh": 420
+      },
+      "answer_kind": {
+        "multi": 171,
+        "single": 549
+      },
+      "avg_prompt_length": 1244.11,
+      "avg_assistant_length": 437.55
+    },
+    "outputs/sft_train_mixed_reasoning_json.jsonl": {
+      "split": "train",
+      "variant": "mixed_reasoning_json",
+      "count": 2880,
+      "domain": {
+        "hybrid": 80,
+        "natural": 800,
+        "social": 400,
+        "spatial": 800,
+        "temporal": 800
+      },
+      "language": {
+        "en": 1200,
+        "zh": 1680
+      },
+      "answer_kind": {
+        "multi": 677,
+        "single": 2203
+      },
+      "avg_prompt_length": 1244.98,
+      "avg_assistant_length": 281.58
+    },
+    "outputs/sft_valid_mixed_reasoning_json.jsonl": {
+      "split": "valid",
+      "variant": "mixed_reasoning_json",
+      "count": 720,
+      "domain": {
+        "hybrid": 20,
+        "natural": 200,
+        "social": 100,
+        "spatial": 200,
+        "temporal": 200
+      },
+      "language": {
+        "en": 300,
+        "zh": 420
+      },
+      "answer_kind": {
+        "multi": 171,
+        "single": 549
+      },
+      "avg_prompt_length": 1244.11,
+      "avg_assistant_length": 281.27
     }
   },
   "source": {
-    "input": "data\\raw\\train.json",
-    "train_ids": "data\\splits\\train_ids.json",
-    "dev_ids": "data\\splits\\dev_ids.json",
+    "input": "data/raw/train.json",
+    "train_ids": "data/splits/train_ids.json",
+    "dev_ids": "data/splits/dev_ids.json",
     "test_data_used": false
   }
 }

@@ -11,8 +11,12 @@ Use --backend transformers on the GPU server after downloading the model.
 from __future__ import annotations
 
 import argparse
+import importlib.machinery
 import json
+import os
 import re
+import sys
+import types
 from collections import Counter
 from pathlib import Path
 from typing import Any, Protocol
@@ -80,6 +84,31 @@ class MockBackend:
         return json.dumps({"answer": answer}, ensure_ascii=False)
 
 
+def ensure_sklearn_runtime() -> None:
+    """Provide a tiny sklearn.metrics fallback for broken inference envs."""
+
+    try:
+        from sklearn.metrics import roc_curve  # noqa: F401
+        return
+    except Exception:
+        metrics_module = types.ModuleType("sklearn.metrics")
+        metrics_module.__spec__ = importlib.machinery.ModuleSpec(
+            "sklearn.metrics",
+            loader=None,
+        )
+
+        def roc_curve(*args: object, **kwargs: object) -> None:
+            raise RuntimeError("sklearn.metrics.roc_curve is unavailable in this runtime.")
+
+        metrics_module.roc_curve = roc_curve
+
+        sklearn_module = sys.modules.get("sklearn") or types.ModuleType("sklearn")
+        sklearn_module.__spec__ = importlib.machinery.ModuleSpec("sklearn", loader=None)
+        sklearn_module.metrics = metrics_module
+        sys.modules["sklearn"] = sklearn_module
+        sys.modules["sklearn.metrics"] = metrics_module
+
+
 class TransformersBackend:
     def __init__(
         self,
@@ -91,8 +120,14 @@ class TransformersBackend:
         dtype: str,
         device_map: str,
     ) -> None:
+        ensure_sklearn_runtime()
         from transformers import AutoModelForCausalLM, AutoTokenizer
         import torch
+
+        if os.environ.get("FORCE_GROUPED_MM_FALLBACK") == "1":
+            import transformers.integrations.moe as moe_integration
+
+            moe_integration._can_use_grouped_mm = lambda input, weight, offs: False
 
         dtype_map = {
             "auto": "auto",
@@ -115,6 +150,9 @@ class TransformersBackend:
             from peft import PeftModel
 
             model = PeftModel.from_pretrained(model, adapter_path)
+        moe_experts_implementation = os.environ.get("MOE_EXPERTS_IMPLEMENTATION")
+        if moe_experts_implementation and hasattr(model.config, "_experts_implementation"):
+            model.config._experts_implementation = moe_experts_implementation
         self.model = model
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
@@ -125,11 +163,19 @@ class TransformersBackend:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ]
-        text = self.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        try:
+            text = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False,
+            )
+        except TypeError:
+            text = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+            )
         inputs = self.tokenizer([text], return_tensors="pt").to(self.model.device)
         do_sample = self.temperature > 0
         outputs = self.model.generate(
@@ -223,6 +269,34 @@ def build_user_prompt(record: dict[str, Any]) -> str:
     return build_user_prompt_with_count_hint(record, include_answer_count_hint=False)
 
 
+def auto_count_hint(record: dict[str, Any]) -> str:
+    """Use predicted_cardinality or cardinality_hint field if available."""
+    # Option 1: pre-computed hint text
+    hint = record.get('cardinality_hint')
+    if hint:
+        return str(hint)
+    # Option 2: predicted_cardinality field
+    kind = record.get('predicted_cardinality')
+    if kind in ('single', 'multi'):
+        language = str(record.get('language') or '').strip().lower()
+        if not language:
+            text = f"{record.get('text', '')} {record.get('question', '')}"
+            language = 'zh' if any('一' <= ch <= '鿿' for ch in text) else 'en'
+        if kind == 'single':
+            return (
+                "这是一道单选题。你只能选择一个最符合题意的选项。"
+                if language == 'zh'
+                else "This is a single-answer question. You must select exactly one best-supported option."
+            )
+        else:
+            return (
+                "这是一道多选题。请选出所有正确选项，不要漏选，也不要多选。"
+                if language == 'zh'
+                else "This is a multi-answer question. Select all supported options without missing any and without adding extras."
+            )
+    return ''
+
+
 def infer_answer_kind(record: dict[str, Any]) -> str:
     answers = record.get("answer")
     if isinstance(answers, list) and len(answers) > 1:
@@ -249,11 +323,19 @@ def answer_count_hint(record: dict[str, Any]) -> str:
     )
 
 
-def build_user_prompt_with_count_hint(record: dict[str, Any], *, include_answer_count_hint: bool) -> str:
+def build_user_prompt_with_count_hint(
+    record: dict[str, Any],
+    *,
+    include_answer_count_hint: bool = False,
+    include_auto_count_hint: bool = False,
+) -> str:
     option_lines = "\n".join(
         f"{label}. {value}"
         for label, value in record["options"].items()
     )
+    # V5: Minimal fix. Just remove the "ALL" bias from the original prompt.
+    # The model was trained WITH single/multi hints, so without a hint it
+    # defaults to what the prompt suggests. "ALL" → over-select. "(s)" → neutral.
     prompt = (
         f"Text:\n{record['text']}\n\n"
         f"Question:\n{record['question']}\n\n"
@@ -262,6 +344,10 @@ def build_user_prompt_with_count_hint(record: dict[str, Any], *, include_answer_
     )
     if include_answer_count_hint:
         prompt += "\n\n" + answer_count_hint(record)
+    elif include_auto_count_hint:
+        hint = auto_count_hint(record)
+        if hint:
+            prompt += "\n\n" + hint
     return prompt
 
 
@@ -311,6 +397,7 @@ def run_inference(
     backend: GenerationBackend,
     *,
     include_answer_count_hint: bool = False,
+    include_auto_count_hint: bool = False,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     outputs = []
     correct = 0
@@ -326,9 +413,15 @@ def run_inference(
         allowed_labels = set(record["options"].keys())
         raw_output = backend.generate(
             system_prompt,
-            build_user_prompt_with_count_hint(record, include_answer_count_hint=include_answer_count_hint),
+            build_user_prompt_with_count_hint(
+                record,
+                include_answer_count_hint=include_answer_count_hint,
+                include_auto_count_hint=include_auto_count_hint,
+            ),
         )
         prediction = extract_answer(raw_output, allowed_labels)
+        if len(outputs) % 100 == 0:
+            print(f'{len(outputs)}/1000', flush=True)
         matched = is_correct(prediction, record.get("answer"))
         if matched is not None:
             scored += 1
@@ -377,7 +470,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--answer-count-hint",
         action="store_true",
-        help="Append a single-answer or multi-answer hint to the user prompt.",
+        help="Append gold single/multi hint (dev-only, uses gold answer).",
+    )
+    parser.add_argument(
+        "--auto-count-hint",
+        action="store_true",
+        help="Append predicted single/multi hint from cardinality_hint or predicted_cardinality field.",
     )
     return parser.parse_args()
 
@@ -400,7 +498,11 @@ def main() -> None:
             device_map=args.device_map,
         )
 
-    outputs, metrics = run_inference(records, prompts, backend, include_answer_count_hint=bool(args.answer_count_hint))
+    outputs, metrics = run_inference(
+        records, prompts, backend,
+        include_answer_count_hint=bool(args.answer_count_hint),
+        include_auto_count_hint=bool(args.auto_count_hint),
+    )
     dump_jsonl(outputs, Path(args.output))
     print(json.dumps(metrics, ensure_ascii=False))
 

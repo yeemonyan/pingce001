@@ -1,0 +1,17 @@
+{
+  "count": 1000,
+  "patched_count": 1,
+  "patched_examples": [
+    {
+      "id": "SCoRE2026-test-790",
+      "recovered": [
+        "D"
+      ],
+      "candidates": [
+        "Lily"
+      ]
+    }
+  ],
+  "submission_path": "outputs/submissions/v4_cardinality_aware_submission_fixed.json",
+  "fixed_prediction_path": "outputs/test_lora_v4_predictions_fixed.jsonl"
+}

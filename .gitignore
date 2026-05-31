@@ -46,3 +46,10 @@ tmp*/
 Thumbs.db
 .vscode/
 .idea/
+checkpoints/
+.secrets/
+.tmp_sync/
+outputs/sft_train_*.jsonl
+outputs/sft_valid_*.jsonl
+outputs/*.jsonl
+!outputs/submissions/
