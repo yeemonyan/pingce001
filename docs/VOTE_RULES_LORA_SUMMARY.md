@@ -1,5 +1,8 @@
 # Vote Enablement Summary
 
+Status: historical voting-plan summary. It is retained for context only; the
+paper-facing route is described in `README.md` and `docs/PAPER_MAINLINE.md`.
+
 ## Recommended to Enable Vote
 
 - `temporal` multi-answer or statement-selection questions.

@@ -1,6 +1,6 @@
 # SCoRE2026 Dense LoRA Routing
 
-This repository contains the public, code-oriented companion for our SCoRE2026
+This branch contains the public, code-oriented companion for our SCoRE2026
 submission. The main research line is a dense `Qwen2.5-7B-Instruct` system with
 LoRA fine-tuning and a test-safe routing rule between two prediction styles:
 
@@ -25,7 +25,7 @@ All dev numbers below use the fixed `2880/720` train/dev split with seed `2026`.
 | Zero-shot Qwen2.5-7B-Instruct | 131 / 720 | 18.19% | `outputs/dev_baseline_eval.json` |
 | Answer-only LoRA | 261 / 720 | 36.25% | `outputs/dev_lora_answer_only_eval.json` |
 | Mixed-reasoning LoRA | 277 / 720 | 38.47% | documented in `docs/MIXED_REASONING_SUBMISSION_HANDOFF.md` |
-| V7d routed test submission | official score 19.0% | test set | `outputs/submissions/v7d_submission.json` |
+| V7d routed test submission | official score 19.0% | test set | submission artifact in `outputs/submissions/v7d_submission.json`; score is an external official record |
 
 The mixed-reasoning dev number used gold answer-count hints during dev
 diagnostics. The official test workflow avoids gold hints and uses predicted
@@ -45,6 +45,25 @@ cardinality instead. This distinction matters for reproducing the paper claims.
 
 See `docs/PAPER_MAINLINE.md` for the paper-facing method map and evidence
 boundaries.
+
+## Document Status
+
+The paper-facing entry points are:
+
+- `README.md`: public overview and reproduction commands.
+- `docs/PAPER_MAINLINE.md`: method-to-evidence map and reproducibility boundary.
+- `docs/PUBLICATION_AUDIT.md`: explicit publication-scope audit.
+- `docs/MIXED_REASONING_SUBMISSION_HANDOFF.md`: mixed-reasoning run notes, with
+  the dev-only gold-hint caveat.
+
+Several older documents are retained as experiment history. They are useful for
+understanding explored routes, but they are not final paper claims:
+
+- `docs/DENSE_BUCKET_ROUTE_NOTES.md`: dev-only dense bucket routing exploration.
+- `docs/DISTILLATION_PIPELINE.md`: API-teacher distillation plan.
+- `docs/VOTE_RULES_LORA*.md`: voting experiments and proposed gates.
+- `docs/V4_IMPROVEMENT_PLAN.md`: cardinality-hint diagnosis and estimated fixes.
+- `docs/VERIFIER_*.md`: option-level verifier probe planning.
 
 ## Reproduce Local Checks
 

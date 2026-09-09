@@ -1,5 +1,10 @@
 # Dense Bucket Route Notes
 
+Status: historical dev-only exploration. This note is retained to document an
+attempted routing direction, but its generated outputs are not tracked in the
+public branch and it is not the final paper-facing method. Use `README.md` and
+`docs/PAPER_MAINLINE.md` for the public mainline.
+
 ## Goal
 
 Push the dense Qwen2.5-7B line beyond the plain mixed_reasoning adapter by
@@ -11,7 +16,7 @@ routing each example to the better adapter family:
 This is a low-cost dense boost because it reuses existing checkpoints instead
 of starting another full LoRA training run.
 
-## Current Best Routing Rule
+## Dev Routing Rule Explored Here
 
 Use `mixed_reasoning` for:
 

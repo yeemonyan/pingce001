@@ -1,8 +1,12 @@
 # Mixed Reasoning Submission Handoff
 
+Status: paper-adjacent handoff note. This file records the mixed-reasoning
+adapter and its dev diagnostic result. Some prediction files named below are
+runtime artifacts and are not tracked in the public branch.
+
 ## What It Is
 
-The current best dense dev run is `mixed_reasoning`:
+The best single-adapter dense dev run recorded here is `mixed_reasoning`:
 
 - dev accuracy: `277/720 = 0.3847222222`
 - base model: `Qwen2.5-7B-Instruct`
@@ -32,7 +36,7 @@ The LoRA adapter weights are not stored in git. The teammate needs the checkpoin
 
 The recorded `0.3847` dev run used `--answer-count-hint` during dev inference. On dev, this hint is derived from the gold answer length, so it is a diagnostic convenience rather than a test-time signal.
 
-For official test submission, do not enable answer-count hints unless the test input already provides a legitimate non-answer metadata field for question cardinality. The submission script defaults to no answer-count hint.
+For official test submission, do not enable gold answer-count hints. The current submission script first predicts cardinality from the test prompt and then uses that predicted non-answer metadata through `--auto-count-hint`.
 
 ## Generate Official Submission
 

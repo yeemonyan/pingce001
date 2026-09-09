@@ -41,6 +41,19 @@ questions benefit more from short reasoning.
 - `docs/MIXED_REASONING_SUBMISSION_HANDOFF.md`: mixed-reasoning handoff notes.
 - `docs/ERROR_ANALYSIS_LORA.md`: dev error analysis after LoRA.
 
+## Historical Experiment Notes
+
+Older `docs/` files preserve the path of explored methods. They should be read
+as dated experiment notes unless this file or `README.md` explicitly names them
+as paper-facing evidence. In particular:
+
+- `docs/DENSE_BUCKET_ROUTE_NOTES.md` records a dev-only routing exploration whose
+  generated outputs are not tracked in this public branch.
+- `docs/DISTILLATION_PIPELINE.md` records an API-teacher distillation plan, not
+  the final paper method.
+- `docs/VOTE_RULES_LORA*.md`, `docs/V4_IMPROVEMENT_PLAN.md`, and
+  `docs/VERIFIER_*.md` are retained to show negative and exploratory routes.
+
 ## Reproducibility Boundaries
 
 The public branch tracks code, configs, small JSON/JSONL reports, split ids, and
@@ -70,4 +83,5 @@ Use the tracked evidence above when editing the manuscript:
 
 Avoid claiming that this repository alone fully reconstructs every historical
 online submission. It provides a clean public implementation and evidence map
-for the paper's main method.
+for the paper's main method, while keeping older exploratory notes labeled as
+history.

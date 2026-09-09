@@ -1,5 +1,8 @@
 # Vote Rules for LoRA Dev
 
+Status: historical voting-plan note. It records proposed dev experiments and
+should not be read as the final routed submission method.
+
 ## Evidence From Current Dev
 
 Source: `outputs/error_report_lora_dev.json` and current LoRA dev predictions.

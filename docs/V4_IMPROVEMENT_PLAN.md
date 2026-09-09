@@ -1,5 +1,9 @@
 # V4 Improvement Plan: Breaking the 14.9% Barrier
 
+Status: historical diagnosis and estimate note. The figures in the expected
+improvement table are estimates from that stage, not final paper results. Use
+`README.md` and `docs/PAPER_MAINLINE.md` for the public mainline.
+
 ## Root Cause Analysis
 
 ### Why is online score (14.9%) so much lower than dev (38.5%)?

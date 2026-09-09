@@ -1,4 +1,8 @@
-# API Teacher 蒸馏主线
+# API Teacher 蒸馏探索路线
+
+状态：历史探索文档。这里记录的是 API teacher 蒸馏方案和落盘计划，不是当前
+公开分支的论文主线。当前论文主线见 `README.md` 和
+`docs/PAPER_MAINLINE.md`。
 
 更新时间：2026-05-24
 
@@ -136,10 +140,10 @@ bash scripts/run_qwen_distill_mix_ddp.sh
 - adapter 权重
 - 训练日志
 
-## 当前策略
+## 当时策略
 
 1. `MoE` 暂时退出主工作流。
-2. 主线变成 `API teacher -> 结构化蒸馏 -> Dense student`。
+2. 当时探索路线变成 `API teacher -> 结构化蒸馏 -> Dense student`。
 3. 先用高质量逐选项判断解决：
    - `single_to_multi`
    - `multi_missing`

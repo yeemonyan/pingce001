@@ -1,5 +1,8 @@
 # Verifier Experiment Log
 
+Status: historical verifier-probe log. This records exploratory option-level
+verification work and a mock-flow check; it is not a final paper result table.
+
 ## Fixed Metrics
 
 Every verifier experiment must record:

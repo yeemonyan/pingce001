@@ -1,5 +1,8 @@
 # Round 4 Verifier Probe Plan
 
+Status: historical verifier-probe plan. It is retained as experiment context and
+does not define the current paper-facing method.
+
 ## Why This Route
 
 Current evidence says the weak point is not only model capacity:

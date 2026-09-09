@@ -1,5 +1,9 @@
 # SFT And Prompt Recommendation
 
+Status: historical planning note. This file records the recommendation made
+before later LoRA, routing, verifier, and distillation experiments. It should
+not be read as the final paper method.
+
 ## Recommended Run Order
 
 ### 1. Run `answer_only` SFT First

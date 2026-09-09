@@ -1,5 +1,9 @@
 # Phase B-D Progress
 
+状态：历史阶段记录。本文记录 baseline、dev split 和早期 SFT 数据构造阶段；
+它不是当前公开论文主线的入口。当前入口见 `README.md` 和
+`docs/PAPER_MAINLINE.md`。
+
 ## Phase B0: Dev Split
 
 已完成稳定 dev split，用于后续 prompt、baseline 和 LoRA 对比。

@@ -1,5 +1,9 @@
 # Delivery Status
 
+Status: historical delivery snapshot. It records the earlier baseline/SFT handoff
+state. For the current public paper-facing branch, start from `README.md` and
+`docs/PAPER_MAINLINE.md`.
+
 ## Completed
 
 1. Stable dev split
@@ -101,5 +105,5 @@ Current local checks:
 
 ```text
 dev_prompts ok 720
-31 tests passed
+62 tests passed on the public showcase branch
 ```
