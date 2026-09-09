@@ -11,6 +11,12 @@ routing method if the paper cites it with the same scope used in `README.md` and
 It should be described as a public implementation and evidence map, not as a
 self-contained archive of every competition run.
 
+This branch should not be described as independently proving that every tracked
+submission artifact was regenerated from training inside the public checkout.
+The tracked files were collected from the historical project state, while some
+run provenance lives outside git in model checkpoints, logs, intermediate
+predictions, official platform records, and team archives.
+
 ## Confirmed In This Branch
 
 | Item | Status | Evidence |
@@ -29,6 +35,7 @@ self-contained archive of every competition run.
 | Official V7d online score is 19.0% | The local repository stores the submitted JSON, but the score comes from the official evaluation platform. |
 | Exact mixed-reasoning 277/720 regeneration | The note records the result, but the mixed-reasoning prediction file and LoRA adapter are not tracked. |
 | Exact reconstruction of all V4-V17 online submissions | Submission JSON files are tracked, but several intermediate prediction files and run logs are not. |
+| Full provenance for every historical artifact | The branch preserves artifacts from previous runs, but git alone does not contain enough logs and checkpoint hashes to prove every artifact's generation chain. |
 
 ## Remaining Caveats
 
@@ -39,6 +46,9 @@ self-contained archive of every competition run.
 - Some historical helper scripts under `scripts/build_v*.py` require untracked
   intermediate prediction files. The paper-facing V7d builder is
   `scripts/build_v7d.py`.
+- For paper citation, treat this branch as the public mainline release. Treat
+  older branches and unlabeled generated files as historical evidence, not as
+  independent proof of a complete training provenance chain.
 
 ## Citation Scope
 

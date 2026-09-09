@@ -70,6 +70,10 @@ logic, and tracked dev metrics. Exact end-to-end regeneration of all competition
 predictions requires either rerunning the GPU training/inference pipeline or
 restoring the original checkpoint and prediction artifacts.
 
+The public branch preserves the mainline artifacts available from the historical
+project state. It does not, by itself, prove a complete provenance chain for
+every generated submission file.
+
 ## Paper Number Hygiene
 
 Use the tracked evidence above when editing the manuscript:

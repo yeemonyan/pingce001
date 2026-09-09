@@ -165,3 +165,7 @@ evidence, and official submission files. It does not claim to contain every raw
 remote experiment artifact from the original competition period. In particular,
 some intermediate prediction files and all LoRA adapter weights must be restored
 from the original run machine or regenerated.
+
+For paper citation, use this branch as the public implementation and evidence
+map for the V7d method. Do not describe it as a complete proof that every
+historical artifact was regenerated from training within this checkout.
