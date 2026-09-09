@@ -3,7 +3,7 @@ import json, sys
 from pathlib import Path
 from collections import Counter
 
-sys.path.insert(0, '/home/pj/pingce001-moe/imports/old_50890/pingce001')
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.build_sft_data import (
     normalize_records_by_id, select_records, load_json,

@@ -209,7 +209,7 @@ tests/                   单元测试与 smoke 链路测试
 python -m unittest discover -s tests -v
 ```
 
-当前本地验证通过：31 个测试全部 OK。
+运行测试时请从仓库根目录执行；当前测试集合可用 `PYTHONPATH=. python -m unittest discover -s tests -v` 运行。
 
 ## 文档索引
 

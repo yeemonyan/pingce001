@@ -14,7 +14,7 @@ if [[ ! -x "$PYTHON_BIN" ]]; then
 fi
 
 MODEL_ID="${MODEL_ID:-Qwen/Qwen3-30B-A3B-Instruct-2507}"
-MODEL_CACHE="${MODEL_CACHE:-/root/autodl-tmp/models}"
+MODEL_CACHE="${MODEL_CACHE:-models}"
 MODEL_PATH="${MODEL_PATH:-${MODEL_CACHE}/Qwen/Qwen3-30B-A3B-Instruct-2507}"
 PROMPTS_PATH="${PROMPTS_PATH:-configs/system_prompts_v3_mixed_focus.yaml}"
 PRED_PATH="${PRED_PATH:-outputs/dev_qwen3_30b_a3b_baseline_predictions.jsonl}"

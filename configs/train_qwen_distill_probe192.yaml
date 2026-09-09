@@ -1,6 +1,6 @@
 model:
   base_model: Qwen/Qwen2.5-7B-Instruct
-  local_model_path: /home/pj/xukangzhe/Qwen2.5-7B-Instruct/qwen/Qwen2___5-7B-Instruct
+  local_model_path: models/Qwen2.5-7B-Instruct
   trust_remote_code: true
 data:
   train_file: outputs/sft_train_distill_mix.jsonl

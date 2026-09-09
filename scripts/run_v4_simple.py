@@ -1,15 +1,16 @@
 import json, sys, time, os
 from pathlib import Path
 
-sys.path.insert(0, '/home/pj/pingce001-moe/imports/old_50890/pingce001')
+ROOT_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT_DIR))
 
 from scripts.infer_score import (
     TransformersBackend, load_jsonl, load_prompts,
     run_inference, dump_jsonl
 )
 
-MODEL = '/home/pj/xukangzhe/Qwen2.5-7B-Instruct/qwen/Qwen2___5-7B-Instruct'
-ADAPTER = '/home/pj/pingce001-moe/checkpoints/qwen2p5_7b_lora_mixed_reasoning_seed2026'
+MODEL = os.environ.get('MODEL_PATH', 'models/Qwen2.5-7B-Instruct')
+ADAPTER = os.environ.get('ADAPTER_PATH', 'checkpoints/qwen2p5_7b_lora_mixed_reasoning_seed2026')
 PROMPTS = 'configs/system_prompts_v4_self_determine.yaml'
 INPUT = 'outputs/test_prompts_with_cardinality.jsonl'
 OUTPUT = 'outputs/test_lora_v4_predictions.jsonl'

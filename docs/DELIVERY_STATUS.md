@@ -68,7 +68,7 @@ Top failure types:
 Run these on the GPU server to reproduce the baseline/dev reports.
 
 ```bash
-cd /root/autodl-tmp/pingce001
+cd /path/to/pingce001
 
 python scripts/filter_split_records.py \
   --input data/raw/train.json \

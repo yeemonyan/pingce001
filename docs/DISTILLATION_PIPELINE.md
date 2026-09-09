@@ -17,14 +17,14 @@
 
 ### Prompt / 配置
 
-- [configs/teacher_distill_prompts.yaml](/Users/xiaoyuzhang/Documents/Playground/pingce001/configs/teacher_distill_prompts.yaml)
-- [configs/train_qwen_distill_mix.yaml](/Users/xiaoyuzhang/Documents/Playground/pingce001/configs/train_qwen_distill_mix.yaml)
+- `configs/teacher_distill_prompts.yaml`
+- `configs/train_qwen_distill_mix.yaml`
 
 ### 脚本
 
-- [scripts/build_teacher_distill_requests.py](/Users/xiaoyuzhang/Documents/Playground/pingce001/scripts/build_teacher_distill_requests.py)
-- [scripts/build_distilled_sft_data.py](/Users/xiaoyuzhang/Documents/Playground/pingce001/scripts/build_distilled_sft_data.py)
-- [scripts/run_qwen_distill_mix_ddp.sh](/Users/xiaoyuzhang/Documents/Playground/pingce001/scripts/run_qwen_distill_mix_ddp.sh)
+- `scripts/build_teacher_distill_requests.py`
+- `scripts/build_distilled_sft_data.py`
+- `scripts/run_qwen_distill_mix_ddp.sh`
 
 ## 数据流
 
