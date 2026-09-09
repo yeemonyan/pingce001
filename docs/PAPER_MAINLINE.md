@@ -26,10 +26,12 @@ questions benefit more from short reasoning.
 | Official data split is fixed and stratified | `data/splits/*.json`, `outputs/dev_split_report.json` |
 | Zero-shot baseline is 131/720 on dev | `outputs/dev_baseline_eval.json` |
 | Answer-only LoRA is 261/720 on dev | `outputs/dev_lora_answer_only_eval.json` |
+| Mixed-reasoning LoRA is 277/720 on dev | `outputs/dev_lora_mixed_reasoning_eval.json` |
 | Answer-only temporal result is 42/200 | `outputs/dev_lora_answer_only_eval.json` |
 | V7d submission is a 1000-item official-format JSON | `outputs/submissions/v7d_submission.json`, validation scripts |
 | V7d routing does not use test gold answers | `scripts/build_v7d.py`, `scripts/predict_cardinality.py` |
 | Unit/smoke behavior is covered | `tests/`, 62 passing tests |
+| Selected negative-run trainer states are preserved | `outputs/training_logs/*_trainer_state.json` |
 
 ## Files To Read First
 
@@ -80,8 +82,9 @@ Use the tracked evidence above when editing the manuscript:
 
 - answer-only LoRA dev: `261/720 = 36.25%`;
 - answer-only temporal dev: `42/200 = 21.00%`;
-- mixed-reasoning dev: `277/720 = 38.47%`, with the diagnostic caveat recorded
-  in `docs/MIXED_REASONING_SUBMISSION_HANDOFF.md`;
+- mixed-reasoning dev: `277/720 = 38.47%`, backed by
+  `outputs/dev_lora_mixed_reasoning_eval.json`, with the diagnostic caveat
+  recorded in `docs/MIXED_REASONING_SUBMISSION_HANDOFF.md`;
 - V7d official test score: `19.0%`, as an external leaderboard/submission
   result rather than a locally recomputed metric.
 

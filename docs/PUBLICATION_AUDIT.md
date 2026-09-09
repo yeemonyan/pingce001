@@ -24,16 +24,18 @@ predictions, official platform records, and team archives.
 | Fixed train/dev split | confirmed | `data/splits/*.json`, `outputs/dev_split_report.json` |
 | Zero-shot dev result | confirmed | `outputs/dev_baseline_eval.json` |
 | Answer-only LoRA dev result | confirmed | `outputs/dev_lora_answer_only_eval.json` |
+| Mixed-reasoning LoRA dev result | confirmed | `outputs/dev_lora_mixed_reasoning_eval.json` |
 | V7d submission format | confirmed | `outputs/submissions/v7d_submission.json`, `scripts/validate_submission.py` |
 | Test-safe V7d routing logic | confirmed | `scripts/build_v7d.py`, `scripts/predict_cardinality.py` |
 | CPU tests | confirmed | 62 tests passed with `PYTHONPATH=. python3 -m unittest discover -s tests -v` |
+| Selected negative training runs | partial | `outputs/training_logs/*_trainer_state.json`; these show training traces, not official online scores |
 
 ## Claims That Need External Evidence
 
 | Claim | Why |
 | --- | --- |
 | Official V7d online score is 19.0% | The local repository stores the submitted JSON, but the score comes from the official evaluation platform. |
-| Exact mixed-reasoning 277/720 regeneration | The note records the result, but the mixed-reasoning prediction file and LoRA adapter are not tracked. |
+| Exact mixed-reasoning 277/720 regeneration | The aggregate eval JSON is tracked, but the mixed-reasoning prediction file and LoRA adapter are not tracked. |
 | Exact reconstruction of all V4-V17 online submissions | Submission JSON files are tracked, but several intermediate prediction files and run logs are not. |
 | Full provenance for every historical artifact | The branch preserves artifacts from previous runs, but git alone does not contain enough logs and checkpoint hashes to prove every artifact's generation chain. |
 
@@ -43,6 +45,8 @@ predictions, official platform records, and team archives.
   notes when they are not part of the final paper method.
 - Raw official `train.json` and `test.json` are not tracked.
 - Base model weights and LoRA adapter checkpoints are not tracked.
+- Selected trainer-state logs are tracked, but they do not by themselves prove
+  official online scores or exact regenerated predictions.
 - Some historical helper scripts under `scripts/build_v*.py` require untracked
   intermediate prediction files. The paper-facing V7d builder is
   `scripts/build_v7d.py`.

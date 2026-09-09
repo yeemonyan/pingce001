@@ -14,7 +14,8 @@ LoRA fine-tuning and a test-safe routing rule between two prediction styles:
 The repository is organized for public inspection: small reproducible artifacts,
 scripts, configuration files, validation tests, and submission-format outputs are
 tracked. Raw official data, model checkpoints, LoRA adapter weights, and large
-runtime files are intentionally not committed.
+runtime files are intentionally not committed. Small trainer-state logs for
+selected negative runs are tracked under `outputs/training_logs/`.
 
 ## Results Snapshot
 
@@ -24,7 +25,7 @@ All dev numbers below use the fixed `2880/720` train/dev split with seed `2026`.
 | --- | ---: | ---: | --- |
 | Zero-shot Qwen2.5-7B-Instruct | 131 / 720 | 18.19% | `outputs/dev_baseline_eval.json` |
 | Answer-only LoRA | 261 / 720 | 36.25% | `outputs/dev_lora_answer_only_eval.json` |
-| Mixed-reasoning LoRA | 277 / 720 | 38.47% | documented in `docs/MIXED_REASONING_SUBMISSION_HANDOFF.md` |
+| Mixed-reasoning LoRA | 277 / 720 | 38.47% | `outputs/dev_lora_mixed_reasoning_eval.json`; run notes in `docs/MIXED_REASONING_SUBMISSION_HANDOFF.md` |
 | V7d routed test submission | official score 19.0% | test set | submission artifact in `outputs/submissions/v7d_submission.json`; score is an external official record |
 
 The mixed-reasoning dev number used gold answer-count hints during dev

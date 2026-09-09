@@ -29,6 +29,10 @@ outputs/*
 !outputs/dev_prompts.jsonl
 !outputs/dev_baseline_predictions.jsonl
 !outputs/dev_baseline_eval.json
+!outputs/dev_lora_answer_only_eval.json
+!outputs/dev_lora_mixed_reasoning_eval.json
+!outputs/training_logs/
+!outputs/training_logs/*_trainer_state.json
 !outputs/error_report_baseline_dev.json
 !outputs/error_cases_baseline_dev.jsonl
 !outputs/verifier_train.jsonl
